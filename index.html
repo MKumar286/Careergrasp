@@ -225,7 +225,7 @@
             background-color: #ffffff;
         }
 
-        /* About Creator Section */
+        /* About Creator Section with Person Image embedded on Left */
         .creator-section {
             background: #ffffff;
             border: 1px solid var(--border-color);
@@ -233,28 +233,48 @@
             padding: 2.5rem;
             margin-bottom: 3rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
         }
 
-        .creator-section h1 {
+        .creator-img-wrapper {
+            flex-shrink: 0;
+        }
+
+        .creator-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--border-color);
+        }
+
+        .creator-info {
+            flex: 1;
+        }
+
+        .creator-info h1 {
             font-size: 2.2rem;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             letter-spacing: -0.5px;
         }
 
-        .creator-section p {
+        .creator-info p {
             font-size: 1.08rem;
             line-height: 1.7;
             color: var(--text-muted);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
-        .creator-section p:last-child {
+        .creator-info p:last-child {
             margin-bottom: 0;
         }
 
-        .creator-section strong {
+        .creator-info strong {
             color: var(--text-main);
             font-weight: 600;
         }
@@ -317,7 +337,7 @@
             color: var(--text-muted);
         }
 
-        /* Bottom Brand Section (From Add2.jpg) */
+        /* Bottom Brand Section */
         .brand-footer-section {
             margin-top: 4rem;
             padding: 3.5rem 2rem;
@@ -329,6 +349,32 @@
             flex-direction: column;
             align-items: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Floating & Glowing Animation for Brand Image */
+        .animated-brand-img {
+            width: 320px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 14px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            animation: floatGlow 3.8s ease-in-out infinite;
+        }
+
+        @keyframes floatGlow {
+            0% {
+                transform: translateY(0px) scale(1);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            }
+            50% {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 20px 40px rgba(30, 58, 138, 0.22);
+            }
+            100% {
+                transform: translateY(0px) scale(1);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            }
         }
 
         .brand-title {
@@ -393,6 +439,18 @@
         .social-icon:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        /* Responsive design for creator card */
+        @media (max-width: 768px) {
+            .creator-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .creator-img {
+                width: 180px;
+                height: 180px;
+            }
         }
     </style>
 </head>
@@ -509,11 +567,16 @@
 
         <!-- Main Content Area (Right of Sidebar) -->
         <main>
-            <!-- About the Creator Section -->
+            <!-- About the Creator Section with Embedded Person Photo on the Left -->
             <section class="creator-section">
-                <h1>About the creator</h1>
-                <p><strong>Aarya Aakash</strong> is an Academic Systems Designer, Career Orientation Facilitator, and English Communication Trainer with over 25 years of experience working with school students, college learners, job seekers, working professionals, and organizations.</p>
-                <p>His work focuses on designing structured learning systems that improve study habits, academic accuracy, communication clarity, productivity, and career readiness.</p>
+                <div class="creator-img-wrapper">
+                    <img src="sir.jpg" alt="Aarya Aakash" class="creator-img">
+                </div>
+                <div class="creator-info">
+                    <h1>About the creator</h1>
+                    <p><strong>Aarya Aakash</strong> is an Academic Systems Designer, Career Orientation Facilitator, and English Communication Trainer with over 25 years of experience working with school students, college learners, job seekers, working professionals, and organizations.</p>
+                    <p>His work focuses on designing structured learning systems that improve study habits, academic accuracy, communication clarity, productivity, and career readiness.</p>
+                </div>
             </section>
 
             <!-- Features Section -->
@@ -538,7 +601,7 @@
                         </div>
                     </div>
 
-                    <!-- Feature Card 3 (From add.jpg) -->
+                    <!-- Feature Card 3 -->
                     <div class="feature-card">
                         <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80" alt="Online English Com & Presentation Skills" class="feature-card-img">
                         <div class="feature-card-body">
@@ -547,7 +610,7 @@
                         </div>
                     </div>
 
-                    <!-- Feature Card 4 (From add.jpg) -->
+                    <!-- Feature Card 4 -->
                     <div class="feature-card">
                         <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Corporate Training Solutions" class="feature-card-img">
                         <div class="feature-card-body">
@@ -558,8 +621,11 @@
                 </div>
             </section>
 
-            <!-- Bottom Overview Section (From Add2.jpg) -->
+            <!-- Bottom Overview Section with Animated Image at the Top -->
             <section class="brand-footer-section">
+                <!-- Animated Image embedded above Career Graspp paragraph -->
+                <img src="grasp_2.jpg" alt="Career Graspp Animated Logo" class="animated-brand-img">
+
                 <h2 class="brand-title">Career Graspp</h2>
                 <div class="title-underline"></div>
                 <p class="brand-subtitle">Career Growth, Mind Performance, English Communication, & Test Preparation Systems for Students, Professionals and Organizations</p>
