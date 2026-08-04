@@ -316,6 +316,84 @@
             line-height: 1.6;
             color: var(--text-muted);
         }
+
+        /* Bottom Brand Section (From Add2.jpg) */
+        .brand-footer-section {
+            margin-top: 4rem;
+            padding: 3.5rem 2rem;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .brand-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        .title-underline {
+            width: 70px;
+            height: 4px;
+            background-color: var(--text-main);
+            border-radius: 2px;
+            margin-bottom: 1.8rem;
+        }
+
+        .brand-subtitle {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-main);
+            max-width: 820px;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .brand-description {
+            font-size: 1.02rem;
+            color: var(--text-muted);
+            max-width: 840px;
+            line-height: 1.7;
+            margin-bottom: 2.2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon.youtube { background-color: #ff0000; }
+        .social-icon.instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .social-icon.twitter { background-color: #000000; }
+        .social-icon.linkedin { background-color: #0a66c2; }
+        .social-icon.facebook { background-color: #1877f2; }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -460,23 +538,38 @@
                         </div>
                     </div>
 
-                    <!-- Feature Card 3 -->
+                    <!-- Feature Card 3 (From add.jpg) -->
                     <div class="feature-card">
-                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80" alt="English Communication" class="feature-card-img">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80" alt="Online English Com & Presentation Skills" class="feature-card-img">
                         <div class="feature-card-body">
-                            <h3 class="feature-title">English & Communication Clarity</h3>
-                            <p class="feature-desc">Interactive modules designed to enhance public speaking, interview articulation, and professional writing skills.</p>
+                            <h3 class="feature-title">Online English Com & Presentation Skills</h3>
+                            <p class="feature-desc">Speak fluently, present confidently, and communicate clearly at work and interviews.</p>
                         </div>
                     </div>
 
-                    <!-- Feature Card 4 -->
+                    <!-- Feature Card 4 (From add.jpg) -->
                     <div class="feature-card">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Career Readiness" class="feature-card-img">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Corporate Training Solutions" class="feature-card-img">
                         <div class="feature-card-body">
-                            <h3 class="feature-title">Career Readiness & Placement Acceleration</h3>
-                            <p class="feature-desc">Structured roadmaps, resume building frameworks, and systematic job-prep strategies tailored for job seekers.</p>
+                            <h3 class="feature-title">Corporate Training Solutions</h3>
+                            <p class="feature-desc">Tailor-made programs in soft skills, business English, leadership, and productivity.</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Bottom Overview Section (From Add2.jpg) -->
+            <section class="brand-footer-section">
+                <h2 class="brand-title">Career Graspp</h2>
+                <div class="title-underline"></div>
+                <p class="brand-subtitle">Career Growth, Mind Performance, English Communication, & Test Preparation Systems for Students, Professionals and Organizations</p>
+                <p class="brand-description">Career Graspp delivers online and offline coaching for aspirants in schools, colleges, and corporates. We specialize in employability, communication mastery, mind programming, and corporate soft skills.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon youtube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-icon instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-icon twitter" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-icon linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </section>
         </main>
