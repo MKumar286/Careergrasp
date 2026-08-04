@@ -63,6 +63,7 @@
         .logo-img {
             height: 52px;
             width: auto;
+            max-width: 220px;
             object-fit: contain;
             border-radius: 6px;
         }
@@ -249,6 +250,7 @@
             border-radius: 16px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             border: 2px solid var(--border-color);
+            background-color: #f1f5f9;
         }
 
         .creator-info {
@@ -315,6 +317,7 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
+            background-color: #f1f5f9;
         }
 
         .feature-card-body {
@@ -360,6 +363,7 @@
             margin-bottom: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
             animation: floatGlow 3.8s ease-in-out infinite;
+            background-color: #0f172a;
         }
 
         @keyframes floatGlow {
@@ -441,7 +445,6 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
 
-        /* Responsive design for creator card */
         @media (max-width: 768px) {
             .creator-section {
                 flex-direction: column;
@@ -459,7 +462,10 @@
     <!-- Header / Navbar -->
     <header>
         <div class="logo-container">
-            <img src="grasp.jpg" alt="CAREER GRASPP Logo" class="logo-img">
+            <img src="grasp.jpg" 
+                 alt="CAREER GRASPP Logo" 
+                 class="logo-img"
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'220\' height=\'52\' viewBox=\'0 0 220 52\'><rect width=\'220\' height=\'52\' fill=\'%230b1120\' rx=\'6\'/><text x=\'15\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'110\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text></svg>';">
         </div>
         <div class="auth-buttons">
             <a href="#" class="glass-btn">
@@ -477,14 +483,12 @@
         <!-- Left Sidebar Navigation -->
         <aside>
             <ul class="sidebar-menu">
-                <!-- Home -->
                 <li class="menu-item">
                     <a href="#" class="menu-link active">
                         <span class="menu-link-content">🏠 Home</span>
                     </a>
                 </li>
 
-                <!-- Courses Dropdown -->
                 <li class="menu-item">
                     <div class="menu-link" onclick="toggleSubmenu(this)">
                         <span class="menu-link-content">📚 Courses</span>
@@ -499,7 +503,6 @@
                     </ul>
                 </li>
 
-                <!-- Individual Learners Dropdown -->
                 <li class="menu-item">
                     <div class="menu-link" onclick="toggleSubmenu(this)">
                         <span class="menu-link-content">👤 Individual Learners</span>
@@ -516,7 +519,6 @@
                     </ul>
                 </li>
 
-                <!-- Schools & Colleges Dropdown -->
                 <li class="menu-item">
                     <div class="menu-link" onclick="toggleSubmenu(this)">
                         <span class="menu-link-content">🏫 Schools & Colleges</span>
@@ -533,7 +535,6 @@
                     </ul>
                 </li>
 
-                <!-- Organizations Dropdown -->
                 <li class="menu-item">
                     <div class="menu-link" onclick="toggleSubmenu(this)">
                         <span class="menu-link-content">🏢 Organizations</span>
@@ -549,7 +550,6 @@
                     </ul>
                 </li>
 
-                <!-- Standalone Options -->
                 <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">📝 Assessments</span></a></li>
                 <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">💻 Coding Platform</span></a></li>
                 <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">🎥 Live Classes</span></a></li>
@@ -565,12 +565,15 @@
             </ul>
         </aside>
 
-        <!-- Main Content Area (Right of Sidebar) -->
+        <!-- Main Content Area -->
         <main>
-            <!-- About the Creator Section with Embedded Person Photo on the Left -->
+            <!-- About the Creator Section -->
             <section class="creator-section">
                 <div class="creator-img-wrapper">
-                    <img src="sir.jpg" alt="Aarya Aakash" class="creator-img">
+                    <img src="sir.jpg" 
+                         alt="Aarya Aakash" 
+                         class="creator-img"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80';">
                 </div>
                 <div class="creator-info">
                     <h1>About the creator</h1>
@@ -583,7 +586,6 @@
             <section>
                 <h2 class="features-header">Features</h2>
                 <div class="features-grid">
-                    <!-- Feature Card 1 -->
                     <div class="feature-card">
                         <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" alt="Mind Programming" class="feature-card-img">
                         <div class="feature-card-body">
@@ -592,7 +594,6 @@
                         </div>
                     </div>
 
-                    <!-- Feature Card 2 -->
                     <div class="feature-card">
                         <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="One-Day Workshops" class="feature-card-img">
                         <div class="feature-card-body">
@@ -601,7 +602,6 @@
                         </div>
                     </div>
 
-                    <!-- Feature Card 3 -->
                     <div class="feature-card">
                         <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80" alt="Online English Com & Presentation Skills" class="feature-card-img">
                         <div class="feature-card-body">
@@ -610,7 +610,6 @@
                         </div>
                     </div>
 
-                    <!-- Feature Card 4 -->
                     <div class="feature-card">
                         <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Corporate Training Solutions" class="feature-card-img">
                         <div class="feature-card-body">
@@ -621,10 +620,12 @@
                 </div>
             </section>
 
-            <!-- Bottom Overview Section with Animated Image at the Top -->
+            <!-- Bottom Overview Section -->
             <section class="brand-footer-section">
-                <!-- Animated Image embedded above Career Graspp paragraph -->
-                <img src="grasp_2.jpg" alt="Career Graspp Animated Logo" class="animated-brand-img">
+                <img src="grasp_2.jpg" 
+                     alt="Career Graspp Animated Logo" 
+                     class="animated-brand-img"
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'160\' viewBox=\'0 0 320 160\'><rect width=\'320\' height=\'160\' fill=\'%230b1120\' rx=\'14\'/><text x=\'30\' y=\'75\' font-family=\'sans-serif\' font-size=\'26\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'150\' y=\'75\' font-family=\'sans-serif\' font-size=\'26\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text><text x=\'30\' y=\'115\' font-family=\'sans-serif\' font-size=\'14\' font-weight=\'500\' fill=\'%2394a3b8\'>LEARN | LEAD | LEVEL UP</text></svg>';">
 
                 <h2 class="brand-title">Career Graspp</h2>
                 <div class="title-underline"></div>
