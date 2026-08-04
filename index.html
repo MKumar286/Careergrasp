@@ -1,492 +1,465 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Career Graspp Pro LMS - Client Prototype</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* Custom Gold/Blue color definitions for consistency with image_0.png */
-    :root {
-      --primary-blue: #0a3a69; /* Deep blue from CG logo element */
-      --accent-gold: #d8af44; /* Beveled gold text from logo */
-      --tagline-gold: #c0953c; /* Tagline gold from logo */
-    }
-    
-    /* Simulate the gold-beveled text effect from the logo */
-    .gold-logo-text {
-      color: var(--accent-gold);
-      font-weight: 800; /* Extrabold */
-      font-family: serif; /* Better match for the heavy beveled font */
-      text-shadow: 2px 2px 0 #8b6e2d, 
-                   -1px -1px 0 #fff1b4,
-                   1px -1px 0 #fff1b4,
-                   -1px 1px 0 #fff1b4,
-                   1px 1px 0 #fff1b4;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Graspp LMS Portal</title>
 
-    /* Simulate the lighter gold tagline text effect from the logo */
-    .gold-tagline-text {
-      color: var(--tagline-gold);
-      font-weight: 600; /* Semibold */
-      font-family: sans-serif;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    /* Custom Tailwind-style classes for branded colors */
-    .bg-branded-blue { background-color: var(--primary-blue); }
-    .text-branded-blue { color: var(--primary-blue); }
-    .border-branded-blue { border-color: var(--primary-blue); }
-    
-    .bg-branded-gold { background-color: var(--accent-gold); }
-    .text-branded-gold { color: var(--accent-gold); }
-    .border-branded-gold { border-color: var(--accent-gold); }
+<style>
 
-    .hover\:bg-branded-blue-hover:hover { background-color: #0d4681; }
-    .hover\:bg-branded-gold-hover:hover { background-color: #e5bf65; }
-    
-    /* Interactive status for demo - branded blue shadow */
-    .shadow-branded-blue { box-shadow: 0 10px 15px -3px rgba(10, 58, 105, 0.4), 0 4px 6px -4px rgba(10, 58, 105, 0.3); }
-    /* Branded gold shadow */
-    .shadow-branded-gold { box-shadow: 0 10px 15px -3px rgba(216, 175, 68, 0.4), 0 4px 6px -4px rgba(216, 175, 68, 0.3); }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-  </style>
+body{
+background:#0d1117;
+color:white;
+overflow-x:hidden;
+}
+
+/* Navigation */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 70px;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(12px);
+position:fixed;
+width:100%;
+top:0;
+z-index:1000;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+height:70px;
+border-radius:10px;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:35px;
+}
+
+nav ul li{
+cursor:pointer;
+transition:.3s;
+font-weight:500;
+}
+
+nav ul li:hover{
+color:#ffc107;
+}
+
+.login-btn{
+background:#ffc107;
+padding:12px 30px;
+border-radius:30px;
+color:#000;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.login-btn:hover{
+transform:translateY(-3px);
+}
+
+/* Hero */
+
+.hero{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:170px 80px 80px;
+min-height:100vh;
+}
+
+.left{
+width:50%;
+}
+
+.left h1{
+font-size:58px;
+line-height:75px;
+font-weight:800;
+}
+
+.left h1 span{
+color:#ffc107;
+}
+
+.left p{
+margin-top:25px;
+font-size:18px;
+line-height:33px;
+color:#ddd;
+}
+
+.buttons{
+margin-top:40px;
+display:flex;
+gap:20px;
+}
+
+.btn1{
+background:#ffc107;
+padding:16px 40px;
+border-radius:40px;
+color:black;
+font-weight:bold;
+text-decoration:none;
+}
+
+.btn2{
+border:2px solid #ffc107;
+padding:16px 40px;
+border-radius:40px;
+color:white;
+text-decoration:none;
+}
+
+/* Right */
+
+.right{
+width:45%;
+display:flex;
+justify-content:center;
+}
+
+.card{
+background:rgba(255,255,255,.06);
+padding:30px;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+.card img{
+width:100%;
+border-radius:15px;
+}
+
+/* Stats */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+padding:40px 80px;
+margin-top:-30px;
+}
+
+.stat{
+background:#161b22;
+padding:35px;
+text-align:center;
+border-radius:20px;
+transition:.4s;
+}
+
+.stat:hover{
+transform:translateY(-8px);
+background:#1d2632;
+}
+
+.stat h2{
+color:#ffc107;
+font-size:40px;
+margin-bottom:10px;
+}
+
+/* Courses */
+
+.section-title{
+text-align:center;
+font-size:42px;
+margin-top:70px;
+margin-bottom:50px;
+}
+
+.courses{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+padding:0 80px 80px;
+}
+
+.course{
+background:#161b22;
+padding:30px;
+border-radius:20px;
+transition:.4s;
+}
+
+.course:hover{
+transform:translateY(-8px);
+}
+
+.course h3{
+margin-bottom:20px;
+color:#ffc107;
+}
+
+.course p{
+line-height:30px;
+color:#ccc;
+}
+
+/* Features */
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+padding:0 80px 80px;
+}
+
+.feature{
+background:#161b22;
+padding:35px;
+border-radius:20px;
+}
+
+.feature h3{
+margin-bottom:20px;
+color:#ffc107;
+}
+
+/* Footer */
+
+footer{
+background:#090d12;
+padding:35px;
+text-align:center;
+color:#999;
+margin-top:50px;
+}
+
+@media(max-width:1000px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+padding-top:150px;
+}
+
+.left,.right{
+width:100%;
+}
+
+.buttons{
+justify-content:center;
+}
+
+.stats{
+grid-template-columns:repeat(2,1fr);
+padding:40px;
+}
+
+nav{
+padding:15px 25px;
+}
+
+nav ul{
+display:none;
+}
+
+}
+
+@media(max-width:650px){
+
+.left h1{
+font-size:42px;
+line-height:55px;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+.hero{
+padding-left:25px;
+padding-right:25px;
+}
+
+.courses,
+.features{
+padding:25px;
+}
+
+}
+
+</style>
+
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col">
 
-  <!-- Top Navigation Header -->
-  <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <!-- Branded Logo Section (from image_0.png) -->
-      <div class="flex items-center space-x-3">
-        <!-- Stylized SVG logo (Approximating CG with arrow from image_0.png) -->
-        <div class="bg-branded-blue p-2 rounded-lg flex items-center justify-center aspect-square h-12 shadow-inner">
-          <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Simplified CG interlinked feel -->
-            <path d="M50 85 C30 85, 15 70, 15 50 C15 30, 30 15, 50 15 C70 15, 85 30, 85 50 C85 70, 70 85, 50 85 Z" stroke="var(--accent-gold)" stroke-width="6" stroke-linecap="round"/>
-            <!-- Central Gold Arrow pointing up -->
-            <path d="M50 70 V30 L35 45 M50 30 L65 45" stroke="var(--accent-gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <!-- Branded Text & Tagline -->
-        <div class="flex flex-col">
-          <h1 class="text-3xl gold-logo-text leading-tight tracking-tight">CAREER GRASPP</h1>
-          <p class="text-xs gold-tagline-text -mt-1 uppercase tracking-widest">LEARN | LEAD | LEVEL UP</p>
-        </div>
-      </div>
+<body>
 
-      <!-- Navigation Tabs - Now branded blue -->
-      <nav class="hidden md:flex space-x-1 bg-slate-900/60 p-1 rounded-xl border border-slate-700">
-        <button onclick="switchTab('player')" id="nav-player" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold bg-branded-blue text-white transition shadow-inner">
-          <i class="fa-solid fa-play-circle mr-2"></i>Course Player & Files
-        </button>
-        <button onclick="switchTab('compiler')" id="nav-compiler" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition">
-          <i class="fa-solid fa-code mr-2"></i>Coding Sandbox
-        </button>
-        <button onclick="switchTab('analytics')" id="nav-analytics" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition">
-          <i class="fa-solid fa-chart-pie mr-2"></i>Institutional Portal
-        </button>
-        <button onclick="switchTab('pricing')" id="nav-pricing" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-400 hover:text-white transition">
-          <i class="fa-solid fa-credit-card mr-2"></i>Enrollment & Checkout
-        </button>
-      </nav>
+<nav>
 
-      <!-- Client Demo Badge -->
-      <div class="flex items-center space-x-2">
-        <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs px-3 py-1 rounded-full font-mono">
-          <i class="fa-solid fa-circle text-[8px] animate-pulse mr-1"></i> Interactive Client Demo
-        </span>
-      </div>
-    </div>
-  </header>
+<div class="logo">
+<img src="grasp.jpg" alt="Career Graspp Logo">
+</div>
 
-  <!-- Main Content Container -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6">
+<ul>
+<li>Home</li>
+<li>Courses</li>
+<li>Programs</li>
+<li>Assessments</li>
+<li>Placements</li>
+<li>About</li>
+</ul>
 
-    <!-- SECTION 1: COURSE PLAYER & RESOURCE FILES HUB -->
-    <div id="section-player" class="tab-content grid grid-cols-1 lg:grid-cols-3 gap-6">
-      
-      <!-- Video Player Column (2/3 width) -->
-      <div class="lg:col-span-2 space-y-4">
-        <div class="bg-black rounded-2xl overflow-hidden border border-slate-700 shadow-2xl relative group">
-          <!-- Video Frame / Placeholder -->
-          <div class="aspect-video bg-slate-950 flex flex-col items-center justify-center relative">
-            <i class="fa-solid fa-circle-play text-6xl text-branded-blue opacity-80 hover:opacity-100 hover:scale-110 transition cursor-pointer"></i>
-            <p class="text-sm text-slate-400 mt-3 font-medium">Module 1: Professional Email Etiquette for Career Growth</p>
-            <span class="absolute top-4 left-4 bg-branded-blue/80 text-white text-xs px-2.5 py-1 rounded backdrop-blur font-mono">DRM Protected HLS Stream</span>
-          </div>
-        </div>
+<div class="login-btn">Login</div>
 
-        <!-- Course Meta Info & Multi-Format File Attachments -->
-        <div class="bg-slate-800 rounded-2xl p-5 border border-slate-700 space-y-4">
-          <h2 class="text-xl font-bold text-white">Module Resources & Downloads</h2>
-          <p class="text-sm text-slate-400">Your trainer has attached official Career Graspp training files, templates, and rubrics for this lecture:</p>
+</nav>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-            <!-- PDF File Card -->
-            <div class="flex items-center p-3 bg-slate-900 rounded-xl border border-slate-700 hover:border-branded-blue transition cursor-pointer">
-              <i class="fa-solid fa-file-pdf text-rose-500 text-2xl mr-3"></i>
-              <div class="flex-1 min-w-0">
-                <p class="text-sm font-semibold truncate">Email_Etiquette_Notes.pdf</p>
-                <p class="text-xs text-slate-400">2.4 MB • Read-only Viewer</p>
-              </div>
-              <button class="text-xs bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg border border-slate-600 text-slate-200">View</button>
-            </div>
+<section class="hero">
 
-            <!-- Word Doc Card -->
-            <div class="flex items-center p-3 bg-slate-900 rounded-xl border border-slate-700 hover:border-branded-blue transition cursor-pointer">
-              <i class="fa-solid fa-file-word text-blue-500 text-2xl mr-3"></i>
-              <div class="flex-1 min-w-0">
-                <p class="text-sm font-semibold truncate">Career_Templates.docx</p>
-                <p class="text-xs text-slate-400">1.1 MB • MS Office Embed</p>
-              </div>
-              <button class="text-xs bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg border border-slate-600 text-slate-200">View</button>
-            </div>
+<div class="left">
 
-            <!-- Excel Card -->
-            <div class="flex items-center p-3 bg-slate-900 rounded-xl border border-slate-700 hover:border-branded-blue transition cursor-pointer">
-              <i class="fa-solid fa-file-excel text-emerald-500 text-2xl mr-3"></i>
-              <div class="flex-1 min-w-0">
-                <p class="text-sm font-semibold truncate">CareerGraspp_Grading_Rubric.xlsx</p>
-                <p class="text-xs text-slate-400">850 KB • Spreadsheet</p>
-              </div>
-              <button class="text-xs bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg border border-slate-600 text-slate-200">View</button>
-            </div>
+<h1>
+Learn.<br>
+Lead.<br>
+<span>Level Up.</span>
+</h1>
 
-            <!-- PPT Card -->
-            <div class="flex items-center p-3 bg-slate-900 rounded-xl border border-slate-700 hover:border-branded-blue transition cursor-pointer">
-              <i class="fa-solid fa-file-powerpoint text-amber-500 text-2xl mr-3"></i>
-              <div class="flex-1 min-w-0">
-                <p class="text-sm font-semibold truncate">Company_Orientation.pptx</p>
-                <p class="text-xs text-slate-400">5.8 MB • Slide Deck</p>
-              </div>
-              <button class="text-xs bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg border border-slate-600 text-slate-200">View</button>
-            </div>
-          </div>
-        </div>
-      </div>
+<p>
 
-      <!-- Curriculum Playlist Column (1/3 width) -->
-      <div class="bg-slate-800 rounded-2xl p-4 border border-slate-700 flex flex-col h-[600px]">
-        <h3 class="font-bold text-lg mb-3 px-2 flex items-center justify-between">
-          <span>Career Modules</span>
-          <span class="text-xs bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-2.5 py-1 rounded-full">4 / 12 Completed</span>
-        </h3>
+Welcome to Career Graspp Learning Management System.
 
-        <div class="overflow-y-auto space-y-2 pr-1 flex-1">
-          <div class="p-3 bg-branded-blue/20 border border-branded-blue rounded-xl flex items-center justify-between shadow-inner">
-            <div class="flex items-center space-x-3">
-              <i class="fa-solid fa-circle-check text-branded-blue"></i>
-              <div>
-                <p class="text-sm font-semibold text-white">1. Professional Email Etiquette</p>
-                <p class="text-xs text-slate-400">12 mins • Video + Quiz</p>
-              </div>
-            </div>
-          </div>
+Build industry-ready skills through structured courses,
+live classes, coding practice, assessments,
+certifications and placement preparation.
 
-          <div class="p-3 bg-slate-900 border border-slate-700/60 rounded-xl flex items-center justify-between hover:bg-slate-700/50 transition cursor-pointer">
-            <div class="flex items-center space-x-3">
-              <i class="fa-solid fa-play text-slate-500 text-xs"></i>
-              <div>
-                <p class="text-sm font-medium">2. Body Language & Interview Success</p>
-                <p class="text-xs text-slate-400">25 mins • Video + PPT</p>
-              </div>
-            </div>
-          </div>
+</p>
 
-          <div class="p-3 bg-slate-900 border border-slate-700/60 rounded-xl flex items-center justify-between hover:bg-slate-700/50 transition cursor-pointer">
-            <div class="flex items-center space-x-3">
-              <i class="fa-solid fa-code text-branded-blue text-xs"></i>
-              <div>
-                <p class="text-sm font-medium text-slate-200">3. Practical Lab: Career Logic Test</p>
-                <p class="text-xs text-branded-blue/80 font-medium">Coding Practice Required</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="buttons">
 
+<a href="#" class="btn1">Student Login</a>
 
-    <!-- SECTION 2: EMBEDDED CODING SANDBOX (Monaco Editor UI) -->
-    <div id="section-compiler" class="tab-content hidden space-y-4">
-      <div class="bg-slate-800 rounded-2xl p-4 border border-slate-700 flex items-center justify-between gap-4">
-        <div>
-          <h2 class="text-lg font-bold">Career Graspp Aptitude Coding Sandbox</h2>
-          <p class="text-xs text-slate-400">Runs isolated C, C++, Java, Python, and JavaScript via Judge0 Docker Sandbox</p>
-        </div>
-        <div class="flex items-center space-x-3">
-          <select id="language-select" class="bg-slate-900 text-sm border border-slate-700 text-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-branded-blue">
-            <option>Python 3.10</option>
-            <option>C++ (GCC 11)</option>
-            <option>Java 17</option>
-            <option>JavaScript (Node.js)</option>
-          </select>
-          <button onclick="runCode()" class="bg-branded-gold hover:bg-branded-gold-hover text-white px-5 py-1.5 rounded-lg font-bold text-sm flex items-center shadow-lg shadow-branded-gold transition">
-            <i class="fa-solid fa-play mr-2"></i> Run Code
-          </button>
-        </div>
-      </div>
+<a href="#" class="btn2">Trainer Login</a>
 
-      <!-- Editor Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <!-- Editor Left -->
-        <div class="bg-slate-950 rounded-2xl border border-slate-800 p-4 font-mono text-sm h-[400px] flex flex-col">
-          <div class="text-xs text-slate-500 pb-2 border-b border-slate-800 flex justify-between">
-            <span>assessment.py</span>
-            <span>Career Graspp Editor</span>
-          </div>
-          <textarea id="code-input" class="w-full flex-1 bg-transparent text-emerald-400 focus:outline-none resize-none pt-3" spellcheck="false"># Career Graspp Aptitude & Coding Assessment
-def evaluate_career_score(aptitude, soft_skills):
-    """Verifies eligibility based on official Career Graspp standard."""
-    combined = aptitude + soft_skills
-    if combined >= 80:
-        return "Passed Career Graspp Eligibility!"
-    else:
-        return "Eligibility Check Failed - Improvement Suggested"
+</div>
 
-# Test submission data
-aptitude_score = 92
-skills_score = 75
-result = evaluate_career_score(aptitude_score, skills_score)
-print(f"Result: {result}")
-          </textarea>
-        </div>
+</div>
 
-        <!-- Output Console Right -->
-        <div class="bg-slate-950 rounded-2xl border border-slate-800 p-4 font-mono text-sm h-[400px] flex flex-col">
-          <div class="text-xs text-slate-500 pb-2 border-b border-slate-800 flex justify-between">
-            <span>Execution Terminal Output</span>
-            <span id="compiler-status" class="text-amber-400">Ready</span>
-          </div>
-          <div id="terminal-output" class="pt-3 text-slate-300 space-y-1 flex-1 overflow-y-auto">
-            <p class="text-slate-600">&gt; Click "Run Code" to compile against official test cases...</p>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="right">
 
+<div class="card">
 
-    <!-- SECTION 3: MULTI-TENANT INSTITUTIONAL ANALYTICS -->
-    <div id="section-analytics" class="tab-content hidden space-y-6">
-      
-      <!-- Multi-Tenant Controls -->
-      <div class="bg-slate-800 rounded-2xl p-5 border border-slate-700 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <h2 class="text-xl font-bold">Institutional Data Isolation Portal</h2>
-          <p class="text-sm text-slate-400">厳格な PostgreSQL マルチテナンシーにより、他の組織からデータが漏洩することはありません。</p>
-        </div>
+<img src="grasp.jpg">
 
-        <!-- Active Tenant Switcher - Branded Blue Theme -->
-        <div class="flex items-center space-x-3 bg-slate-900 p-2 rounded-xl border border-slate-700">
-          <span class="text-xs text-slate-400 font-semibold pl-2">Select Active Organization:</span>
-          <select id="tenant-selector" onchange="switchTenant()" class="bg-branded-blue text-white font-bold text-sm px-3 py-1.5 rounded-lg focus:outline-none cursor-pointer">
-            <option value="jntu">JNTU Hyderabad (College)</option>
-            <option value="dps">Delhi Public School (School)</option>
-            <option value="apex">Apex Solutions Inc (Corporate)</option>
-          </select>
-        </div>
-      </div>
+</div>
 
-      <!-- Stats Grid - Branded Accents -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700">
-          <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Total Enrolled Students</p>
-          <p id="stat-students" class="text-4xl font-black text-white mt-1">450</p>
-          <p class="text-xs text-emerald-400 mt-2 font-medium"><i class="fa-solid fa-arrow-trend-up mr-1"></i> Isolated to selected org</p>
-        </div>
-        <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700">
-          <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Avg Course Progress</p>
-          <p id="stat-progress" class="text-4xl font-black text-branded-blue mt-1">78%</p>
-          <p class="text-xs text-slate-400 mt-2 font-medium">Based on Career Labs & Quizzes</p>
-        </div>
-        <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700">
-          <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Career Labs Verified</p>
-          <p id="stat-coding" class="text-4xl font-black text-emerald-400 mt-1">1,240</p>
-          <p class="text-xs text-slate-400 mt-2 font-medium">Verified by Career Graspp sandbox</p>
-        </div>
-      </div>
+</div>
 
-      <!-- Student Data Table -->
-      <div class="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden">
-        <div class="p-4 border-b border-slate-700 flex justify-between items-center gap-4">
-          <h3 class="font-bold text-lg text-white" id="table-title">Career Graspp Tracking - JNTU Hyderabad</h3>
-          <button class="bg-slate-700 hover:bg-slate-600 text-xs px-3 py-1.5 rounded-lg font-semibold text-slate-200">
-            <i class="fa-solid fa-download mr-1"></i> Export Excel Report
-          </button>
-        </div>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-sm text-slate-300">
-            <thead class="bg-slate-900/80 text-xs text-slate-400 uppercase font-mono tracking-wider">
-              <tr>
-                <th class="p-4">Student Name</th>
-                <th class="p-4">Batch / Department</th>
-                <th class="p-4">Modules Completed</th>
-                <th class="p-4">Career Score</th>
-                <th class="p-4">Eligibility Status</th>
-              </tr>
-            </thead>
-            <tbody id="student-table-body" class="divide-y divide-slate-700/50">
-              <!-- JS dynamically injects student data based on selected collage -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+</section>
 
+<section class="stats">
 
-    <!-- SECTION 4: B2C & B2B PAYMENT & ENROLLMENT CHECKOUT -->
-    <div id="section-pricing" class="tab-content hidden space-y-8">
-      <div class="text-center max-w-2xl mx-auto space-y-3">
-        <h2 class="text-3xl font-extrabold text-white gold-logo-text !text-shadow-none">Flexible Career Enrollment Plans</h2>
-        <p class="text-slate-400 text-sm">Sell Career Graspp access directly to individual learners or issue bulk voucher codes to institutions.</p>
-      </div>
+<div class="stat">
+<h2>500+</h2>
+<p>Courses</p>
+</div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto pt-4">
-        
-        <!-- B2C Card - Blue Accent -->
-        <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 flex flex-col justify-between hover:border-branded-blue transition shadow-xl">
-          <div>
-            <span class="bg-branded-blue/10 text-branded-blue border border-branded-blue/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">B2C Direct Sales</span>
-            <h3 class="text-2xl font-bold mt-4 text-white">Individual Career Learner</h3>
-            <p class="text-slate-400 text-sm mt-2">Instant access to video modules, document downloads, and coding assessment sandbox.</p>
-            <div class="text-4xl font-black mt-6 text-white">₹2,999 <span class="text-sm text-slate-400 font-normal">/ student</span></div>
-            
-            <ul class="mt-6 space-y-3 text-sm text-slate-300">
-              <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Razorpay / Stripe Instant Access</li>
-              <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Official Resource File Downloads</li>
-              <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Career Graspp Assessment Sandbox</li>
-              <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Verified Career Certificate</li>
-            </ul>
-          </div>
-          <button onclick="alert('Razorpay Payment Modal will trigger here in production!')" class="mt-8 w-full bg-branded-blue hover:bg-branded-blue-hover text-white font-bold py-3 rounded-xl transition shadow-lg shadow-branded-blue">
-            Buy Now (Razorpay Demo)
-          </button>
-        </div>
+<div class="stat">
+<h2>25K+</h2>
+<p>Students</p>
+</div>
 
-        <!-- B2B Enterprise Card - Gold Accent -->
-        <div class="bg-slate-800 p-8 rounded-3xl border-2 border-branded-gold flex flex-col justify-between relative overflow-hidden shadow-2xl">
-          <div class="absolute top-0 right-0 bg-branded-gold text-white text-xs font-bold px-4 py-1 rounded-bl-xl uppercase">Best Value</div>
-          <div>
-            <span class="bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">B2B Institutional</span>
-            <h3 class="text-2xl font-bold mt-4 text-white">Institutional Bulk Licenses</h3>
-            <p class="text-slate-400 text-sm mt-2">Isolated tenant dashboard with performance data and CSV student onboarding.</p>
-            <div class="text-4xl font-black mt-6 text-white">₹49,999 <span class="text-sm text-slate-400 font-normal">/ 100 students</span></div>
-            
-            <ul class="mt-6 space-y-3 text-sm text-slate-300">
-              <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> strict Multi-Tenant Data Privacy</li>
-              <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Bulk CSV Student Import Tool</li>
-              <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Administrator Performance Dashboard</li>
-              <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Verified Career Graspp Labs</li>
-            </ul>
-          </div>
-          <button onclick="alert('Invoicing & Bulk Voucher Code generation triggered for official Career Graspp client.')" class="mt-8 w-full bg-slate-900 hover:bg-slate-950 border border-slate-700 text-white font-bold py-3 rounded-xl transition shadow-inner">
-            Request Institutional Invoice
-          </button>
-        </div>
+<div class="stat">
+<h2>100+</h2>
+<p>Trainers</p>
+</div>
 
-      </div>
-    </div>
+<div class="stat">
+<h2>95%</h2>
+<p>Placement Success</p>
+</div>
 
-  </main>
+</section>
 
-  <!-- Prototype Interactive JavaScript -->
-  <script>
-    // Tab Switcher Function - Branded Theme
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.tab-btn').forEach(el => {
-        el.classList.remove('bg-branded-blue', 'text-white', 'shadow-inner');
-        el.classList.add('text-slate-400');
-      });
+<h2 class="section-title">Popular Learning Paths</h2>
 
-      document.getElementById('section-' + tabId).classList.remove('hidden');
-      const activeNav = document.getElementById('nav-' + tabId);
-      activeNav.classList.add('bg-branded-blue', 'text-white', 'shadow-inner');
-      activeNav.classList.remove('text-slate-400');
-    }
+<section class="courses">
 
-    // Code Compiler Runner Simulation - Branded Theme
-    function runCode() {
-      const output = document.getElementById('terminal-output');
-      const status = document.getElementById('compiler-status');
-      
-      status.innerText = "Executing in Career Graspp Docker...";
-      status.className = "text-branded-blue animate-pulse";
-      output.innerHTML = `<p class="text-slate-500">&gt; Compiling Python script against official criteria...</p>`;
+<div class="course">
+<h3>Programming</h3>
+<p>Python, Java, C++, C, Data Structures & Algorithms.</p>
+</div>
 
-      setTimeout(() => {
-        status.innerText = "Verification Success (200 OK)";
-        status.className = "text-emerald-400";
-        output.innerHTML = `
-          <p class="text-emerald-400">&gt; Execution Time: 0.14s | Memory: 14.2 MB</p>
-          <p class="text-white font-bold pt-2">Result: Passed Career Graspp Eligibility!</p>
-          <p class="text-slate-400 pt-1">&gt; Test Case 1: PASSED (Input: Aptitude 92, Skills 75)</p>
-          <p class="text-slate-400">&gt; Test Case 2: PASSED (Input: Aptitude 80, Skills 85)</p>
-        `;
-      }, 1000);
-    }
+<div class="course">
+<h3>Web Development</h3>
+<p>HTML, CSS, JavaScript, React, PHP, Node.js.</p>
+</div>
 
-    // Multi-Tenant Data Isolation Mockup - Career Graspp Theme
-    const tenantData = {
-      jntu: {
-        title: "Career Graspp Tracking - JNTU Hyderabad",
-        students: "450",
-        progress: "78%",
-        coding: "1,240",
-        rows: [
-          { name: "Rahul Sharma", dept: "CSE - Year 4", watched: "12 / 12", score: "95%", status: "Eligibility Met" },
-          { name: "Priya Patel", dept: "ECE - Year 3", watched: "9 / 12", score: "82%", status: "Eligibility Met" },
-          { name: "Kiran Kumar", dept: "EEE - Year 4", watched: "4 / 12", score: "60%", status: "Needs Improvement" }
-        ]
-      },
-      dps: {
-        title: "Career Graspp Tracking - Delhi Public School",
-        students: "120",
-        progress: "62%",
-        coding: "410",
-        rows: [
-          { name: "Aarav Singh", dept: "Class 12 - Sec A", watched: "8 / 12", score: "88%", status: "Eligibility Met" },
-          { name: "Ananya Roy", dept: "Class 11 - Sec B", watched: "11 / 12", score: "90%", status: "Eligibility Met" }
-        ]
-      },
-      apex: {
-        title: "Employee Tracking - Apex Solutions Inc",
-        students: "85",
-        progress: "91%",
-        coding: "680",
-        rows: [
-          { name: "Vikram Malhotra", dept: "Software Engineering", watched: "12 / 12", score: "98%", status: "Eligibility Met" },
-          { name: "Sneha Reddy", dept: "Product Team", watched: "12 / 12", score: "92%", status: "Eligibility Met" }
-        ]
-      }
-    };
+<div class="course">
+<h3>Data Science</h3>
+<p>Machine Learning, AI, Pandas, NumPy, Visualization.</p>
+</div>
 
-    function switchTenant() {
-      const selected = document.getElementById('tenant-selector').value;
-      const data = tenantData[selected];
+<div class="course">
+<h3>Interview Preparation</h3>
+<p>Aptitude, Coding Tests, Mock Interviews and Resume Building.</p>
+</div>
 
-      document.getElementById('table-title').innerText = data.title;
-      document.getElementById('stat-students').innerText = data.students;
-      document.getElementById('stat-progress').innerText = data.progress;
-      document.getElementById('stat-coding').innerText = data.coding;
+</section>
 
-      const tbody = document.getElementById('student-table-body');
-      tbody.innerHTML = data.rows.map(row => `
-        <tr class="hover:bg-slate-700/30">
-          <td class="p-4 font-semibold text-white">${row.name}</td>
-          <td class="p-4 text-slate-300">${row.dept}</td>
-          <td class="p-4 text-slate-300">${row.watched}</td>
-          <td class="p-4 font-mono text-branded-blue">${row.score}</td>
-          <td class="p-4"><span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full text-xs">${row.status}</span></td>
-        </tr>
-      `).join('');
-    }
+<h2 class="section-title">Portal Features</h2>
 
-    // Initialize default table on load
-    switchTenant();
-  </script>
+<section class="features">
+
+<div class="feature">
+<h3>🎥 Video Learning</h3>
+<p>HD recorded sessions with lifetime access.</p>
+</div>
+
+<div class="feature">
+<h3>📝 Online Assessments</h3>
+<p>Topic-wise quizzes, coding challenges and mock tests.</p>
+</div>
+
+<div class="feature">
+<h3>📄 PDF Notes</h3>
+<p>Download study materials and practice documents.</p>
+</div>
+
+<div class="feature">
+<h3>💻 Coding Lab</h3>
+<p>Practice programming directly in the browser.</p>
+</div>
+
+<div class="feature">
+<h3>🏆 Certificates</h3>
+<p>Earn certificates after successful completion.</p>
+</div>
+
+<div class="feature">
+<h3>📊 Progress Tracking</h3>
+<p>Track attendance, course completion and performance.</p>
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Career Graspp LMS Portal | Learn • Lead • Level Up
+
+</footer>
+
 </body>
 </html>
