@@ -15,14 +15,6 @@
             --text-main: #0f172a;
             --text-muted: #475569;
             --border-color: #e2e8f0;
-            
-            /* Status Colors */
-            --status-completed-bg: #dcfce7;
-            --status-completed-text: #15803d;
-            --status-progress-bg: #fef9c3;
-            --status-progress-text: #a16207;
-            --status-notstarted-bg: #f1f5f9;
-            --status-notstarted-text: #64748b;
         }
 
         * {
@@ -350,7 +342,7 @@
            COURSES SECTION STYLES
         ------------------------------------------- */
         #courses-section {
-            display: none; /* Hidden by default */
+            display: none;
         }
 
         .courses-header-wrapper {
@@ -378,7 +370,7 @@
             background: #ffffff;
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 1.6rem;
+            padding: 1.8rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
             display: flex;
             flex-direction: column;
@@ -392,116 +384,53 @@
             border-color: #cbd5e1;
         }
 
-        .course-top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .status-badge {
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 0.35rem 0.75rem;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .status-badge.completed {
-            background-color: var(--status-completed-bg);
-            color: var(--status-completed-text);
-        }
-
-        .status-badge.progress {
-            background-color: var(--status-progress-bg);
-            color: var(--status-progress-text);
-        }
-
-        .status-badge.not-started {
-            background-color: var(--status-notstarted-bg);
-            color: var(--status-notstarted-text);
-        }
-
-        .price-tag {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--accent-blue);
-        }
-
         .course-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
             line-height: 1.4;
         }
 
         .course-desc {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
             line-height: 1.5;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.4rem;
         }
 
         .course-meta {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 0.88rem;
+            gap: 10px;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.4rem;
             padding-bottom: 1rem;
             border-bottom: 1px dashed var(--border-color);
         }
 
-        .course-actions {
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        .btn-pdf {
-            flex: 1;
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            border: 1px solid var(--accent-gold);
-            background: rgba(217, 119, 6, 0.08);
-            color: var(--accent-gold);
-            font-weight: 600;
-            font-size: 0.88rem;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .btn-pdf:hover {
-            background: var(--accent-gold);
-            color: #ffffff;
-        }
-
-        .btn-enroll {
-            flex: 1;
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
+        .btn-get-details {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
             border: none;
             background: var(--accent-blue);
             color: #ffffff;
             font-weight: 600;
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
-        .btn-enroll:hover {
+        .btn-get-details:hover {
             background: #1e40af;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
         }
 
         @media (max-width: 768px) {
@@ -638,107 +567,77 @@
             {
                 title: "English Communication & Public Speaking Mastery",
                 desc: "Overcome hesitation, build vocabulary, and speak fluently in front of large audiences.",
-                price: "₹3,499",
-                duration: "24 Hours (18 Modules)",
-               
+                duration: "24 Hours (18 Modules)"
             },
             {
                 title: "Mind Programming & Goal Manifestation",
                 desc: "Subconscious alignment, visualization, and daily journaling techniques for high achievement.",
-                price: "₹2,999",
-                duration: "15 Hours (10 Modules)",
-               
+                duration: "15 Hours (10 Modules)"
             },
             {
                 title: "Campus Recruitment & Aptitude Strategy",
                 desc: "Complete guide to clearing quantitative, logical reasoning, and HR interview rounds.",
-                price: "₹4,999",
-                duration: "40 Hours (30 Modules)",
-               
+                duration: "40 Hours (30 Modules)"
             },
             {
                 title: "Corporate Soft Skills & Professional Etiquette",
                 desc: "Business writing, email etiquette, stakeholder negotiation, and workplace dynamics.",
-                price: "₹3,999",
-                duration: "20 Hours (15 Modules)",
-                
+                duration: "20 Hours (15 Modules)"
             },
             {
                 title: "Effective Study Habits & Exam Strategy for High School",
                 desc: "Memory techniques, quick revision strategies, and time allocation for board exams.",
-                price: "₹1,999",
-                duration: "12 Hours (8 Modules)",
-                
+                duration: "12 Hours (8 Modules)"
             },
             {
                 title: "Presentation Skills & Visual Storytelling",
                 desc: "Design impactful slide decks and present persuasive technical and sales pitches.",
-                price: "₹2,499",
-                duration: "10 Hours (7 Modules)",
-               
+                duration: "10 Hours (7 Modules)"
             },
             {
                 title: "Executive Leadership & Team Management",
                 desc: "Strategies for team alignment, dispute resolution, and driving workplace performance.",
-                price: "₹5,999",
-                duration: "30 Hours (20 Modules)",
-               
+                duration: "30 Hours (20 Modules)"
             },
             {
                 title: "Grammar Foundations & Professional Vocabulary",
                 desc: "Master sentence structures, eliminate common errors, and refine your tone in formal writing.",
-                price: "₹1,499",
-                duration: "16 Hours (12 Modules)",
-              
+                duration: "16 Hours (12 Modules)"
             },
             {
                 title: "Resume Building & Personal Branding",
                 desc: "Craft ATS-optimized resumes, build strong LinkedIn profiles, and stand out to recruiters.",
-                price: "₹1,999",
-                duration: "8 Hours (5 Modules)",
-              
+                duration: "8 Hours (5 Modules)"
             },
             {
                 title: "Critical Thinking & Decision Making",
                 desc: "Problem-solving frameworks for complex organizational and academic challenges.",
-                price: "₹3,299",
-                duration: "14 Hours (10 Modules)",
-              
+                duration: "14 Hours (10 Modules)"
             },
             {
                 title: "Time Management & Peak Productivity",
                 desc: "Eliminate procrastination using Pomodoro technique, task priority matrices, and focus protocols.",
-                price: "₹1,799",
-                duration: "9 Hours (6 Modules)",
-               
+                duration: "9 Hours (6 Modules)"
             },
             {
                 title: "Interview Coaching & Mock Practice",
                 desc: "Real-world simulated mock interviews with personalized feedback on posture and verbal responses.",
-                price: "₹4,499",
-                duration: "18 Hours (12 Modules)",
-               
+                duration: "18 Hours (12 Modules)"
             },
             {
                 title: "Academic Systems & School LMS Architecture",
                 desc: "For educators: Design structured learning systems that boost student participation and pass rates.",
-                price: "₹6,499",
-                duration: "25 Hours (16 Modules)",
-               
+                duration: "25 Hours (16 Modules)"
             },
             {
                 title: "Emotional Intelligence for Career Growth",
                 desc: "Develop self-awareness, empathy, and emotional resilience in competitive environments.",
-                price: "₹2,799",
-                duration: "12 Hours (9 Modules)",
-                
+                duration: "12 Hours (9 Modules)"
             },
             {
                 title: "Group Discussion (GD) Mastery Program",
                 desc: "Strategies to initiate, summarize, and dominate GD rounds in campus placements.",
-                price: "₹2,199",
-                duration: "11 Hours (8 Modules)",
-               
+                duration: "11 Hours (8 Modules)"
             }
         ];
 
@@ -750,15 +649,11 @@
             const logoBtn = document.getElementById('logo-btn');
             const container = document.getElementById('courses-container');
 
-            // Render 15 Courses
+            // Render 15 Courses cleanly
             function renderCourses() {
                 container.innerHTML = coursesData.map(course => `
                     <div class="course-card">
                         <div>
-                            <div class="course-top-bar">
-                                <span class="status-badge ${course.status}">${course.statusText}</span>
-                                <span class="price-tag">${course.price}</span>
-                            </div>
                             <h3 class="course-title">${course.title}</h3>
                             <p class="course-desc">${course.desc}</p>
                         </div>
@@ -767,12 +662,9 @@
                                 <i class="fa-regular fa-clock"></i>
                                 <span>Duration: <strong>${course.duration}</strong></span>
                             </div>
-                            <div class="course-actions">
-                                <button type="button" class="btn-pdf" onclick="alert('Downloading Syllabus PDF for ${course.title}...')">
-                                    <i class="fa-solid fa-file-pdf"></i> PDF
-                                </button>
-                                <button type="button" class="btn-enroll">Enroll Now</button>
-                            </div>
+                            <button type="button" class="btn-get-details" onclick="alert('Fetching details for: ${course.title.replace(/'/g, "\\'")}...')">
+                                <i class="fa-solid fa-circle-info"></i> Get Details
+                            </button>
                         </div>
                     </div>
                 `).join('');
