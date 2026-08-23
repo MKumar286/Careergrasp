@@ -12,6 +12,7 @@
             --bg-card: #ffffff;
             --accent-blue: #1e3a8a;
             --accent-gold: #d97706;
+            --accent-green: #16a34a;
             --text-main: #0f172a;
             --text-muted: #475569;
             --border-color: #e2e8f0;
@@ -33,7 +34,7 @@
             overflow-x: hidden;
         }
 
-        /* Top Navigation Header */
+        /* Header Navigation */
         header {
             position: fixed;
             top: 0;
@@ -117,7 +118,7 @@
             color: #ffffff;
         }
 
-        /* Main Container */
+        /* Main Area */
         main {
             margin-top: 75px;
             flex: 1;
@@ -221,7 +222,7 @@
             color: var(--text-muted);
         }
 
-        /* Brand Footer Section */
+        /* Footer Section */
         .brand-footer-section {
             margin-top: 4rem;
             padding: 3.5rem 2rem;
@@ -380,25 +381,20 @@
             box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
         }
 
-        /* -------------------------------------------
-           SINGLE COURSE DETAIL VIEW STYLES
-        ------------------------------------------- */
+        /* Course Detail Section */
         #course-detail-section { display: none; }
-
         .detail-header-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 2rem;
         }
-
         .course-detail-container {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 2.5rem;
             align-items: start;
         }
-
         .course-detail-left {
             background: #ffffff;
             border: 1px solid var(--border-color);
@@ -406,7 +402,6 @@
             padding: 2.5rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
         }
-
         .detail-banner-img {
             width: 100%;
             height: 320px;
@@ -415,7 +410,6 @@
             margin-bottom: 2rem;
             box-shadow: 0 6px 18px rgba(0,0,0,0.06);
         }
-
         .detail-heading {
             font-size: 2.2rem;
             font-weight: 800;
@@ -423,7 +417,6 @@
             margin-bottom: 1.5rem;
             line-height: 1.3;
         }
-
         .detail-subheading {
             font-size: 1.3rem;
             font-weight: 700;
@@ -433,20 +426,17 @@
             padding-bottom: 0.4rem;
             border-bottom: 2px solid var(--border-color);
         }
-
         .detail-text-block {
             font-size: 1.02rem;
             line-height: 1.8;
             color: var(--text-muted);
             margin-bottom: 1rem;
         }
-
         .detail-bullet-list {
             list-style: none;
             margin: 1rem 0;
             padding-left: 0.5rem;
         }
-
         .detail-bullet-list li {
             position: relative;
             padding-left: 1.8rem;
@@ -455,7 +445,6 @@
             line-height: 1.6;
             color: var(--text-main);
         }
-
         .detail-bullet-list li::before {
             content: "\f058";
             font-family: "Font Awesome 6 Free";
@@ -465,8 +454,6 @@
             top: 2px;
             color: var(--accent-gold);
         }
-
-        /* Right Side Fixed Box */
         .course-detail-right {
             position: sticky;
             top: 95px;
@@ -479,7 +466,6 @@
             flex-direction: column;
             gap: 1.2rem;
         }
-
         .widget-title {
             font-size: 1.3rem;
             font-weight: 700;
@@ -487,19 +473,16 @@
             padding-bottom: 0.8rem;
             border-bottom: 1px solid var(--border-color);
         }
-
         .widget-price-tag {
             font-size: 2.2rem;
             font-weight: 800;
             color: var(--accent-blue);
         }
-
         .widget-price-period {
             font-size: 0.9rem;
             color: var(--text-muted);
             font-weight: 400;
         }
-
         .widget-info-list {
             list-style: none;
             display: flex;
@@ -507,7 +490,6 @@
             gap: 1rem;
             margin: 0.5rem 0;
         }
-
         .widget-info-item {
             display: flex;
             align-items: center;
@@ -515,13 +497,11 @@
             font-size: 1rem;
             color: var(--text-main);
         }
-
         .widget-info-item i {
             font-size: 1.2rem;
             color: var(--accent-gold);
             width: 24px;
         }
-
         .btn-buy-now {
             width: 100%;
             padding: 1rem;
@@ -539,39 +519,222 @@
             box-shadow: 0 6px 20px rgba(30, 58, 138, 0.25);
             transition: all 0.3s ease;
         }
-
         .btn-buy-now:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(30, 58, 138, 0.35);
         }
 
+        /* -------------------------------------------
+           PAYMENT PAGE STYLES WITH BRAND LOGOS
+        ------------------------------------------- */
+        #payment-section { display: none; }
+
+        .payment-container {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .payment-box {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .payment-section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .payment-option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-card-option {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #fafafa;
+        }
+
+        .payment-card-option:hover, .payment-card-option.selected {
+            border-color: var(--accent-blue);
+            background: #f0f7ff;
+        }
+
+        .payment-option-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .payment-option-left input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-blue);
+        }
+
+        .payment-option-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .brand-logos-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Customized Brand Badge SVGs */
+        .brand-logo-badge {
+            height: 28px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.82rem;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-logo-badge.gpay { color: #4285F4; border-color: #4285F4; }
+        .brand-logo-badge.phonepe { color: #5f259f; border-color: #5f259f; }
+        .brand-logo-badge.paytm { color: #00baf2; border-color: #00baf2; background: #002e6e; color: #fff; }
+        .brand-logo-badge.bhim { color: #00833a; border-color: #00833a; }
+        .brand-logo-badge.visa { color: #1a1f71; font-style: italic; font-weight: 900; }
+        .brand-logo-badge.mastercard { color: #eb001b; font-weight: 900; }
+        .brand-logo-badge.rupay { color: #f37021; font-weight: 800; }
+
+        /* Dynamic Payment Forms */
+        .payment-form-box {
+            display: none;
+            margin-top: 1rem;
+            padding: 1.2rem;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px dashed var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* Order Summary Box */
+        .order-summary-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-main);
+            padding-top: 1rem;
+            margin-top: 1rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .btn-pay-now {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            border: none;
+            background: var(--accent-green);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            box-shadow: 0 6px 20px rgba(22, 163, 74, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .btn-pay-now:hover {
+            background: #15803d;
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 900px) {
-            .course-detail-container {
-                grid-template-columns: 1fr;
-            }
-            .course-detail-right {
-                position: static;
-            }
+            .payment-container { grid-template-columns: 1fr; }
+            .course-detail-container { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            .creator-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            .creator-img {
-                width: 180px;
-                height: 180px;
-            }
-            header {
-                padding: 0 1rem;
-            }
+            .creator-section { flex-direction: column; text-align: center; }
+            .creator-img { width: 180px; height: 180px; }
+            header { padding: 0 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header / Navbar -->
+    <!-- Top Navigation Header -->
     <header>
         <div class="logo-container" id="logo-btn">
             <img src="grasp.jpg" 
@@ -592,7 +755,7 @@
         </div>
     </header>
 
-    <!-- Main Content Area -->
+    <!-- Main Container Layout -->
     <main>
         <!-- PAGE 1: LANDING PAGE -->
         <div id="home-section">
@@ -667,7 +830,7 @@
             </section>
         </div>
 
-        <!-- PAGE 2: 15 COURSES CATALOG SECTION -->
+        <!-- PAGE 2: COURSES CATALOG SECTION -->
         <div id="courses-section">
             <div class="courses-header-wrapper">
                 <h1 class="courses-title">Available Programs & Courses</h1>
@@ -690,17 +853,15 @@
             </div>
 
             <div class="course-detail-container">
-                <!-- Left Side Detailed Explanation (~30 lines formatted) -->
                 <div class="course-detail-left">
                     <img src="" id="detail-img" alt="Course Banner" class="detail-banner-img">
                     <h1 class="detail-heading" id="detail-title"></h1>
 
                     <h3 class="detail-subheading">Program Overview & Purpose</h3>
                     <p class="detail-text-block" id="detail-overview"></p>
-                    <p class="detail-text-block">Designed systematically by career experts, this curriculum provides actionable frameworks, practical exercises, and mental conditioning necessary for immediate real-world implementation. Whether you are aiming to accelerate academic growth or step up your corporate standing, this course provides end-to-end guidance tailored to your success.</p>
+                    <p class="detail-text-block">Designed systematically by career experts, this curriculum provides actionable frameworks, practical exercises, and mental conditioning necessary for immediate real-world implementation.</p>
 
                     <h3 class="detail-subheading">Core Learning Objectives & Outcomes</h3>
-                    <p class="detail-text-block">Throughout this program, learners will systematically acquire key competencies and master structured methodology designed to overcome personal and professional roadblocks:</p>
                     <ul class="detail-bullet-list">
                         <li>Master core foundational strategies and eliminate hesitation or inconsistency.</li>
                         <li>Implement step-by-step frameworks engineered specifically for immediate execution.</li>
@@ -709,19 +870,15 @@
                     </ul>
 
                     <h3 class="detail-subheading">Structured Curriculum Roadmap</h3>
-                    <p class="detail-text-block">The course is structured logically into sequential modules that balance conceptual clarity with practical execution:</p>
                     <ul class="detail-bullet-list">
                         <li><strong>Phase 1:</strong> Foundations, Mindset Alignment, and Basic Strategy.</li>
                         <li><strong>Phase 2:</strong> Applied Skill Building, Techniques, and Core Practical Exercises.</li>
                         <li><strong>Phase 3:</strong> Advanced Strategies, Scenario Simulations, and Real-World Execution.</li>
                         <li><strong>Phase 4:</strong> Evaluation, Refinement, and Final Career/Academic Integration.</li>
                     </ul>
-
-                    <h3 class="detail-subheading">Who Should Enroll in This Program?</h3>
-                    <p class="detail-text-block">This comprehensive course is specially curated for ambitious students preparing for top placements, working professionals seeking accelerated advancement, educators building systematic learning environments, and individuals dedicated to self-mastery.</p>
                 </div>
 
-                <!-- Right Side Sticky Summary & Pricing Box -->
+                <!-- Right Side Summary Box -->
                 <div class="course-detail-right">
                     <h3 class="widget-title">Course Enrollment</h3>
                     <div>
@@ -739,10 +896,6 @@
                             <span>Total Duration: <strong id="detail-duration"></strong></span>
                         </li>
                         <li class="widget-info-item">
-                            <i class="fa-solid fa-laptop-code"></i>
-                            <span>Format: <strong>Self-Paced & Live Sessions</strong></span>
-                        </li>
-                        <li class="widget-info-item">
                             <i class="fa-solid fa-certificate"></i>
                             <span>Credential: <strong>Verified Certificate</strong></span>
                         </li>
@@ -754,175 +907,172 @@
                 </div>
             </div>
         </div>
+
+        <!-- PAGE 4: CHECKOUT & PAYMENT PAGE WITH BRAND LOGOS -->
+        <div id="payment-section">
+            <div class="detail-header-nav">
+                <button type="button" class="glass-btn" id="back-detail-btn">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Course Details
+                </button>
+            </div>
+
+            <div class="payment-container">
+                <!-- Payment Options Form -->
+                <div class="payment-box">
+                    <h2 class="payment-section-title">
+                        <i class="fa-solid fa-shield-halved" style="color: var(--accent-green);"></i> Select Payment Method
+                    </h2>
+
+                    <div class="payment-option-group">
+                        <!-- Instant UPI Apps Option -->
+                        <div class="payment-card-option selected" onclick="selectPaymentMethod('upi')">
+                            <div class="payment-option-left">
+                                <input type="radio" id="pay-upi" name="payment_method" value="upi" checked>
+                                <label for="pay-upi" class="payment-option-title">UPI Instant Checkout</label>
+                            </div>
+                            <div class="brand-logos-wrapper">
+                                <span class="brand-logo-badge gpay">GPay</span>
+                                <span class="brand-logo-badge phonepe">PhonePe</span>
+                                <span class="brand-logo-badge paytm">Paytm</span>
+                                <span class="brand-logo-badge bhim">BHIM</span>
+                            </div>
+                        </div>
+
+                        <!-- UPI Form Block -->
+                        <div class="payment-form-box" id="form-upi" style="display: block;">
+                            <div class="form-group">
+                                <label>Enter Virtual Payment Address (VPA / UPI ID)</label>
+                                <input type="text" class="form-control" placeholder="username@okhdfcbank / mobile@ybl">
+                            </div>
+                        </div>
+
+                        <!-- Debit & Credit Cards Option -->
+                        <div class="payment-card-option" onclick="selectPaymentMethod('card')">
+                            <div class="payment-option-left">
+                                <input type="radio" id="pay-card" name="payment_method" value="card">
+                                <label for="pay-card" class="payment-option-title">Credit / Debit Cards</label>
+                            </div>
+                            <div class="brand-logos-wrapper">
+                                <span class="brand-logo-badge visa">VISA</span>
+                                <span class="brand-logo-badge mastercard">MC</span>
+                                <span class="brand-logo-badge rupay">RuPay</span>
+                            </div>
+                        </div>
+
+                        <!-- Card Form Block -->
+                        <div class="payment-form-box" id="form-card">
+                            <div class="form-group">
+                                <label>Cardholder Name</label>
+                                <input type="text" class="form-control" placeholder="Name on Card">
+                            </div>
+                            <div class="form-group">
+                                <label>Card Number</label>
+                                <input type="text" class="form-control" placeholder="1234 5678 9101 1121" maxlength="19">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Expiry Date</label>
+                                    <input type="text" class="form-control" placeholder="MM/YY">
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV / CVC</label>
+                                    <input type="password" class="form-control" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Net Banking Option -->
+                        <div class="payment-card-option" onclick="selectPaymentMethod('netbanking')">
+                            <div class="payment-option-left">
+                                <input type="radio" id="pay-nb" name="payment_method" value="netbanking">
+                                <label for="pay-nb" class="payment-option-title">Net Banking</label>
+                            </div>
+                            <i class="fa-solid fa-building-columns" style="font-size: 1.2rem; color: var(--text-muted);"></i>
+                        </div>
+
+                        <!-- Netbanking Form Block -->
+                        <div class="payment-form-box" id="form-netbanking">
+                            <div class="form-group">
+                                <label>Select Bank</label>
+                                <select class="form-control">
+                                    <option>State Bank of India (SBI)</option>
+                                    <option>HDFC Bank</option>
+                                    <option>ICICI Bank</option>
+                                    <option>Axis Bank</option>
+                                    <option>Kotak Mahindra Bank</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary Side Card -->
+                <div class="order-summary-box">
+                    <h3 class="widget-title" style="margin-bottom: 1.2rem;">Order Summary</h3>
+                    
+                    <p style="font-weight: 700; color: var(--text-main); margin-bottom: 1rem;" id="checkout-course-title"></p>
+
+                    <div class="summary-row">
+                        <span>Course Price</span>
+                        <span id="checkout-subtotal"></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>GST / Taxes (18%)</span>
+                        <span id="checkout-tax"></span>
+                    </div>
+                    <div class="summary-row" style="color: var(--accent-green);">
+                        <span>Platform Discount</span>
+                        <span>- ₹0</span>
+                    </div>
+
+                    <div class="summary-total">
+                        <span>Total Amount</span>
+                        <span id="checkout-total" style="color: var(--accent-blue);"></span>
+                    </div>
+
+                    <button type="button" class="btn-pay-now" onclick="completePayment()">
+                        <i class="fa-solid fa-lock"></i> Complete Payment
+                    </button>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <!-- JavaScript Data and Page Routing -->
+    <!-- JavaScript Navigation & Payment Processing -->
     <script>
         const coursesData = [
-            {
-                id: 1,
-                title: "English Communication & Public Speaking Mastery",
-                desc: "Overcome hesitation, build vocabulary, and speak fluently in front of large audiences.",
-                duration: "24 Hours",
-                modules: "18 Modules",
-                price: "₹3,499",
-                img: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80",
-                overview: "Mastering public speaking and everyday English communication requires more than grammar drills—it demands confidence and conversational fluidity. This program provides proven drills to eliminate stage fear, enhance voice modulation, and refine body language for impactful interactions."
-            },
-            {
-                id: 2,
-                title: "Mind Programming & Goal Manifestation",
-                desc: "Subconscious alignment, visualization, and daily journaling techniques for high achievement.",
-                duration: "15 Hours",
-                modules: "10 Modules",
-                price: "₹2,999",
-                img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1000&q=80",
-                overview: "Unlock the power of your subconscious mind through structured visualization, affirmation routines, and daily goal setting. Learn how high performers eliminate limiting beliefs, build unstoppable mental focus, and consistently achieve ambitious personal and career targets."
-            },
-            {
-                id: 3,
-                title: "Campus Recruitment & Aptitude Strategy",
-                desc: "Complete guide to clearing quantitative, logical reasoning, and HR interview rounds.",
-                duration: "40 Hours",
-                modules: "30 Modules",
-                price: "₹4,999",
-                img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=80",
-                overview: "Crack company recruitment drives with precision. This all-inclusive course provides shortcut methods for quantitative aptitude, logical reasoning patterns, verbal ability, technical round prep, and step-by-step guidance to excel in HR interview interactions."
-            },
-            {
-                id: 4,
-                title: "Corporate Soft Skills & Professional Etiquette",
-                desc: "Business writing, email etiquette, stakeholder negotiation, and workplace dynamics.",
-                duration: "20 Hours",
-                modules: "15 Modules",
-                price: "₹3,999",
-                img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80",
-                overview: "Navigate corporate culture confidently. Master executive email communication, office dynamics, cross-functional collaboration, meeting etiquette, and constructive negotiation techniques needed to thrive in fast-paced corporate environments."
-            },
-            {
-                id: 5,
-                title: "Effective Study Habits & Exam Strategy for High School",
-                desc: "Memory techniques, quick revision strategies, and time allocation for board exams.",
-                duration: "12 Hours",
-                modules: "8 Modules",
-                price: "₹1,999",
-                img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=80",
-                overview: "Transform your studying habits with active recall, spaced repetition, mind mapping, and stress reduction models. Designed specifically for high school learners to maximize board exam scores without burnout."
-            },
-            {
-                id: 6,
-                title: "Presentation Skills & Visual Storytelling",
-                desc: "Design impactful slide decks and present persuasive technical and sales pitches.",
-                duration: "10 Hours",
-                modules: "7 Modules",
-                price: "₹2,499",
-                img: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=1000&q=80",
-                overview: "Turn complex technical or business data into compelling visual stories. Learn to structure slide decks, engage audience attention, handle live Q&A seamlessly, and pitch ideas persuasively."
-            },
-            {
-                id: 7,
-                title: "Executive Leadership & Team Management",
-                desc: "Strategies for team alignment, dispute resolution, and driving workplace performance.",
-                duration: "30 Hours",
-                modules: "20 Modules",
-                price: "₹5,999",
-                img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80",
-                overview: "Transition smoothly from individual contributor to team leader. Learn how to delegate effectively, motivate high-performing teams, resolve workplace friction, and execute strategic objectives cleanly."
-            },
-            {
-                id: 8,
-                title: "Grammar Foundations & Professional Vocabulary",
-                desc: "Master sentence structures, eliminate common errors, and refine your tone in formal writing.",
-                duration: "16 Hours",
-                modules: "12 Modules",
-                price: "₹1,499",
-                img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=80",
-                overview: "Build absolute clarity in your written and spoken English. Eliminate grammatical flaws, expand your active workplace vocabulary, and master appropriate tone for reports, proposals, and client emails."
-            },
-            {
-                id: 9,
-                title: "Resume Building & Personal Branding",
-                desc: "Craft ATS-optimized resumes, build strong LinkedIn profiles, and stand out to recruiters.",
-                duration: "8 Hours",
-                modules: "5 Modules",
-                price: "₹1,999",
-                img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1000&q=80",
-                overview: "Get noticed in crowded job markets. Learn how to write high-impact ATS-friendly resumes, optimize your LinkedIn profile for inbound recruiter reach, and build a compelling personal professional brand."
-            },
-            {
-                id: 10,
-                title: "Critical Thinking & Decision Making",
-                desc: "Problem-solving frameworks for complex organizational and academic challenges.",
-                duration: "14 Hours",
-                modules: "10 Modules",
-                price: "₹3,299",
-                img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1000&q=80",
-                overview: "Sharpen your analytical mindset. Learn proven structured decision-making frameworks, cognitive bias elimination techniques, and strategic problem-solving approaches to tackle ambiguous challenges."
-            },
-            {
-                id: 11,
-                title: "Time Management & Peak Productivity",
-                desc: "Eliminate procrastination using Pomodoro technique, task priority matrices, and focus protocols.",
-                duration: "9 Hours",
-                modules: "6 Modules",
-                price: "₹1,799",
-                img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1000&q=80",
-                overview: "Take control of your daily schedule. Implement Eisenhower matrices, deep-work focus protocols, digital distraction blockers, and habit stacking to multiply your daily productive output."
-            },
-            {
-                id: 12,
-                title: "Interview Coaching & Mock Practice",
-                desc: "Real-world simulated mock interviews with personalized feedback on posture and verbal responses.",
-                duration: "18 Hours",
-                modules: "12 Modules",
-                price: "₹4,499",
-                img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80",
-                overview: "Master high-stakes job interviews. Experience realistic mock interview drills, learn STAR method answer formulations for behavioral questions, and refine body language to command confidence."
-            },
-            {
-                id: 13,
-                title: "Academic Systems & School LMS Architecture",
-                desc: "For educators: Design structured learning systems that boost student participation and pass rates.",
-                duration: "25 Hours",
-                modules: "16 Modules",
-                price: "₹6,499",
-                img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80",
-                overview: "Empowering educators and administrators. Design modern blended learning curricula, incorporate learning management systems (LMS), and implement student tracking tools to improve retention."
-            },
-            {
-                id: 14,
-                title: "Emotional Intelligence for Career Growth",
-                desc: "Develop self-awareness, empathy, and emotional resilience in competitive environments.",
-                duration: "12 Hours",
-                modules: "9 Modules",
-                price: "₹2,799",
-                img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=80",
-                overview: "EQ is the ultimate differentiator for career acceleration. Learn self-regulation techniques, constructive feedback handling, empathetic listening, and conflict resolution under high pressure."
-            },
-            {
-                id: 15,
-                title: "Group Discussion (GD) Mastery Program",
-                desc: "Strategies to initiate, summarize, and dominate GD rounds in campus placements.",
-                duration: "11 Hours",
-                modules: "8 Modules",
-                price: "₹2,199",
-                img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80",
-                overview: "Stand out in group evaluation rounds without shouting. Master effective entry strategies, learn to steer discussions constructively, summarize key consensus points, and project natural authority."
-            }
+            { id: 1, title: "English Communication & Public Speaking Mastery", desc: "Overcome hesitation, build vocabulary, and speak fluently.", duration: "24 Hours", modules: "18 Modules", price: "3499", img: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80", overview: "Mastering public speaking and everyday English communication requires confidence and conversational fluidity." },
+            { id: 2, title: "Mind Programming & Goal Manifestation", desc: "Subconscious alignment and visualization techniques.", duration: "15 Hours", modules: "10 Modules", price: "2999", img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1000&q=80", overview: "Unlock the power of your subconscious mind through structured visualization and affirmation routines." },
+            { id: 3, title: "Campus Recruitment & Aptitude Strategy", desc: "Clear quantitative, logical, and HR interview rounds.", duration: "40 Hours", modules: "30 Modules", price: "4999", img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=80", overview: "Crack company recruitment drives with precision and shortcut methods." },
+            { id: 4, title: "Corporate Soft Skills & Professional Etiquette", desc: "Business writing, email etiquette, and stakeholder negotiation.", duration: "20 Hours", modules: "15 Modules", price: "3999", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80", overview: "Navigate corporate culture confidently with masterclass executive communication." },
+            { id: 5, title: "Effective Study Habits & Exam Strategy for High School", desc: "Memory techniques and quick revision strategies.", duration: "12 Hours", modules: "8 Modules", price: "1999", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=80", overview: "Transform studying habits with active recall and mind mapping." },
+            { id: 6, title: "Presentation Skills & Visual Storytelling", desc: "Design slide decks and present technical and sales pitches.", duration: "10 Hours", modules: "7 Modules", price: "2499", img: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=1000&q=80", overview: "Turn complex technical or business data into compelling visual stories." },
+            { id: 7, title: "Executive Leadership & Team Management", desc: "Team alignment, dispute resolution, and workplace performance.", duration: "30 Hours", modules: "20 Modules", price: "5999", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80", overview: "Transition smoothly from individual contributor to team leader." },
+            { id: 8, title: "Grammar Foundations & Professional Vocabulary", desc: "Master sentence structures and refine formal writing.", duration: "16 Hours", modules: "12 Modules", price: "1499", img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=80", overview: "Build absolute clarity in your written and spoken English." },
+            { id: 9, title: "Resume Building & Personal Branding", desc: "Craft ATS-optimized resumes and build strong LinkedIn profiles.", duration: "8 Hours", modules: "5 Modules", price: "1999", img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1000&q=80", overview: "Write high-impact ATS-friendly resumes that get noticed." },
+            { id: 10, title: "Critical Thinking & Decision Making", desc: "Problem-solving frameworks for complex organizational challenges.", duration: "14 Hours", modules: "10 Modules", price: "3299", img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1000&q=80", overview: "Learn structured decision-making frameworks and cognitive bias elimination." },
+            { id: 11, title: "Time Management & Peak Productivity", desc: "Eliminate procrastination using priority matrices and focus protocols.", duration: "9 Hours", modules: "6 Modules", price: "1799", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1000&q=80", overview: "Implement Eisenhower matrices and deep-work focus protocols." },
+            { id: 12, title: "Interview Coaching & Mock Practice", desc: "Simulated mock interviews with personalized performance feedback.", duration: "18 Hours", modules: "12 Modules", price: "4499", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80", overview: "Master high-stakes job interviews with STAR method answer formulations." },
+            { id: 13, title: "Academic Systems & School LMS Architecture", desc: "Design structured learning systems for schools and colleges.", duration: "25 Hours", modules: "16 Modules", price: "6499", img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=80", overview: "Design modern blended learning curricula and incorporate LMS." },
+            { id: 14, title: "Emotional Intelligence for Career Growth", desc: "Develop self-awareness, empathy, and emotional resilience.", duration: "12 Hours", modules: "9 Modules", price: "2799", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=80", overview: "Master EQ as the ultimate differentiator for career acceleration." },
+            { id: 15, title: "Group Discussion (GD) Mastery Program", desc: "Initiate, summarize, and dominate GD rounds in campus placements.", duration: "11 Hours", modules: "8 Modules", price: "2199", img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80", overview: "Master effective entry strategies and steer group discussions." }
         ];
 
+        let selectedCourse = null;
+
         document.addEventListener('DOMContentLoaded', () => {
-            const homeSection = document.getElementById('home-section');
-            const coursesSection = document.getElementById('courses-section');
-            const detailSection = document.getElementById('course-detail-section');
-            
+            const homeSec = document.getElementById('home-section');
+            const coursesSec = document.getElementById('courses-section');
+            const detailSec = document.getElementById('course-detail-section');
+            const paymentSec = document.getElementById('payment-section');
+
             const coursesBtn = document.getElementById('courses-btn');
             const backHomeBtn = document.getElementById('back-home-btn');
             const backCoursesBtn = document.getElementById('back-courses-btn');
+            const backDetailBtn = document.getElementById('back-detail-btn');
             const logoBtn = document.getElementById('logo-btn');
             const container = document.getElementById('courses-container');
 
-            // Render 15 Course Cards
             function renderCourses() {
                 container.innerHTML = coursesData.map(course => `
                     <div class="course-card">
@@ -943,53 +1093,95 @@
                 `).join('');
             }
 
-            // Global Course Detail Opener
             window.openCourseDetail = function(courseId) {
-                const course = coursesData.find(c => c.id === courseId);
-                if (!course) return;
+                selectedCourse = coursesData.find(c => c.id === courseId);
+                if (!selectedCourse) return;
 
-                document.getElementById('detail-img').src = course.img;
-                document.getElementById('detail-title').innerText = course.title;
-                document.getElementById('detail-overview').innerText = course.overview;
-                document.getElementById('detail-price').innerText = course.price;
-                document.getElementById('detail-modules').innerText = course.modules;
-                document.getElementById('detail-duration').innerText = course.duration;
+                document.getElementById('detail-img').src = selectedCourse.img;
+                document.getElementById('detail-title').innerText = selectedCourse.title;
+                document.getElementById('detail-overview').innerText = selectedCourse.overview;
+                document.getElementById('detail-price').innerText = `₹${selectedCourse.price}`;
+                document.getElementById('detail-modules').innerText = selectedCourse.modules;
+                document.getElementById('detail-duration').innerText = selectedCourse.duration;
 
-                document.getElementById('buy-now-btn').onclick = function() {
-                    alert(`Proceeding to checkout for "${course.title}" at ${course.price}`);
-                };
+                homeSec.style.display = 'none';
+                coursesSec.style.display = 'none';
+                paymentSec.style.display = 'none';
+                detailSec.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
 
-                homeSection.style.display = 'none';
-                coursesSection.style.display = 'none';
-                detailSection.style.display = 'block';
+            // Trigger Buy Now Page
+            document.getElementById('buy-now-btn').onclick = function() {
+                if (!selectedCourse) return;
+
+                const basePrice = parseInt(selectedCourse.price);
+                const tax = Math.round(basePrice * 0.18);
+                const total = basePrice + tax;
+
+                document.getElementById('checkout-course-title').innerText = selectedCourse.title;
+                document.getElementById('checkout-subtotal').innerText = `₹${basePrice}`;
+                document.getElementById('checkout-tax').innerText = `₹${tax}`;
+                document.getElementById('checkout-total').innerText = `₹${total}`;
+
+                detailSec.style.display = 'none';
+                paymentSec.style.display = 'block';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             };
 
             function showCoursesView() {
-                homeSection.style.display = 'none';
-                detailSection.style.display = 'none';
-                coursesSection.style.display = 'block';
+                homeSec.style.display = 'none';
+                detailSec.style.display = 'none';
+                paymentSec.style.display = 'none';
+                coursesSec.style.display = 'block';
                 coursesBtn.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
             function showHomeView() {
-                coursesSection.style.display = 'none';
-                detailSection.style.display = 'none';
-                homeSection.style.display = 'block';
+                coursesSec.style.display = 'none';
+                detailSec.style.display = 'none';
+                paymentSec.style.display = 'none';
+                homeSec.style.display = 'block';
                 coursesBtn.classList.remove('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            // Bind Event Handlers
             coursesBtn.addEventListener('click', showCoursesView);
             backHomeBtn.addEventListener('click', showHomeView);
             backCoursesBtn.addEventListener('click', showCoursesView);
+            backDetailBtn.addEventListener('click', () => {
+                paymentSec.style.display = 'none';
+                detailSec.style.display = 'block';
+            });
             logoBtn.addEventListener('click', showHomeView);
 
-            // Initialize catalog
             renderCourses();
         });
+
+        // Payment Option Selector Function
+        function selectPaymentMethod(type) {
+            document.querySelectorAll('.payment-card-option').forEach(el => el.classList.remove('selected'));
+            document.querySelectorAll('.payment-form-box').forEach(el => el.style.display = 'none');
+
+            if (type === 'upi') {
+                document.getElementById('pay-upi').checked = true;
+                document.getElementById('pay-upi').closest('.payment-card-option').classList.add('selected');
+                document.getElementById('form-upi').style.display = 'block';
+            } else if (type === 'card') {
+                document.getElementById('pay-card').checked = true;
+                document.getElementById('pay-card').closest('.payment-card-option').classList.add('selected');
+                document.getElementById('form-card').style.display = 'block';
+            } else if (type === 'netbanking') {
+                document.getElementById('pay-nb').checked = true;
+                document.getElementById('pay-nb').closest('.payment-card-option').classList.add('selected');
+                document.getElementById('form-netbanking').style.display = 'block';
+            }
+        }
+
+        function completePayment() {
+            alert('Redirecting to Payment Gateway... Payment Successful! Welcome to Career Graspp.');
+        }
     </script>
 </body>
 </html>
