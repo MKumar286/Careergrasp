@@ -15,6 +15,14 @@
             --text-main: #0f172a;
             --text-muted: #475569;
             --border-color: #e2e8f0;
+            
+            /* Status Colors */
+            --status-completed-bg: #dcfce7;
+            --status-completed-text: #15803d;
+            --status-progress-bg: #fef9c3;
+            --status-progress-text: #a16207;
+            --status-notstarted-bg: #f1f5f9;
+            --status-notstarted-text: #64748b;
         }
 
         * {
@@ -55,6 +63,7 @@
         .logo-container {
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         .logo-img {
@@ -65,7 +74,6 @@
             border-radius: 6px;
         }
 
-        /* Light Glassmorphism Auth & Action Buttons */
         .header-actions {
             display: flex;
             align-items: center;
@@ -98,6 +106,12 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
 
+        .glass-btn.active {
+            background: #1e3a8a;
+            color: #ffffff;
+            border-color: #1e3a8a;
+        }
+
         .glass-btn-primary {
             background: linear-gradient(135deg, #1e3a8a 0%, #d97706 100%);
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -111,7 +125,7 @@
             color: #ffffff;
         }
 
-        /* Main Content Area */
+        /* Main Content Container */
         main {
             margin-top: 75px;
             flex: 1;
@@ -123,7 +137,7 @@
             background-color: #ffffff;
         }
 
-        /* About Creator Section with Person Image embedded on Left */
+        /* About Creator Section */
         .creator-section {
             background: #ffffff;
             border: 1px solid var(--border-color);
@@ -251,7 +265,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
         }
 
-        /* Floating & Glowing Animation for Brand Image */
         .animated-brand-img {
             width: 320px;
             max-width: 100%;
@@ -264,18 +277,9 @@
         }
 
         @keyframes floatGlow {
-            0% {
-                transform: translateY(0px) scale(1);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-            }
-            50% {
-                transform: translateY(-10px) scale(1.02);
-                box-shadow: 0 20px 40px rgba(30, 58, 138, 0.22);
-            }
-            100% {
-                transform: translateY(0px) scale(1);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-            }
+            0% { transform: translateY(0px) scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); }
+            50% { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(30, 58, 138, 0.22); }
+            100% { transform: translateY(0px) scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); }
         }
 
         .brand-title {
@@ -342,6 +346,164 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
 
+        /* -------------------------------------------
+           COURSES SECTION STYLES
+        ------------------------------------------- */
+        #courses-section {
+            display: none; /* Hidden by default */
+        }
+
+        .courses-header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .courses-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .course-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.6rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-color: #cbd5e1;
+        }
+
+        .course-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .status-badge {
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge.completed {
+            background-color: var(--status-completed-bg);
+            color: var(--status-completed-text);
+        }
+
+        .status-badge.progress {
+            background-color: var(--status-progress-bg);
+            color: var(--status-progress-text);
+        }
+
+        .status-badge.not-started {
+            background-color: var(--status-notstarted-bg);
+            color: var(--status-notstarted-text);
+        }
+
+        .price-tag {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+        }
+
+        .course-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+        }
+
+        .course-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+        }
+
+        .course-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .course-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn-pdf {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--accent-gold);
+            background: rgba(217, 119, 6, 0.08);
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-pdf:hover {
+            background: var(--accent-gold);
+            color: #ffffff;
+        }
+
+        .btn-enroll {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border: none;
+            background: var(--accent-blue);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.88rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-enroll:hover {
+            background: #1e40af;
+        }
+
         @media (max-width: 768px) {
             .creator-section {
                 flex-direction: column;
@@ -361,16 +523,16 @@
 
     <!-- Header / Navbar -->
     <header>
-        <div class="logo-container">
+        <div class="logo-container" id="logo-btn">
             <img src="grasp.jpg" 
                  alt="CAREER GRASPP Logo" 
                  class="logo-img"
                  onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'220\' height=\'52\' viewBox=\'0 0 220 52\'><rect width=\'220\' height=\'52\' fill=\'%230b1120\' rx=\'6\'/><text x=\'15\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'110\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text></svg>';">
         </div>
         <div class="header-actions">
-            <a href="#" class="glass-btn">
+            <button type="button" class="glass-btn" id="courses-btn">
                 <i class="fa-solid fa-graduation-cap"></i> Courses
-            </a>
+            </button>
             <a href="#" class="glass-btn">
                 <i class="fa-solid fa-right-to-bracket"></i> Login
             </a>
@@ -382,79 +544,277 @@
 
     <!-- Main Content Area -->
     <main>
-        <!-- About the Creator Section -->
-        <section class="creator-section">
-            <div class="creator-img-wrapper">
-                <img src="sir.jpg" 
-                     alt="Aarya Aakash" 
-                     class="creator-img"
-                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80';">
-            </div>
-            <div class="creator-info">
-                <h1>About the creator</h1>
-                <p><strong>Aarya Aakash</strong> is an Academic Systems Designer, Career Orientation Facilitator, and English Communication Trainer with over 25 years of experience working with school students, college learners, job seekers, working professionals, and organizations.</p>
-                <p>His work focuses on designing structured learning systems that improve study habits, academic accuracy, communication clarity, productivity, and career readiness.</p>
-            </div>
-        </section>
+        <!-- LANDING PAGE SECTION -->
+        <div id="home-section">
+            <section class="creator-section">
+                <div class="creator-img-wrapper">
+                    <img src="sir.jpg" 
+                         alt="Aarya Aakash" 
+                         class="creator-img"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80';">
+                </div>
+                <div class="creator-info">
+                    <h1>About the creator</h1>
+                    <p><strong>Aarya Aakash</strong> is an Academic Systems Designer, Career Orientation Facilitator, and English Communication Trainer with over 25 years of experience working with school students, college learners, job seekers, working professionals, and organizations.</p>
+                    <p>His work focuses on designing structured learning systems that improve study habits, academic accuracy, communication clarity, productivity, and career readiness.</p>
+                </div>
+            </section>
 
-        <!-- Features Section -->
-        <section>
-            <h2 class="features-header">Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" alt="Mind Programming" class="feature-card-img">
-                    <div class="feature-card-body">
-                        <h3 class="feature-title">Mind Programming for Performance</h3>
-                        <p class="feature-desc">Build confidence, focus, and discipline with affirmations, visualization, journaling, and goal manifestation.</p>
+            <section>
+                <h2 class="features-header">Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" alt="Mind Programming" class="feature-card-img">
+                        <div class="feature-card-body">
+                            <h3 class="feature-title">Mind Programming for Performance</h3>
+                            <p class="feature-desc">Build confidence, focus, and discipline with affirmations, visualization, journaling, and goal manifestation.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="One-Day Workshops" class="feature-card-img">
+                        <div class="feature-card-body">
+                            <h3 class="feature-title">One-Day Workshops for Schools & Colleges</h3>
+                            <p class="feature-desc">Study skills, exam strategy, communication, and placement readiness for students from 7th to engineering.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80" alt="Online English Com & Presentation Skills" class="feature-card-img">
+                        <div class="feature-card-body">
+                            <h3 class="feature-title">Online English Com & Presentation Skills</h3>
+                            <p class="feature-desc">Speak fluently, present confidently, and communicate clearly at work and interviews.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Corporate Training Solutions" class="feature-card-img">
+                        <div class="feature-card-body">
+                            <h3 class="feature-title">Corporate Training Solutions</h3>
+                            <p class="feature-desc">Tailor-made programs in soft skills, business English, leadership, and productivity.</p>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="One-Day Workshops" class="feature-card-img">
-                    <div class="feature-card-body">
-                        <h3 class="feature-title">One-Day Workshops for Schools & Colleges</h3>
-                        <p class="feature-desc">Study skills, exam strategy, communication, and placement readiness for students from 7th to engineering.</p>
-                    </div>
-                </div>
+            <section class="brand-footer-section">
+                <img src="grasp_2.jpg" 
+                     alt="Career Graspp Animated Logo" 
+                     class="animated-brand-img"
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'160\' viewBox=\'0 0 320 160\'><rect width=\'320\' height=\'160\' fill=\'%230b1120\' rx=\'14\'/><text x=\'30\' y=\'75\' font-family=\'sans-serif\' font-size=\'26\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'150\' y=\'75\' font-family=\'sans-serif\' font-size=\'26\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text><text x=\'30\' y=\'115\' font-family=\'sans-serif\' font-size=\'14\' font-weight=\'500\' fill=\'%2394a3b8\'>LEARN | LEAD | LEVEL UP</text></svg>';">
 
-                <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80" alt="Online English Com & Presentation Skills" class="feature-card-img">
-                    <div class="feature-card-body">
-                        <h3 class="feature-title">Online English Com & Presentation Skills</h3>
-                        <p class="feature-desc">Speak fluently, present confidently, and communicate clearly at work and interviews.</p>
-                    </div>
+                <h2 class="brand-title">Career Graspp</h2>
+                <div class="title-underline"></div>
+                <p class="brand-subtitle">Career Growth, Mind Performance, English Communication, & Test Preparation Systems for Students, Professionals and Organizations</p>
+                <p class="brand-description">Career Graspp delivers online and offline coaching for aspirants in schools, colleges, and corporates. We specialize in employability, communication mastery, mind programming, and corporate soft skills.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon youtube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-icon instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-icon twitter" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-icon linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 </div>
+            </section>
+        </div>
 
-                <div class="feature-card">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Corporate Training Solutions" class="feature-card-img">
-                    <div class="feature-card-body">
-                        <h3 class="feature-title">Corporate Training Solutions</h3>
-                        <p class="feature-desc">Tailor-made programs in soft skills, business English, leadership, and productivity.</p>
-                    </div>
-                </div>
+        <!-- 15 COURSES CATALOG SECTION -->
+        <div id="courses-section">
+            <div class="courses-header-wrapper">
+                <h1 class="courses-title">Available Programs & Courses</h1>
+                <button type="button" class="glass-btn" id="back-home-btn">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Home
+                </button>
             </div>
-        </section>
 
-        <!-- Bottom Overview Section -->
-        <section class="brand-footer-section">
-            <img src="grasp_2.jpg" 
-                 alt="Career Graspp Animated Logo" 
-                 class="animated-brand-img"
-                 onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'160\' viewBox=\'0 0 320 160\'><rect width=\'320\' height=\'160\' fill=\'%230b1120\' rx=\'14\'/><text x=\'30\' y=\'75\' font-family=\'sans-serif\' font-size=\'26\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'150\' y=\'75\' font-family=\'sans-serif\' font-size=\'26\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text><text x=\'30\' y=\'115\' font-family=\'sans-serif\' font-size=\'14\' font-weight=\'500\' fill=\'%2394a3b8\'>LEARN | LEAD | LEVEL UP</text></svg>';">
-
-            <h2 class="brand-title">Career Graspp</h2>
-            <div class="title-underline"></div>
-            <p class="brand-subtitle">Career Growth, Mind Performance, English Communication, & Test Preparation Systems for Students, Professionals and Organizations</p>
-            <p class="brand-description">Career Graspp delivers online and offline coaching for aspirants in schools, colleges, and corporates. We specialize in employability, communication mastery, mind programming, and corporate soft skills.</p>
-            <div class="social-icons">
-                <a href="#" class="social-icon youtube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#" class="social-icon instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="social-icon twitter" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#" class="social-icon linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="#" class="social-icon facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <div class="courses-grid" id="courses-container">
+                <!-- Courses injected via JavaScript -->
             </div>
-        </section>
+        </div>
     </main>
 
+    <!-- JavaScript Event Handler -->
+    <script>
+        const coursesData = [
+            {
+                title: "English Communication & Public Speaking Mastery",
+                desc: "Overcome hesitation, build vocabulary, and speak fluently in front of large audiences.",
+                price: "₹3,499",
+                duration: "24 Hours (18 Modules)",
+                status: "completed",
+                statusText: "Completed"
+            },
+            {
+                title: "Mind Programming & Goal Manifestation",
+                desc: "Subconscious alignment, visualization, and daily journaling techniques for high achievement.",
+                price: "₹2,999",
+                duration: "15 Hours (10 Modules)",
+                status: "progress",
+                statusText: "In Progress"
+            },
+            {
+                title: "Campus Recruitment & Aptitude Strategy",
+                desc: "Complete guide to clearing quantitative, logical reasoning, and HR interview rounds.",
+                price: "₹4,999",
+                duration: "40 Hours (30 Modules)",
+                status: "not-started",
+                statusText: "Not Started"
+            },
+            {
+                title: "Corporate Soft Skills & Professional Etiquette",
+                desc: "Business writing, email etiquette, stakeholder negotiation, and workplace dynamics.",
+                price: "₹3,999",
+                duration: "20 Hours (15 Modules)",
+                status: "completed",
+                statusText: "Completed"
+            },
+            {
+                title: "Effective Study Habits & Exam Strategy for High School",
+                desc: "Memory techniques, quick revision strategies, and time allocation for board exams.",
+                price: "₹1,999",
+                duration: "12 Hours (8 Modules)",
+                status: "not-started",
+                statusText: "Not Started"
+            },
+            {
+                title: "Presentation Skills & Visual Storytelling",
+                desc: "Design impactful slide decks and present persuasive technical and sales pitches.",
+                price: "₹2,499",
+                duration: "10 Hours (7 Modules)",
+                status: "progress",
+                statusText: "In Progress"
+            },
+            {
+                title: "Executive Leadership & Team Management",
+                desc: "Strategies for team alignment, dispute resolution, and driving workplace performance.",
+                price: "₹5,999",
+                duration: "30 Hours (20 Modules)",
+                status: "not-started",
+                statusText: "Not Started"
+            },
+            {
+                title: "Grammar Foundations & Professional Vocabulary",
+                desc: "Master sentence structures, eliminate common errors, and refine your tone in formal writing.",
+                price: "₹1,499",
+                duration: "16 Hours (12 Modules)",
+                status: "completed",
+                statusText: "Completed"
+            },
+            {
+                title: "Resume Building & Personal Branding",
+                desc: "Craft ATS-optimized resumes, build strong LinkedIn profiles, and stand out to recruiters.",
+                price: "₹1,999",
+                duration: "8 Hours (5 Modules)",
+                status: "progress",
+                statusText: "In Progress"
+            },
+            {
+                title: "Critical Thinking & Decision Making",
+                desc: "Problem-solving frameworks for complex organizational and academic challenges.",
+                price: "₹3,299",
+                duration: "14 Hours (10 Modules)",
+                status: "not-started",
+                statusText: "Not Started"
+            },
+            {
+                title: "Time Management & Peak Productivity",
+                desc: "Eliminate procrastination using Pomodoro technique, task priority matrices, and focus protocols.",
+                price: "₹1,799",
+                duration: "9 Hours (6 Modules)",
+                status: "completed",
+                statusText: "Completed"
+            },
+            {
+                title: "Interview Coaching & Mock Practice",
+                desc: "Real-world simulated mock interviews with personalized feedback on posture and verbal responses.",
+                price: "₹4,499",
+                duration: "18 Hours (12 Modules)",
+                status: "progress",
+                statusText: "In Progress"
+            },
+            {
+                title: "Academic Systems & School LMS Architecture",
+                desc: "For educators: Design structured learning systems that boost student participation and pass rates.",
+                price: "₹6,499",
+                duration: "25 Hours (16 Modules)",
+                status: "not-started",
+                statusText: "Not Started"
+            },
+            {
+                title: "Emotional Intelligence for Career Growth",
+                desc: "Develop self-awareness, empathy, and emotional resilience in competitive environments.",
+                price: "₹2,799",
+                duration: "12 Hours (9 Modules)",
+                status: "not-started",
+                statusText: "Not Started"
+            },
+            {
+                title: "Group Discussion (GD) Mastery Program",
+                desc: "Strategies to initiate, summarize, and dominate GD rounds in campus placements.",
+                price: "₹2,199",
+                duration: "11 Hours (8 Modules)",
+                status: "completed",
+                statusText: "Completed"
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const homeSection = document.getElementById('home-section');
+            const coursesSection = document.getElementById('courses-section');
+            const coursesBtn = document.getElementById('courses-btn');
+            const backHomeBtn = document.getElementById('back-home-btn');
+            const logoBtn = document.getElementById('logo-btn');
+            const container = document.getElementById('courses-container');
+
+            // Render 15 Courses
+            function renderCourses() {
+                container.innerHTML = coursesData.map(course => `
+                    <div class="course-card">
+                        <div>
+                            <div class="course-top-bar">
+                                <span class="status-badge ${course.status}">${course.statusText}</span>
+                                <span class="price-tag">${course.price}</span>
+                            </div>
+                            <h3 class="course-title">${course.title}</h3>
+                            <p class="course-desc">${course.desc}</p>
+                        </div>
+                        <div>
+                            <div class="course-meta">
+                                <i class="fa-regular fa-clock"></i>
+                                <span>Duration: <strong>${course.duration}</strong></span>
+                            </div>
+                            <div class="course-actions">
+                                <button type="button" class="btn-pdf" onclick="alert('Downloading Syllabus PDF for ${course.title}...')">
+                                    <i class="fa-solid fa-file-pdf"></i> PDF
+                                </button>
+                                <button type="button" class="btn-enroll">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            function showCoursesView() {
+                homeSection.style.display = 'none';
+                coursesSection.style.display = 'block';
+                coursesBtn.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function showHomeView() {
+                coursesSection.style.display = 'none';
+                homeSection.style.display = 'block';
+                coursesBtn.classList.remove('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Bind click events
+            coursesBtn.addEventListener('click', showCoursesView);
+            backHomeBtn.addEventListener('click', showHomeView);
+            logoBtn.addEventListener('click', showHomeView);
+
+            // Initialize rendering
+            renderCourses();
+        });
+    </script>
 </body>
 </html>
