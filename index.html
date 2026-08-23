@@ -10,14 +10,11 @@
         :root {
             --bg-primary: #ffffff;
             --bg-card: #ffffff;
-            --sidebar-width: 280px;
             --accent-blue: #1e3a8a;
             --accent-gold: #d97706;
             --text-main: #0f172a;
             --text-muted: #475569;
             --border-color: #e2e8f0;
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(226, 232, 240, 0.8);
         }
 
         * {
@@ -68,8 +65,8 @@
             border-radius: 6px;
         }
 
-        /* Light Glassmorphism Auth Buttons */
-        .auth-buttons {
+        /* Light Glassmorphism Auth & Action Buttons */
+        .header-actions {
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -114,115 +111,15 @@
             color: #ffffff;
         }
 
-        /* Main Container Layout */
-        .layout-container {
-            display: flex;
-            margin-top: 75px;
-            min-height: calc(100vh - 75px);
-        }
-
-        /* Left Sidebar */
-        aside {
-            width: var(--sidebar-width);
-            background: #f8fafc;
-            border-right: 1px solid var(--border-color);
-            height: calc(100vh - 75px);
-            position: fixed;
-            top: 75px;
-            left: 0;
-            overflow-y: auto;
-            padding: 1rem 0.5rem 2rem 0.5rem;
-        }
-
-        aside::-webkit-scrollbar {
-            width: 6px;
-        }
-        aside::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-
-        .sidebar-menu {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-
-        .menu-item {
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .menu-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 1rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .menu-link-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .menu-link:hover, .menu-link.active {
-            color: var(--accent-blue);
-            background: #e2e8f0;
-        }
-
-        .menu-link .arrow {
-            font-size: 0.75rem;
-            transition: transform 0.3s ease;
-        }
-
-        .menu-item.open > .menu-link .arrow {
-            transform: rotate(180deg);
-        }
-
-        /* Submenus */
-        .submenu {
-            list-style: none;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background: #f1f5f9;
-            border-radius: 6px;
-            margin: 2px 0 2px 1rem;
-            padding-left: 0.5rem;
-        }
-
-        .submenu-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 0.6rem 1rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.88rem;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .submenu-link:hover {
-            color: var(--accent-blue);
-            background: #e2e8f0;
-        }
-
-        /* Right Content Area */
+        /* Main Content Area */
         main {
-            margin-left: var(--sidebar-width);
+            margin-top: 75px;
             flex: 1;
-            padding: 3rem;
+            padding: 3rem 2rem;
             max-width: 1200px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
             background-color: #ffffff;
         }
 
@@ -454,6 +351,9 @@
                 width: 180px;
                 height: 180px;
             }
+            header {
+                padding: 0 1rem;
+            }
         }
     </style>
 </head>
@@ -467,7 +367,10 @@
                  class="logo-img"
                  onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'220\' height=\'52\' viewBox=\'0 0 220 52\'><rect width=\'220\' height=\'52\' fill=\'%230b1120\' rx=\'6\'/><text x=\'15\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'110\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text></svg>';">
         </div>
-        <div class="auth-buttons">
+        <div class="header-actions">
+            <a href="#" class="glass-btn">
+                <i class="fa-solid fa-graduation-cap"></i> Courses
+            </a>
             <a href="#" class="glass-btn">
                 <i class="fa-solid fa-right-to-bracket"></i> Login
             </a>
@@ -477,186 +380,81 @@
         </div>
     </header>
 
-    <!-- Main Container Layout -->
-    <div class="layout-container">
-        
-        <!-- Left Sidebar Navigation -->
-        <aside>
-            <ul class="sidebar-menu">
-                <li class="menu-item">
-                    <a href="#" class="menu-link active">
-                        <span class="menu-link-content">🏠 Home</span>
-                    </a>
-                </li>
+    <!-- Main Content Area -->
+    <main>
+        <!-- About the Creator Section -->
+        <section class="creator-section">
+            <div class="creator-img-wrapper">
+                <img src="sir.jpg" 
+                     alt="Aarya Aakash" 
+                     class="creator-img"
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80';">
+            </div>
+            <div class="creator-info">
+                <h1>About the creator</h1>
+                <p><strong>Aarya Aakash</strong> is an Academic Systems Designer, Career Orientation Facilitator, and English Communication Trainer with over 25 years of experience working with school students, college learners, job seekers, working professionals, and organizations.</p>
+                <p>His work focuses on designing structured learning systems that improve study habits, academic accuracy, communication clarity, productivity, and career readiness.</p>
+            </div>
+        </section>
 
-                <li class="menu-item">
-                    <div class="menu-link" onclick="toggleSubmenu(this)">
-                        <span class="menu-link-content">📚 Courses</span>
-                        <i class="fa-solid fa-chevron-down arrow"></i>
-                    </div>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenu-link">All Courses</a></li>
-                        <li><a href="#" class="submenu-link">Live Courses</a></li>
-                        <li><a href="#" class="submenu-link">Recorded Courses</a></li>
-                        <li><a href="#" class="submenu-link">Certification Programs</a></li>
-                        <li><a href="#" class="submenu-link">Bundles</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-item">
-                    <div class="menu-link" onclick="toggleSubmenu(this)">
-                        <span class="menu-link-content">👤 Individual Learners</span>
-                        <i class="fa-solid fa-chevron-down arrow"></i>
-                    </div>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenu-link">Dashboard</a></li>
-                        <li><a href="#" class="submenu-link">My Courses</a></li>
-                        <li><a href="#" class="submenu-link">Progress</a></li>
-                        <li><a href="#" class="submenu-link">Certificates</a></li>
-                        <li><a href="#" class="submenu-link">Mock Tests</a></li>
-                        <li><a href="#" class="submenu-link">Resume Builder</a></li>
-                        <li><a href="#" class="submenu-link">Placement Prep</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-item">
-                    <div class="menu-link" onclick="toggleSubmenu(this)">
-                        <span class="menu-link-content">🏫 Schools & Colleges</span>
-                        <i class="fa-solid fa-chevron-down arrow"></i>
-                    </div>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenu-link">Campus LMS</a></li>
-                        <li><a href="#" class="submenu-link">Student Tracking</a></li>
-                        <li><a href="#" class="submenu-link">Faculty Portal</a></li>
-                        <li><a href="#" class="submenu-link">Attendance</a></li>
-                        <li><a href="#" class="submenu-link">Assessments</a></li>
-                        <li><a href="#" class="submenu-link">Reports</a></li>
-                        <li><a href="#" class="submenu-link">Request Demo</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-item">
-                    <div class="menu-link" onclick="toggleSubmenu(this)">
-                        <span class="menu-link-content">🏢 Organizations</span>
-                        <i class="fa-solid fa-chevron-down arrow"></i>
-                    </div>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenu-link">Employee Training</a></li>
-                        <li><a href="#" class="submenu-link">Team Dashboard</a></li>
-                        <li><a href="#" class="submenu-link">Compliance</a></li>
-                        <li><a href="#" class="submenu-link">Analytics</a></li>
-                        <li><a href="#" class="submenu-link">Skill Assessment</a></li>
-                        <li><a href="#" class="submenu-link">Enterprise Demo</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">📝 Assessments</span></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">💻 Coding Platform</span></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">🎥 Live Classes</span></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">📄 Resources</span></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">🏆 Certificates</span></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">💼 Career Services</span></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">🤝 Community</span></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">💳 Pricing</span></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">⭐ Success Stories</span></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">📰 Blog</span></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">ℹ️ About</span></a></li>
-                <li class="menu-item"><a href="#" class="menu-link"><span class="menu-link-content">📞 Contact</span></a></li>
-            </ul>
-        </aside>
-
-        <!-- Main Content Area -->
-        <main>
-            <!-- About the Creator Section -->
-            <section class="creator-section">
-                <div class="creator-img-wrapper">
-                    <img src="sir.jpg" 
-                         alt="Aarya Aakash" 
-                         class="creator-img"
-                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80';">
-                </div>
-                <div class="creator-info">
-                    <h1>About the creator</h1>
-                    <p><strong>Aarya Aakash</strong> is an Academic Systems Designer, Career Orientation Facilitator, and English Communication Trainer with over 25 years of experience working with school students, college learners, job seekers, working professionals, and organizations.</p>
-                    <p>His work focuses on designing structured learning systems that improve study habits, academic accuracy, communication clarity, productivity, and career readiness.</p>
-                </div>
-            </section>
-
-            <!-- Features Section -->
-            <section>
-                <h2 class="features-header">Features</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" alt="Mind Programming" class="feature-card-img">
-                        <div class="feature-card-body">
-                            <h3 class="feature-title">Mind Programming for Performance</h3>
-                            <p class="feature-desc">Build confidence, focus, and discipline with affirmations, visualization, journaling, and goal manifestation.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="One-Day Workshops" class="feature-card-img">
-                        <div class="feature-card-body">
-                            <h3 class="feature-title">One-Day Workshops for Schools & Colleges</h3>
-                            <p class="feature-desc">Study skills, exam strategy, communication, and placement readiness for students from 7th to engineering.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80" alt="Online English Com & Presentation Skills" class="feature-card-img">
-                        <div class="feature-card-body">
-                            <h3 class="feature-title">Online English Com & Presentation Skills</h3>
-                            <p class="feature-desc">Speak fluently, present confidently, and communicate clearly at work and interviews.</p>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Corporate Training Solutions" class="feature-card-img">
-                        <div class="feature-card-body">
-                            <h3 class="feature-title">Corporate Training Solutions</h3>
-                            <p class="feature-desc">Tailor-made programs in soft skills, business English, leadership, and productivity.</p>
-                        </div>
+        <!-- Features Section -->
+        <section>
+            <h2 class="features-header">Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80" alt="Mind Programming" class="feature-card-img">
+                    <div class="feature-card-body">
+                        <h3 class="feature-title">Mind Programming for Performance</h3>
+                        <p class="feature-desc">Build confidence, focus, and discipline with affirmations, visualization, journaling, and goal manifestation.</p>
                     </div>
                 </div>
-            </section>
 
-            <!-- Bottom Overview Section -->
-            <section class="brand-footer-section">
-                <img src="grasp_2.jpg" 
-                     alt="Career Graspp Animated Logo" 
-                     class="animated-brand-img"
-                     onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'160\' viewBox=\'0 0 320 160\'><rect width=\'320\' height=\'160\' fill=\'%230b1120\' rx=\'14\'/><text x=\'30\' y=\'75\' font-family=\'sans-serif\' font-size=\'26\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'150\' y=\'75\' font-family=\'sans-serif\' font-size=\'26\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text><text x=\'30\' y=\'115\' font-family=\'sans-serif\' font-size=\'14\' font-weight=\'500\' fill=\'%2394a3b8\'>LEARN | LEAD | LEVEL UP</text></svg>';">
-
-                <h2 class="brand-title">Career Graspp</h2>
-                <div class="title-underline"></div>
-                <p class="brand-subtitle">Career Growth, Mind Performance, English Communication, & Test Preparation Systems for Students, Professionals and Organizations</p>
-                <p class="brand-description">Career Graspp delivers online and offline coaching for aspirants in schools, colleges, and corporates. We specialize in employability, communication mastery, mind programming, and corporate soft skills.</p>
-                <div class="social-icons">
-                    <a href="#" class="social-icon youtube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" class="social-icon instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="social-icon twitter" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#" class="social-icon linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" class="social-icon facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <div class="feature-card">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="One-Day Workshops" class="feature-card-img">
+                    <div class="feature-card-body">
+                        <h3 class="feature-title">One-Day Workshops for Schools & Colleges</h3>
+                        <p class="feature-desc">Study skills, exam strategy, communication, and placement readiness for students from 7th to engineering.</p>
+                    </div>
                 </div>
-            </section>
-        </main>
 
-    </div>
+                <div class="feature-card">
+                    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80" alt="Online English Com & Presentation Skills" class="feature-card-img">
+                    <div class="feature-card-body">
+                        <h3 class="feature-title">Online English Com & Presentation Skills</h3>
+                        <p class="feature-desc">Speak fluently, present confidently, and communicate clearly at work and interviews.</p>
+                    </div>
+                </div>
 
-    <!-- Script for Collapsible Sidebar Submenus -->
-    <script>
-        function toggleSubmenu(element) {
-            const parent = element.parentElement;
-            const submenu = element.nextElementSibling;
-            
-            if (parent.classList.contains('open')) {
-                parent.classList.remove('open');
-                submenu.style.maxHeight = null;
-            } else {
-                parent.classList.add('open');
-                submenu.style.maxHeight = submenu.scrollHeight + "px";
-            }
-        }
-    </script>
+                <div class="feature-card">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Corporate Training Solutions" class="feature-card-img">
+                    <div class="feature-card-body">
+                        <h3 class="feature-title">Corporate Training Solutions</h3>
+                        <p class="feature-desc">Tailor-made programs in soft skills, business English, leadership, and productivity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Overview Section -->
+        <section class="brand-footer-section">
+            <img src="grasp_2.jpg" 
+                 alt="Career Graspp Animated Logo" 
+                 class="animated-brand-img"
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'160\' viewBox=\'0 0 320 160\'><rect width=\'320\' height=\'160\' fill=\'%230b1120\' rx=\'14\'/><text x=\'30\' y=\'75\' font-family=\'sans-serif\' font-size=\'26\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'150\' y=\'75\' font-family=\'sans-serif\' font-size=\'26\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text><text x=\'30\' y=\'115\' font-family=\'sans-serif\' font-size=\'14\' font-weight=\'500\' fill=\'%2394a3b8\'>LEARN | LEAD | LEVEL UP</text></svg>';">
+
+            <h2 class="brand-title">Career Graspp</h2>
+            <div class="title-underline"></div>
+            <p class="brand-subtitle">Career Growth, Mind Performance, English Communication, & Test Preparation Systems for Students, Professionals and Organizations</p>
+            <p class="brand-description">Career Graspp delivers online and offline coaching for aspirants in schools, colleges, and corporates. We specialize in employability, communication mastery, mind programming, and corporate soft skills.</p>
+            <div class="social-icons">
+                <a href="#" class="social-icon youtube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="social-icon instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-icon twitter" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="social-icon linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            </div>
+        </section>
+    </main>
+
 </body>
 </html>
