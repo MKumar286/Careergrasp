@@ -308,12 +308,6 @@
             gap: 0.8rem;
         }
 
-        .controls-row-top {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
         .controls-row-bottom {
             display: flex;
             justify-content: space-between;
@@ -339,11 +333,6 @@
 
         .player-btn:hover {
             background: var(--accent-blue);
-        }
-
-        .player-btn.active-resume {
-            background: var(--accent-gold);
-            color: #ffffff;
         }
 
         .speed-select {
@@ -490,6 +479,12 @@
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #e2e8f0;
         }
+
+        @media (max-width: 768px) {
+            .detail-header-banner {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -510,7 +505,7 @@
         <div id="catalog-view">
             <div class="catalog-header">
                 <h1 class="catalog-title">COURSES & ACADEMIC PROGRAMS</h1>
-                <p class="catalog-subtitle">Select a course to view its interactive modules, Google Drive video lectures, and progress metrics.</p>
+                <p class="catalog-subtitle">Select a course to view its interactive modules, video lectures, and progress metrics.</p>
             </div>
 
             <div class="courses-grid" id="courses-grid"></div>
@@ -541,17 +536,16 @@
                 </div>
 
                 <div class="video-wrapper">
-                    <!-- HTML5 Video Player with controls -->
                     <video id="active-video" controls>
                         <source id="video-source" src="" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
 
-                <!-- Custom Controls Bar (Speed, Resume, Fullscreen) -->
+                <!-- Controls Bar (Speed, Resume, Fullscreen) -->
                 <div class="video-controls-bar">
                     <div class="controls-row-bottom">
-                        <button class="player-btn" id="resume-btn" onclick="resumeVideoPlayback()" style="display: none;">
+                        <button class="player-btn" id="resume-btn" onclick="resumeVideoPlayback()" style="display: none; background: var(--accent-gold);">
                             <i class="fa-solid fa-rotate-left"></i> Resume Video
                         </button>
 
@@ -573,7 +567,7 @@
                     </div>
                 </div>
 
-                <!-- Completed Bar Below Video -->
+                <!-- Completed Progress Bar Below Video -->
                 <div class="completed-progress-container">
                     <div class="progress-title-row">
                         <span>Video Completion Progress</span>
@@ -599,7 +593,6 @@
     </main>
 
     <script>
-        // Sample sample video URLs (Replace drive links with direct streamable links or Google Drive preview embeds)
         const SAMPLE_VIDEO_1 = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
         const SAMPLE_VIDEO_2 = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
 
@@ -645,6 +638,227 @@
                         ]
                     }
                 ]
+            },
+            {
+                id: "c3",
+                title: "Presentation & Pitching Skills",
+                badge: "Executive Growth",
+                duration: "30 Hours",
+                image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80",
+                desc: "Design impactful slide decks and deliver compelling business presentations with maximum audience engagement.",
+                modules: [
+                    {
+                        title: "Module 1: Narrative & Slide Architecture",
+                        videos: [
+                            { id: "c3_m1_v1", name: "Lesson 1: Storyboarding & Visual Hierarchy", duration: "18:20", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c3_m1_v2", name: "Lesson 2: Overcoming Stage Fright", duration: "15:10", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c4",
+                title: "Group Discussion (GD) Mastery",
+                badge: "Campus Drive",
+                duration: "24 Hours",
+                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
+                desc: "Learn leadership tactics, entry strategies, and logical consensus building for campus recruitment GDs.",
+                modules: [
+                    {
+                        title: "Module 1: GD Formats & Entry Tactics",
+                        videos: [
+                            { id: "c4_m1_v1", name: "Lesson 1: Factual vs Abstract Topics", duration: "12:45", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c4_m1_v2", name: "Lesson 2: Tactical Entry & Intervention", duration: "14:15", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c5",
+                title: "Resume Building & LinkedIn Branding",
+                badge: "Career Essentials",
+                duration: "20 Hours",
+                image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80",
+                desc: "Craft ATS-friendly resumes and build an optimized LinkedIn profile that attracts top recruiters.",
+                modules: [
+                    {
+                        title: "Module 1: ATS Formatting & Keywords",
+                        videos: [
+                            { id: "c5_m1_v1", name: "Lesson 1: ATS Parsing Mechanics", duration: "11:30", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c5_m1_v2", name: "Lesson 2: LinkedIn Profile Search Indexing", duration: "19:00", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c6",
+                title: "Quantitative Aptitude & Reasoning",
+                badge: "Quantitative",
+                duration: "50 Hours",
+                image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80",
+                desc: "Master speed mathematics, logical reasoning, and data interpretation for corporate selection exams.",
+                modules: [
+                    {
+                        title: "Module 1: Speed Mathematics Shortcuts",
+                        videos: [
+                            { id: "c6_m1_v1", name: "Lesson 1: Mental Math & Vedic Multiplication", duration: "25:00", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c6_m1_v2", name: "Lesson 2: Time, Speed & Distance Equations", duration: "28:10", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c7",
+                title: "Corporate Etiquette & Professionalism",
+                badge: "Soft Skills",
+                duration: "20 Hours",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
+                desc: "Understand workplace norms, professional attire, virtual meeting etiquette, and office dynamics.",
+                modules: [
+                    {
+                        title: "Module 1: Professional Dress & Grooming",
+                        videos: [
+                            { id: "c7_m1_v1", name: "Lesson 1: Dress Code Standards", duration: "13:15", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c7_m1_v2", name: "Lesson 2: Virtual Meeting Etiquette", duration: "16:40", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c8",
+                title: "Leadership & Team Collaboration",
+                badge: "Management",
+                duration: "28 Hours",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80",
+                desc: "Develop managerial mindsets, conflict resolution techniques, and team coordination capabilities.",
+                modules: [
+                    {
+                        title: "Module 1: Leadership Styles & Delegation",
+                        videos: [
+                            { id: "c8_m1_v1", name: "Lesson 1: Situational Leadership Framework", duration: "21:10", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c8_m1_v2", name: "Lesson 2: Conflict Resolution Models", duration: "19:30", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c9",
+                title: "Time Management & Productivity",
+                badge: "Productivity",
+                duration: "18 Hours",
+                image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80",
+                desc: "Eliminate procrastination and organize work schedules using proven productivity frameworks.",
+                modules: [
+                    {
+                        title: "Module 1: Prioritization Frameworks",
+                        videos: [
+                            { id: "c9_m1_v1", name: "Lesson 1: Eisenhower Matrix Execution", duration: "14:00", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c9_m1_v2", name: "Lesson 2: GTD & Time Blocking Methods", duration: "17:25", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c10",
+                title: "Emotional Intelligence (EQ)",
+                badge: "Soft Skills",
+                duration: "22 Hours",
+                image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80",
+                desc: "Enhance self-awareness, empathy, and emotional resilience to maintain healthy workplace relationships.",
+                modules: [
+                    {
+                        title: "Module 1: Self-Awareness & Self-Regulation",
+                        videos: [
+                            { id: "c10_m1_v1", name: "Lesson 1: Emotional Trigger Audits", duration: "15:45", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c10_m1_v2", name: "Lesson 2: Empathy in Workplace Relations", duration: "18:00", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c11",
+                title: "Critical Thinking & Problem Solving",
+                badge: "Cognitive",
+                duration: "30 Hours",
+                image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=600&q=80",
+                desc: "Learn structured techniques to dissect complex business challenges and derive logical solutions.",
+                modules: [
+                    {
+                        title: "Module 1: Root Cause Analysis Tools",
+                        videos: [
+                            { id: "c11_m1_v1", name: "Lesson 1: The 5 Whys & Fishbone Diagram", duration: "20:15", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c11_m1_v2", name: "Lesson 2: Six Thinking Hats Strategy", duration: "22:40", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c12",
+                title: "Negotiation & Persuasion Tactics",
+                badge: "Professional",
+                duration: "25 Hours",
+                image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
+                desc: "Understand Win-Win negotiation strategies for salary discussions, contracts, and business deals.",
+                modules: [
+                    {
+                        title: "Module 1: BATNA & Salary Negotiation",
+                        videos: [
+                            { id: "c12_m1_v1", name: "Lesson 1: Calculating ZOPA & BATNA", duration: "16:20", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c12_m1_v2", name: "Lesson 2: Salary Offer Counter-Strategies", duration: "19:10", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c13",
+                title: "Business & Workplace English",
+                badge: "Language",
+                duration: "32 Hours",
+                image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
+                desc: "Improve professional fluency, vocabulary, and sentence construction for international client communication.",
+                modules: [
+                    {
+                        title: "Module 1: Vocabulary & MTI Reduction",
+                        videos: [
+                            { id: "c13_m1_v1", name: "Lesson 1: Corporate Terminology & Phrasal Verbs", duration: "17:30", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c13_m1_v2", name: "Lesson 2: Accent Neutralization Techniques", duration: "21:00", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c14",
+                title: "Advanced Excel & Data Analysis",
+                badge: "Technical Tool",
+                duration: "40 Hours",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+                desc: "Master data visualization, formulas, VLOOKUP/XLOOKUP, and Pivot Tables for workplace analytics.",
+                modules: [
+                    {
+                        title: "Module 1: Advanced Lookups & Pivot Tables",
+                        videos: [
+                            { id: "c14_m1_v1", name: "Lesson 1: XLOOKUP & INDEX MATCH Functions", duration: "24:15", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c14_m1_v2", name: "Lesson 2: Building Interactive Dashboards", duration: "29:50", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "c15",
+                title: "Design Thinking & Innovation",
+                badge: "Innovation",
+                duration: "26 Hours",
+                image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80",
+                desc: "Adopt human-centered design principles to prototype and launch innovative products and services.",
+                modules: [
+                    {
+                        title: "Module 1: Empathy & Prototyping",
+                        videos: [
+                            { id: "c15_m1_v1", name: "Lesson 1: User Empathy Mapping", duration: "16:00", driveLink: SAMPLE_VIDEO_1 },
+                            { id: "c15_m1_v2", name: "Lesson 2: Rapid Wireframing & Prototyping", duration: "22:10", driveLink: SAMPLE_VIDEO_2 }
+                        ]
+                    }
+                ]
             }
         ];
 
@@ -655,7 +869,6 @@
             renderCatalog();
             activeVideoElement = document.getElementById("active-video");
 
-            // Update Progress Bar & Save Time to LocalStorage
             activeVideoElement.addEventListener("timeupdate", () => {
                 if (!activeVideoElement.duration) return;
 
@@ -663,11 +876,9 @@
                 const duration = activeVideoElement.duration;
                 const pct = Math.floor((currentTime / duration) * 100);
 
-                // Update Progress UI
                 document.getElementById("progress-track-fill").style.width = pct + "%";
                 document.getElementById("progress-percentage-text").innerText = pct + "% Completed";
 
-                // Save time position if video ID exists
                 if (currentVideoId) {
                     localStorage.setItem(`video_pos_${currentVideoId}`, currentTime);
                 }
@@ -710,7 +921,6 @@
             document.getElementById("detail-title").innerText = course.title;
             document.getElementById("detail-subtitle").innerText = course.desc;
 
-            // Render Accordion Modules with Video List
             const accordionContainer = document.getElementById("modules-accordion-container");
             accordionContainer.innerHTML = "";
 
@@ -764,7 +974,6 @@
             activeVideoElement.load();
             videoPlayerModal.style.display = "block";
 
-            // Check if saved position exists for Resume
             const savedTime = localStorage.getItem(`video_pos_${videoId}`);
             const resumeBtn = document.getElementById("resume-btn");
 
