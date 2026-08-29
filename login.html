@@ -274,8 +274,8 @@
                 <div class="input-wrapper">
                     <i class="fa-solid fa-user-shield input-icon"></i>
                     <select id="login-role" class="form-control" required>
-                        <option value="Student">Student Portal</option>
                         <option value="Admin">Admin Portal</option>
+                        <option value="Student">Student Portal</option>
                         <option value="Organization">Organization / Enterprise</option>
                     </select>
                 </div>
@@ -348,7 +348,6 @@
     </div>
 
     <script>
-        // Set this to your published Google Apps Script URL when ready
         const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
 
         function switchAuthTab(type) {
@@ -403,17 +402,30 @@
             submitBtn.disabled = true;
             submitBtn.innerText = 'Verifying...';
 
-            let payload = { action: type };
+            let role = document.getElementById(type === 'login' ? 'login-role' : 'reg-role').value;
+            let email = document.getElementById(type === 'login' ? 'login-email' : 'reg-email').value;
+            let password = document.getElementById(type === 'login' ? 'login-password' : 'reg-password').value;
 
-            if (type === 'login') {
-                payload.role = document.getElementById('login-role').value;
-                payload.email = document.getElementById('login-email').value;
-                payload.password = document.getElementById('login-password').value;
-            } else {
-                payload.role = document.getElementById('reg-role').value;
+            // Admin Authentication Check
+            if (type === 'login' && role === 'Admin') {
+                if (email === 'Careergraspp@gmail.com' && password === 'Kumar@2422') {
+                    showMessage('Admin Login Successful! Redirecting to Dashboard...', false);
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1000);
+                    return;
+                } else {
+                    showMessage('Invalid Admin credentials. Access denied.', true);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Sign In <i class="fa-solid fa-right-to-bracket"></i>';
+                    return;
+                }
+            }
+
+            // General Authentication Request
+            let payload = { action: type, role: role, email: email, password: password };
+            if (type === 'register') {
                 payload.name = document.getElementById('reg-name').value;
-                payload.email = document.getElementById('reg-email').value;
-                payload.password = document.getElementById('reg-password').value;
             }
 
             try {
@@ -425,12 +437,12 @@
                     });
                     const result = await response.json();
                     if (result.status === 'success') {
-                        showMessage(`Login Successful as ${payload.role}! Welcome ${result.name || ''}`, false);
+                        showMessage(`Login Successful as ${role}! Welcome ${result.name || ''}`, false);
                     } else {
                         showMessage(result.message, true);
                     }
                 } else {
-                    showMessage(`Logged in successfully as [${payload.role}]!`, false);
+                    showMessage(`Logged in successfully as [${role}]!`, false);
                 }
             } catch (err) {
                 showMessage('Authentication error. Please check your connection.', true);
