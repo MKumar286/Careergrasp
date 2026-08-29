@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAREER GRASPP - Courses & Programs</title>
+    <title>CAREER GRASPP - Courses & Academic Programs</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -94,18 +94,7 @@
             transform: translateY(-2px);
         }
 
-        .glass-btn-primary {
-            background: linear-gradient(135deg, #1e3a8a 0%, #d97706 100%);
-            color: #ffffff;
-            border: none;
-        }
-
-        .glass-btn-primary:hover {
-            color: #ffffff;
-            opacity: 0.95;
-        }
-
-        /* Main Catalog Layout */
+        /* Main View Wrapper */
         main {
             margin-top: 70px;
             flex: 1;
@@ -136,7 +125,7 @@
             margin: auto;
         }
 
-        /* Course Cards Grid */
+        /* Cards Grid */
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -217,6 +206,20 @@
             flex: 1;
         }
 
+        .course-duration-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            background: #eff6ff;
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            width: fit-content;
+        }
+
         .course-highlights {
             list-style: none;
             display: flex;
@@ -243,50 +246,236 @@
 
         .course-footer {
             margin-top: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
         }
 
-        .btn-enroll {
+        .btn-view-course {
             width: 100%;
             padding: 0.8rem;
             border-radius: 10px;
-            border: none;
-            background: linear-gradient(135deg, #1e3a8a 0%, #d97706 100%);
-            color: #ffffff;
+            border: 1px solid var(--accent-blue);
+            background: #ffffff;
+            color: var(--accent-blue);
             font-weight: 700;
             font-size: 0.95rem;
             text-align: center;
-            text-decoration: none;
             cursor: pointer;
             transition: all 0.25s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
         }
 
-        .btn-enroll:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(30, 58, 138, 0.3);
+        .btn-view-course:hover {
+            background: var(--accent-blue);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(30, 58, 138, 0.25);
         }
 
-        @media (max-width: 640px) {
-            main {
-                padding: 2rem 1rem;
-            }
-            .courses-grid {
+        /* Detailed View Page Overlay Container */
+        #detail-view-container {
+            display: none;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            margin-bottom: 3rem;
+        }
+
+        .detail-top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .detail-header-banner {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .detail-banner-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+
+        .detail-banner-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .detail-badge {
+            background: #eff6ff;
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            width: fit-content;
+            margin-bottom: 0.8rem;
+            border: 1px solid #bfdbfe;
+        }
+
+        .detail-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.6rem;
+        }
+
+        .detail-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+        }
+
+        .detail-meta-bar {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .meta-item i {
+            color: var(--accent-blue);
+        }
+
+        .btn-pdf-view {
+            padding: 0.65rem 1.2rem;
+            background: #fef3c7;
+            color: var(--accent-gold);
+            border: 1px solid #fde68a;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-pdf-view:hover {
+            background: #fde68a;
+            color: #b45309;
+        }
+
+        /* Syllabus Modules Section */
+        .detail-section {
+            margin-bottom: 2.2rem;
+        }
+
+        .detail-section-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-section-title i {
+            color: var(--accent-blue);
+        }
+
+        .modules-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .module-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+        }
+
+        .module-header {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.6rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .module-topics {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.6rem 1.2rem;
+        }
+
+        .module-topics li {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .module-topics li i {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+        }
+
+        .detail-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .detail-list li {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        .detail-list li i {
+            color: var(--accent-blue);
+            margin-top: 4px;
+        }
+
+        @media (max-width: 850px) {
+            .detail-header-banner {
                 grid-template-columns: 1fr;
+            }
+            .detail-banner-img {
+                height: 180px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Header Bar -->
+    <!-- Header Bar (Login Button Removed) -->
     <header>
         <a href="index.html" class="logo-container">
             <img src="grasp.jpg" 
@@ -298,351 +487,548 @@
             <a href="dashboard.html" class="glass-btn">
                 <i class="fa-solid fa-chart-pie"></i> Dashboard
             </a>
-            <a href="login.html" class="glass-btn glass-btn-primary">
-                <i class="fa-solid fa-right-to-bracket"></i> Login
-            </a>
         </div>
     </header>
 
-    <!-- Main Course Catalog Section -->
     <main>
-        <div class="catalog-header">
-            <h1 class="catalog-title">COURSES & ACADEMIC PROGRAMS</h1>
-            <p class="catalog-subtitle">Explore our professional development and career readiness modules designed for institutional excellence.</p>
+        <!-- CATALOG VIEW LAYER -->
+        <div id="catalog-view">
+            <div class="catalog-header">
+                <h1 class="catalog-title">COURSES & ACADEMIC PROGRAMS</h1>
+                <p class="catalog-subtitle">Explore our professional development and career readiness modules designed for institutional excellence.</p>
+            </div>
+
+            <div class="courses-grid" id="courses-grid">
+                <!-- Javascript will inject cards here dynamically with View Course triggers -->
+            </div>
         </div>
 
-        <div class="courses-grid">
-            <!-- Course 1 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Communication Skills" class="course-img">
-                    <span class="course-badge">Core Soft Skills</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Communication Skills</h3>
-                    <p class="course-desc">Master verbal, non-verbal, and written communication tactics for professional success in corporate environments.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> Public Speaking & Articulation</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Business Email Writing Protocols</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Active Listening Strategies</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
+        <!-- FULL COURSE DETAIL VIEW OVERLAY LAYER -->
+        <div id="detail-view-container">
+            <div class="detail-top-nav">
+                <button class="glass-btn" onclick="closeCourseDetail()">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Courses List
+                </button>
+                <a href="#" id="pdf-view-btn" target="_blank" class="btn-pdf-view">
+                    <i class="fa-solid fa-file-pdf"></i> View / Download PDF Syllabus
+                </a>
+            </div>
+
+            <div class="detail-header-banner">
+                <img src="" id="detail-img" class="detail-banner-img" alt="Course Banner">
+                <div class="detail-banner-info">
+                    <span id="detail-badge" class="detail-badge">Category</span>
+                    <h2 id="detail-title" class="detail-title">Course Title</h2>
+                    <p id="detail-subtitle" class="detail-subtitle">Description summary goes here.</p>
+                    <div class="detail-meta-bar">
+                        <div class="meta-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <span id="detail-duration">40 Hours (4 Weeks)</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span id="detail-level">Intermediate / Advanced</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fa-solid fa-award"></i>
+                            <span>Verified Certificate Included</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Course 2 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?auto=format&fit=crop&w=600&q=80" alt="Interview Skills" class="course-img">
-                    <span class="course-badge">Placement Ready</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Interview Skills & Mock Sessions</h3>
-                    <p class="course-desc">Ace technical and HR interview rounds with structured framework responses and live mock simulations.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> STAR Method Answers</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Live HR Interview Drills</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Body Language Optimization</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
+            <!-- Detailed Overview (30 to 50 Lines Breakdown) -->
+            <div class="detail-section">
+                <h3 class="detail-section-title">
+                    <i class="fa-solid fa-align-left"></i> Course Overview & Curriculum Scope
+                </h3>
+                <p id="detail-full-desc" style="line-height: 1.7; color: var(--text-main); margin-bottom: 1rem;"></p>
+            </div>
+
+            <div class="detail-section">
+                <h3 class="detail-section-title">
+                    <i class="fa-solid fa-layer-group"></i> Comprehensive Module Breakdown
+                </h3>
+                <div class="modules-grid" id="detail-modules-list">
+                    <!-- Modules injected dynamically -->
                 </div>
             </div>
 
-            <!-- Course 3 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80" alt="Presentation Skills" class="course-img">
-                    <span class="course-badge">Executive Growth</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Presentation & Pitching Skills</h3>
-                    <p class="course-desc">Design impactful slide decks and deliver compelling business presentations with maximum audience engagement.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> Visual Deck Architecture</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Audience Engagement Tactics</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Overcoming Stage Fear</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
+            <div class="detail-section">
+                <h3 class="detail-section-title">
+                    <i class="fa-solid fa-bullseye"></i> Key Learning Outcomes
+                </h3>
+                <ul class="detail-list" id="detail-outcomes-list">
+                    <!-- Outcomes injected dynamically -->
+                </ul>
             </div>
 
-            <!-- Course 4 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Group Discussions" class="course-img">
-                    <span class="course-badge">Campus Drive</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Group Discussion (GD) Mastery</h3>
-                    <p class="course-desc">Learn leadership tactics, entry strategies, and logical consensus building for campus recruitment GDs.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> Effective Entry Techniques</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Handling Abstract Topics</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Moderation & Conflict Avoidance</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 5 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80" alt="Resume Building" class="course-img">
-                    <span class="course-badge">Career Essentials</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Resume Building & LinkedIn Branding</h3>
-                    <p class="course-desc">Craft ATS-friendly resumes and build an optimized LinkedIn profile that attracts top recruiters.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> ATS Keyword Optimization</li>
-                        <li><i class="fa-solid fa-circle-check"></i> LinkedIn Search Visibility</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Personal Portfolio Setup</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 6 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Aptitude Training" class="course-img">
-                    <span class="course-badge">Quantitative</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Quantitative Aptitude & Reasoning</h3>
-                    <p class="course-desc">Master speed mathematics, logical reasoning, and data interpretation for corporate selection exams.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> Shortcut Calculation Tricks</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Analytical & Logical Puzzles</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Data Interpretation (DI)</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 7 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Corporate Etiquette" class="course-img">
-                    <span class="course-badge">Soft Skills</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Corporate Etiquette & Professionalism</h3>
-                    <p class="course-desc">Understand workplace norms, professional attire, virtual meeting etiquette, and office dynamics.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> Virtual Meeting Protocols</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Workplace Dressing Sense</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Professional Ethics</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 8 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Leadership & Team Building" class="course-img">
-                    <span class="course-badge">Management</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Leadership & Team Collaboration</h3>
-                    <p class="course-desc">Develop managerial mindsets, conflict resolution techniques, and team coordination capabilities.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> Team Motivation Tactics</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Conflict Resolution</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Decision-Making Models</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 9 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Time Management" class="course-img">
-                    <span class="course-badge">Productivity</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Time Management & Productivity</h3>
-                    <p class="course-desc">Eliminate procrastination and organize work schedules using proven productivity frameworks.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> Eisenhower Matrix Priority</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Pomodoro Execution Methods</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Goal Tracking Systems</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 10 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80" alt="Emotional Intelligence" class="course-img">
-                    <span class="course-badge">Soft Skills</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Emotional Intelligence (EQ)</h3>
-                    <p class="course-desc">Enhance self-awareness, empathy, and emotional resilience to maintain healthy workplace relationships.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> Stress Control Under Pressure</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Empathy Building Drills</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Feedback Reception Mindset</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 11 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=600&q=80" alt="Critical Thinking" class="course-img">
-                    <span class="course-badge">Cognitive</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Critical Thinking & Problem Solving</h3>
-                    <p class="course-desc">Learn structured techniques to dissect complex business challenges and derive logical solutions.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> Root Cause Analysis (5 Whys)</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Strategic Decision Tree</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Creative Brainstorming</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 12 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="Negotiation Skills" class="course-img">
-                    <span class="course-badge">Professional</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Negotiation & Persuasion Tactics</h3>
-                    <p class="course-desc">Understand Win-Win negotiation strategies for salary discussions, contracts, and business deals.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> BATNA Calculation Model</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Persuasive Speech Tactics</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Handling Resistance</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 13 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Tech Workplace English" class="course-img">
-                    <span class="course-badge">Language</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Business & Workplace English</h3>
-                    <p class="course-desc">Improve professional fluency, vocabulary, and sentence construction for international client communication.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> Professional Vocabulary</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Client Call Dynamics</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Pronunciation Refinement</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 14 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Excel & Data Tools" class="course-img">
-                    <span class="course-badge">Technical Tool</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Advanced Excel & Data Analysis</h3>
-                    <p class="course-desc">Master data visualization, formulas, VLOOKUP/XLOOKUP, and Pivot Tables for workplace analytics.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> Pivot Tables & Charts</li>
-                        <li><i class="fa-solid fa-circle-check"></i> XLOOKUP & Nested Functions</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Automated Dashboards</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course 15 -->
-            <div class="course-card">
-                <div class="course-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80" alt="Design Thinking" class="course-img">
-                    <span class="course-badge">Innovation</span>
-                </div>
-                <div class="course-body">
-                    <h3 class="course-title">Design Thinking & Innovation</h3>
-                    <p class="course-desc">Adopt human-centered design principles to prototype and launch innovative products and services.</p>
-                    <ul class="course-highlights">
-                        <li><i class="fa-solid fa-circle-check"></i> User Empathy Mapping</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Rapid Prototyping Drills</li>
-                        <li><i class="fa-solid fa-circle-check"></i> User Testing Methodologies</li>
-                    </ul>
-                    <div class="course-footer">
-                        <a href="index.html" class="btn-enroll">
-                            Enroll Now <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
+            <div class="detail-section">
+                <h3 class="detail-section-title">
+                    <i class="fa-solid fa-users"></i> Target Audience & Prerequisites
+                </h3>
+                <ul class="detail-list" id="detail-audience-list">
+                    <!-- Audience details injected dynamically -->
+                </ul>
             </div>
         </div>
     </main>
 
+    <script>
+        // Database of all 15 Courses with 30-50 lines detailed curriculum specs
+        const COURSES_DATA = [
+            {
+                id: "c1",
+                title: "Communication Skills",
+                badge: "Core Soft Skills",
+                duration: "36 Hours (6 Weeks, 3 hrs/wk)",
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+                desc: "Master verbal, non-verbal, and written communication tactics for professional success in corporate environments.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Communication Skills is an intensive 36-hour program specifically crafted for students and working professionals aiming to achieve articulation clarity and corporate readiness. The course bridges interpersonal communication gaps by training participants in vocal modulation, structured business correspondence, active listening, and cross-cultural workplace interactions.",
+                modules: [
+                    { title: "Module 1: Fundamentals of Professional Communication", hours: "8 Hours", topics: ["Verbal & Non-Verbal Dynamics", "Kinesics & Body Language Control", "Overcoming Communication Barriers", "Vocal Pitch & Modulation"] },
+                    { title: "Module 2: Corporate Email & Written Correspondence", hours: "10 Hours", topics: ["Email Formatting & Professional Tone", "Drafting Executive Summaries", "Netiquette & Digital Protocols", "Technical Report Writing"] },
+                    { title: "Module 3: Active Listening & Assertiveness", hours: "10 Hours", topics: ["Empathetic Listening Drills", "Assertive vs Aggressive Response", "Handling Workplace Feedback", "Interpersonal Tact"] },
+                    { title: "Module 4: Cross-Cultural & Team Dynamics", hours: "8 Hours", topics: ["Global Communication Styles", "Virtual Team Collaboration", "Conflict Minimization", "Corporate Presentation Etiquette"] }
+                ],
+                outcomes: [
+                    "Articulate complex ideas confidently during corporate meetings and client interactions.",
+                    "Eliminate common grammatical errors and informal slang in business emails.",
+                    "Demonstrate assertive communication while maintaining professional respect.",
+                    "Interpret body language cues effectively during one-on-one and group discussions."
+                ],
+                audience: [
+                    "Undergraduate and Postgraduate students preparing for placement drives.",
+                    "Early-career professionals looking to improve workplace interaction.",
+                    "No prior technical knowledge required."
+                ]
+            },
+            {
+                id: "c2",
+                title: "Interview Skills & Mock Sessions",
+                badge: "Placement Ready",
+                duration: "40 Hours (5 Weeks, 8 hrs/wk)",
+                image: "https://images.unsplash.com/photo-1565688534245-05d6b5be184a?auto=format&fit=crop&w=600&q=80",
+                desc: "Ace technical and HR interview rounds with structured framework responses and live mock simulations.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Designed to eliminate interview anxiety, this course transforms job candidates into confident interviewees. Through rigorous mock interview drills and real-time evaluator feedback, learners master the art of answering situational, behavioral, and technical interview questions using industry-validated frameworks like STAR and CAR.",
+                modules: [
+                    { title: "Module 1: Interview Preparation & Research", hours: "8 Hours", topics: ["Company Profile & JD Analysis", "Aligning Skills with Job Roles", "First Impressions & Grooming", "Understanding Hiring Mindsets"] },
+                    { title: "Module 2: Answering Frameworks (STAR & CAR)", hours: "10 Hours", topics: ["STAR (Situation, Task, Action, Result)", "Handling 'Tell Me About Yourself'", "Answering Behavioral Questions", "Addressing Career Gaps"] },
+                    { title: "Module 3: Technical & HR Simulation Drills", hours: "12 Hours", topics: ["Salary Negotiation Tactics", "Handling Stress Questions", "Asking Intelligent Questions", "Virtual Camera Presence"] },
+                    { title: "Module 4: One-on-One Live Mock Evaluations", hours: "10 Hours", topics: ["Live Evaluator Panels", "Video Performance Analysis", "Personalized Improvement Plans", "Post-Interview Follow-Up"] }
+                ],
+                outcomes: [
+                    "Structure impactful answers to complex behavioral questions using the STAR technique.",
+                    "Control physiological stress responses and project poise during high-stakes interviews.",
+                    "Negotiate salary expectations and entry-level CTC structures effectively.",
+                    "Receive granular individual feedback through recorded live mock interviews."
+                ],
+                audience: [
+                    "Final year engineering, management, and degree students.",
+                    "Job seekers seeking placement in top-tier MNCs."
+                ]
+            },
+            {
+                id: "c3",
+                title: "Presentation & Pitching Skills",
+                badge: "Executive Growth",
+                duration: "30 Hours (4 Weeks)",
+                image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80",
+                desc: "Design impactful slide decks and deliver compelling business presentations with maximum audience engagement.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Presentation & Pitching Skills trains professionals to capture room attention and deliver memorable visual stories. From slide deck architecture to stage movement and handling tough Q&A sessions, this program covers the end-to-end presentation lifecycle for corporate reviews and startup pitches.",
+                modules: [
+                    { title: "Module 1: Narrative & Slide Architecture", hours: "8 Hours", topics: ["Storyboarding Techniques", "Visual Hierarchy in Slides", "Eliminating Text Clutter", "Design Principles for Non-Designers"] },
+                    { title: "Module 2: Stage Presence & Vocal Delivery", hours: "8 Hours", topics: ["Overcoming Stage Fright", "Eye Contact & Movement Dynamics", "Vocal Energy & Pauses", "Using Props & Microphones"] },
+                    { title: "Module 3: Audience Engagement & Q&A Mastery", hours: "8 Hours", topics: ["Hooking Audience Attention", "Handling Hostile Objections", "Interactive Query Management", "Time Capping Control"] },
+                    { title: "Module 4: Pitching to Executives & Investors", hours: "6 Hours", topics: ["Elevator Pitch Essentials", "Executive Summary Decks", "Data Visualization Tricks", "Live Pitch Exercises"] }
+                ],
+                outcomes: [
+                    "Construct visually engaging slide decks that follow modern corporate aesthetic standards.",
+                    "Deliver 15-minute presentations without relying on slide scripts.",
+                    "Confidently address unexpected questions from senior leadership."
+                ],
+                audience: [
+                    "Students presenting project thesis work or startup ideas.",
+                    "Corporate executives leading team presentations."
+                ]
+            },
+            {
+                id: "c4",
+                title: "Group Discussion (GD) Mastery",
+                badge: "Campus Drive",
+                duration: "24 Hours (3 Weeks)",
+                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
+                desc: "Learn leadership tactics, entry strategies, and logical consensus building for campus recruitment GDs.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Group Discussions are critical elimination rounds in campus selection drives. This course teaches participants how to command respect in group dynamics, enter discussions gracefully, present data-backed arguments, and steer chaotic debates toward logical consensus.",
+                modules: [
+                    { title: "Module 1: GD Formats & Evaluation Parameters", hours: "6 Hours", topics: ["Factual vs Abstract Topics", "Case Study Based GDs", "What Evaluators Look For", "Scoring Criteria Breakdown"] },
+                    { title: "Module 2: Tactical Entry & Intervention", hours: "6 Hours", topics: ["Opening Strategies", "Interrupting Politely", "Redirecting Aggressive Speakers", "Summarizing Key Points"] },
+                    { title: "Module 3: Knowledge Building & Content Structuring", hours: "6 Hours", topics: ["PESTLE Analysis Approach", "Current Affairs Framework", "Fact-Based Argumentation", "Logical Fallacies"] },
+                    { title: "Module 4: Live Simulated GD Rounds", hours: "6 Hours", topics: ["Real-time GD Practice", "Peer & Instructor Grading", "Body Language Analysis", "Consensus Building Drills"] }
+                ],
+                outcomes: [
+                    "Initiate and summarize GDs with authority and poise.",
+                    "Formulate logical arguments on unfamiliar abstract topics within 60 seconds.",
+                    "Maintain composure when handling aggressive co-participants."
+                ],
+                audience: [
+                    "Students appearing for campus placement drives and MBA entrance rounds."
+                ]
+            },
+            {
+                id: "c5",
+                title: "Resume Building & LinkedIn Branding",
+                badge: "Career Essentials",
+                duration: "20 Hours (2 Weeks)",
+                image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80",
+                desc: "Craft ATS-friendly resumes and build an optimized LinkedIn profile that attracts top recruiters.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Ensure your profile stands out among thousands of applicants. This module focuses on formatting ATS (Applicant Tracking System) compliant resumes, writing bullet points with action verbs and quantifiable metrics, and building a LinkedIn profile that triggers inbound recruiter outreach.",
+                modules: [
+                    { title: "Module 1: ATS Architecture & Formatting", hours: "5 Hours", topics: ["ATS Parsing Mechanics", "Section Layout & Typography", "Keyword Matching for JDs", "Avoiding Disqualifying Layouts"] },
+                    { title: "Module 2: High-Impact Content Writing", hours: "5 Hours", topics: ["Action Verbs & Impact Metric Formula", "Writing Power Summaries", "Project & Internship Descriptions", "Highlighting Certifications"] },
+                    { title: "Module 3: Complete LinkedIn Profile Optimization", hours: "5 Hours", topics: ["Headline & About Section Copy", "Featured Media & Skills Endorsements", "URL Customization", "Recruiter Search Indexing"] },
+                    { title: "Module 4: Inbound Networking Strategies", hours: "5 Hours", topics: ["Cold Messaging Alumni & HRs", "Content Creation Strategies", "Job Search Filter Hacks", "Portfolio Integration"] }
+                ],
+                outcomes: [
+                    "Build a single-page ATS-optimized resume guaranteed to score above 85% in ATS parsers.",
+                    "Transform LinkedIn into an inbound talent lead-generation engine.",
+                    "Connect directly with hiring managers using custom networking templates."
+                ],
+                audience: [
+                    "Students, freshers, and experienced professionals upgrading job profiles."
+                ]
+            },
+            {
+                id: "c6",
+                title: "Quantitative Aptitude & Reasoning",
+                badge: "Quantitative",
+                duration: "50 Hours (8 Weeks)",
+                image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80",
+                desc: "Master speed mathematics, logical reasoning, and data interpretation for corporate selection exams.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Quantitative Aptitude is the foundation for clearing written assessment tests of IT companies, product firms, and banking exams. This comprehensive 50-hour module covers speed math shortcuts, arithmetic problem-solving, logical reasoning puzzles, and data interpretation charts.",
+                modules: [
+                    { title: "Module 1: Speed Mathematics & Number Systems", hours: "12 Hours", topics: ["Vedic Math Multiplication Shortcuts", "Square & Cube Roots Tricks", "LCM, HCF & Number Properties", "Divisibility Rules"] },
+                    { title: "Module 2: Core Arithmetic Problem Solving", hours: "15 Hours", topics: ["Percentages, Profit & Loss", "Time, Speed & Distance", "Work & Time Equations", "Ratios & Mixtures"] },
+                    { title: "Module 3: Logical & Analytical Reasoning", hours: "13 Hours", topics: ["Blood Relations & Directions", "Seating Arrangement Puzzles", "Syllogisms & Coding-Decoding", "Data Sufficiency"] },
+                    { title: "Module 4: Data Interpretation (DI) & Speed Tests", hours: "10 Hours", topics: ["Bar Graphs & Pie Charts", "Line Graphs & Tables", "Mock Aptitude Speed Drills", "Time Management in Tests"] }
+                ],
+                outcomes: [
+                    "Solve complex aptitude equations in under 45 seconds using mental math techniques.",
+                    "Clear recruitment screening exams of companies like TCS, Infosys, Accenture, and Cognizant.",
+                    "Analyze high-density Data Interpretation tables with precision."
+                ],
+                audience: [
+                    "All students preparing for campus placement screening tests and competitive exams."
+                ]
+            },
+            {
+                id: "c7",
+                title: "Corporate Etiquette & Professionalism",
+                badge: "Soft Skills",
+                duration: "20 Hours (3 Weeks)",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
+                desc: "Understand workplace norms, professional attire, virtual meeting etiquette, and office dynamics.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Transitioning smoothly from campus to corporate life requires an understanding of professional decorum. This course covers everything from professional grooming and dining etiquette to virtual meeting etiquette, workspace ethics, and respectful peer interactions.",
+                modules: [
+                    { title: "Module 1: Workplace Dressing & Personal Grooming", hours: "5 Hours", topics: ["Business Formal vs Smart Casuals", "Grooming & Hygiene Standards", "Accessories & Footwear Norms", "First Impression Metrics"] },
+                    { title: "Module 2: Digital & Virtual Meeting Etiquette", hours: "5 Hours", topics: ["Zoom/MS Teams Video Protocols", "Muting & Screen Sharing Etiquette", "Chat Room Decorum", "Remote Work Ethics"] },
+                    { title: "Module 3: Office Ethics & Cubicle Protocol", hours: "5 Hours", topics: ["Noise Levels & Personal Space", "Punctuality & Meeting Readiness", "Handling Office Gossip", "Managerial Reporting Etiquette"] },
+                    { title: "Module 4: Social & Business Dining Etiquette", hours: "5 Hours", topics: ["Cutlery Usage & Table Manners", "Corporate Lunch Networking", "Host & Guest Roles", "International Cultural Sensitivity"] }
+                ],
+                outcomes: [
+                    "Project a polished, professional image from day one in any corporate setting.",
+                    "Conduct flawless virtual meetings without technical or behavioral errors.",
+                    "Navigate corporate social events and team dinners with confidence."
+                ],
+                audience: [
+                    "Fresh graduates entering their first corporate job role."
+                ]
+            },
+            {
+                id: "c8",
+                title: "Leadership & Team Collaboration",
+                badge: "Management",
+                duration: "28 Hours (4 Weeks)",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80",
+                desc: "Develop managerial mindsets, conflict resolution techniques, and team coordination capabilities.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Great technical skills are amplified by leadership and teamwork capabilities. This course equips learners with practical tools to lead team projects, delegate tasks, motivate peers, and resolve interpersonal friction constructively.",
+                modules: [
+                    { title: "Module 1: Leadership Styles & Self-Assessment", hours: "7 Hours", topics: ["Transformational vs Autocratic Styles", "Identifying Personal Leadership Traits", "Situational Leadership Framework", "Setting Team Visions"] },
+                    { title: "Module 2: Effective Delegation & Accountability", hours: "7 Hours", topics: ["Task Assignment Matrix", "Monitoring Progress without Micromanaging", "Feedback Cycles", "Empowering Team Members"] },
+                    { title: "Module 3: Conflict Resolution & Mediation", hours: "7 Hours", topics: ["Thomas-Kilmann Conflict Model", "De-escalating Heated Debates", "Win-Win Mediation Steps", "Handling Difficult Personalities"] },
+                    { title: "Module 4: High-Performance Team Building", hours: "7 Hours", topics: ["Tuckman's Team Development Model", "Building Trust & Transparency", "Remote Team Engagement", "Celebrating Milestones"] }
+                ],
+                outcomes: [
+                    "Lead project teams effectively while maintaining high morale and accountability.",
+                    "Resolve internal team conflicts using structured mediation strategies.",
+                    "Delegate work matching individual team members' strengths."
+                ],
+                audience: [
+                    "Aspiring team leads, project student leads, and managers."
+                ]
+            },
+            {
+                id: "c9",
+                title: "Time Management & Productivity",
+                badge: "Productivity",
+                duration: "18 Hours (2 Weeks)",
+                image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80",
+                desc: "Eliminate procrastination and organize work schedules using proven productivity frameworks.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "In a fast-paced environment, managing time efficiently is crucial for personal and professional success. This course introduces actionable productivity frameworks like the Eisenhower Matrix, Pomodoro Technique, and GTD (Getting Things Done) system to optimize daily workflow.",
+                modules: [
+                    { title: "Module 1: Identifying Time Wasters & Procrastination", hours: "4 Hours", topics: ["Root Causes of Delay", "Digital Distraction Audits", "Multitasking Myths", "Energy Level Management"] },
+                    { title: "Module 2: Prioritization & Planning Systems", hours: "5 Hours", topics: ["Eisenhower Urgent vs Important Matrix", "ABCDE Task Sorting", "Daily & Weekly Time Blocking", "Setting SMART Goals"] },
+                    { title: "Module 3: Execution Frameworks (Pomodoro & GTD)", hours: "5 Hours", topics: ["Getting Things Done (GTD) Workflow", "Batch Processing Emails", "Focus Sprint Cycles", "Tool Integrations (Trello/Notion)"] },
+                    { title: "Module 4: Work-Life Balance & Burnout Prevention", hours: "4 Hours", topics: ["Setting Professional Boundaries", "Saying No Gracefully", "Rest Recovery Cycles", "Long-term Productivity Habits"] }
+                ],
+                outcomes: [
+                    "Save 5–8 hours per week by eliminating non-essential tasks.",
+                    "Design a daily routine that guarantees focus on high-impact projects.",
+                    "Prevent burnout through balanced work-rest scheduling."
+                ],
+                audience: [
+                    "Students managing academic deadlines alongside project work."
+                ]
+            },
+            {
+                id: "c10",
+                title: "Emotional Intelligence (EQ)",
+                badge: "Soft Skills",
+                duration: "22 Hours (3 Weeks)",
+                image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80",
+                desc: "Enhance self-awareness, empathy, and emotional resilience to maintain healthy workplace relationships.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Emotional Intelligence is often a key differentiator for leadership success. This course delves into Goleman's EQ framework—Self-Awareness, Self-Regulation, Motivation, Empathy, and Social Skills—helping learners navigate workplace stress and maintain constructive relationships.",
+                modules: [
+                    { title: "Module 1: Self-Awareness & Emotion Triggers", hours: "5 Hours", topics: ["Recognizing Emotional Triggers", "Mindfulness Drills", "Self-Reflection Journals", "Understanding Emotional Biases"] },
+                    { title: "Module 2: Self-Regulation Under Pressure", hours: "6 Hours", topics: ["Impulse Control Tactics", "Managing Anger & Anxiety", "Adapting to Sudden Changes", "Resilience Building Exercises"] },
+                    { title: "Module 3: Developing Empathy & Perspective Taking", hours: "5 Hours", topics: ["Active Empathy Listening", "Understanding Colleague Motivations", "Cultural Empathy", "Non-judgmental Observation"] },
+                    { title: "Module 4: Social Skills & Relationship Management", hours: "6 Hours", topics: ["Constructive Feedback Reception", "Building Trust", "Influencing Without Authority", "Emotional Agility at Work"] }
+                ],
+                outcomes: [
+                    "Maintain emotional composure during crisis situations.",
+                    "Build stronger, trust-based connections with colleagues and clients.",
+                    "Turn constructive criticism into actionable personal growth."
+                ],
+                audience: [
+                    "Individuals seeking personal growth and leadership preparation."
+                ]
+            },
+            {
+                id: "c11",
+                title: "Critical Thinking & Problem Solving",
+                badge: "Cognitive",
+                duration: "30 Hours (4 Weeks)",
+                image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=600&q=80",
+                desc: "Learn structured techniques to dissect complex business challenges and derive logical solutions.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Move beyond surface-level fixes to solve underlying problems. This course provides systematic methodologies like the 5 Whys, Fishbone Diagram, Decision Trees, and Six Thinking Hats to evaluate information objectively and make sound decisions.",
+                modules: [
+                    { title: "Module 1: Cognitive Biases & Logical Fallacies", hours: "7 Hours", topics: ["Confirmation Bias Identification", "Ad Hominem & Strawman Arguments", "Objective Fact vs Opinion", "Information Filtering"] },
+                    { title: "Module 2: Root Cause Analysis Tools", hours: "8 Hours", topics: ["The 5 Whys Technique", "Ishikawa (Fishbone) Diagram", "Pareto Analysis (80/20 Rule)", "Problem Statement Drafting"] },
+                    { title: "Module 3: Decision-Making Frameworks", hours: "8 Hours", topics: ["Decision Matrix Analysis", "Six Thinking Hats Method", "Pros-Cons-Implications (PCI)", "Risk Assessment Grid"] },
+                    { title: "Module 4: Real-World Case Studies & Solution Testing", hours: "7 Hours", topics: ["Business Case Dissection", "Solution Prototyping", "Measuring Impact Metrics", "Presenting Solutions to Stakeholders"] }
+                ],
+                outcomes: [
+                    "Identify the root causes of operational issues quickly.",
+                    "Evaluate complex business proposals using structured decision matrices.",
+                    "Avoid common logical traps and cognitive biases in decision-making."
+                ],
+                audience: [
+                    "Students and professionals handling strategic planning or technical troubleshooting."
+                ]
+            },
+            {
+                id: "c12",
+                title: "Negotiation & Persuasion Tactics",
+                badge: "Professional",
+                duration: "25 Hours (3 Weeks)",
+                image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
+                desc: "Understand Win-Win negotiation strategies for salary discussions, contracts, and business deals.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Negotiation is a core life skill required for securing job offers, closing sales, and managing project scope. This course teaches principled negotiation techniques, helping learners discover value, set BATNA, and persuade ethically without damaging relationships.",
+                modules: [
+                    { title: "Module 1: Fundamentals of Principled Negotiation", hours: "6 Hours", topics: ["Positions vs Interests", "BATNA (Best Alternative to Negotiated Agreement)", "ZOPA (Zone of Possible Agreement)", "Creating Value before Claiming Value"] },
+                    { title: "Module 2: Persuasion Principles & Influence", hours: "6 Hours", topics: ["Cialdini's 6 Principles of Persuasion", "Anchoring Effect in Pricing/Salary", "Framing & Re-framing Arguments", "Building Rapport Quickly"] },
+                    { title: "Module 3: Salary & Contract Negotiation Drills", hours: "7 Hours", topics: ["Evaluating Job Offer Letters", "Counter-Offering Techniques", "Non-Monetary Benefit Negotiations", "Scripting Salary Discussions"] },
+                    { title: "Module 4: Handling Objections & Deadlocks", hours: "6 Hours", topics: ["Breaking Stalemates", "Managing High-Pressure Tactics", "Concession Strategies", "Closing Deals Gracefully"] }
+                ],
+                outcomes: [
+                    "Confidently negotiate job offers and entry packages.",
+                    "Apply the principles of influence to gain buy-in for ideas.",
+                    "Achieve win-win outcomes in professional deal-making."
+                ],
+                audience: [
+                    "Job seekers, sales professionals, and project leads."
+                ]
+            },
+            {
+                id: "c13",
+                title: "Business & Workplace English",
+                badge: "Language",
+                duration: "32 Hours (5 Weeks)",
+                image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
+                desc: "Improve professional fluency, vocabulary, and sentence construction for international client communication.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Designed for non-native English speakers aiming to operate comfortably in global corporate environments. This module focuses on refining business vocabulary, eliminating mother tongue influence (MTI), and mastering professional tone in phone and video calls.",
+                modules: [
+                    { title: "Module 1: Professional Vocabulary & Idioms", hours: "8 Hours", topics: ["Corporate Terminology & Jargon", "Phrasal Verbs in Business", "Avoiding Native Slang", "Polite Phrasing Templates"] },
+                    { title: "Module 2: Pronunciation & MTI Reduction", hours: "8 Hours", topics: ["Neutral Accent Training", "Word Stress & Intonation", "Commonly Mispronounced Tech Words", "Clarity Drills"] },
+                    { title: "Module 3: Business Phone & Conference Call Fluency", hours: "8 Hours", topics: ["Opening & Closing Professional Calls", "Interrupting and Clarifying Politely", "Taking Call Minutes (MOM)", "Voicemail Etiquette"] },
+                    { title: "Module 4: Written Business Communication Refinement", hours: "8 Hours", topics: ["Formal Business Letters", "Slack & Teams Chat Protocols", "Proofreading & Editing Drills", "Punctuation Rules"] }
+                ],
+                outcomes: [
+                    "Speak with a clear, neutral accent during international calls.",
+                    "Compose error-free business emails and instant messages.",
+                    "Participate actively in conference calls without hesitation."
+                ],
+                audience: [
+                    "Students looking to improve workplace English fluency."
+                ]
+            },
+            {
+                id: "c14",
+                title: "Advanced Excel & Data Analysis",
+                badge: "Technical Tool",
+                duration: "40 Hours (6 Weeks)",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+                desc: "Master data visualization, formulas, VLOOKUP/XLOOKUP, and Pivot Tables for workplace analytics.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Excel remains an essential analytical tool in corporate environments. This hands-on technical course takes learners from basic spreadsheet operations to advanced data cleaning, complex lookup formulas, dynamic Pivot Dashboards, and basic macro automation.",
+                modules: [
+                    { title: "Module 1: Data Structuring & Essential Formulas", hours: "10 Hours", topics: ["Data Cleaning (TRIM, CONCAT, TEXT)", "Logical Formulas (IF, AND, OR, IFS)", "Conditional Formatting Rules", "Custom Data Validation"] },
+                    { title: "Module 2: Advanced Lookup & Reference Functions", hours: "10 Hours", topics: ["VLOOKUP vs XLOOKUP Mechanics", "INDEX & MATCH Combinations", "INDIRECT & OFFSET Functions", "Handling Formula Errors (#N/A)"] },
+                    { title: "Module 3: Pivot Tables & Dynamic Dashboards", hours: "10 Hours", topics: ["Building Pivot Tables & Slicers", "Calculated Fields & Items", "Interactive Chart Creation", "Designing Executive Dashboards"] },
+                    { title: "Module 4: Introduction to Power Query & Automation", hours: "10 Hours", topics: ["Importing & Transforming Data", "Unpivoting Columns", "Recording Simple Macros", "Data Protection & Sharing Security"] }
+                ],
+                outcomes: [
+                    "Build automated, interactive dashboards for business reporting.",
+                    "Clean and analyze large datasets efficiently using XLOOKUP and Power Query.",
+                    "Save hours of manual data entry through macro automation."
+                ],
+                audience: [
+                    "Engineers, business analysts, managers, and administrative staff."
+                ]
+            },
+            {
+                id: "c15",
+                title: "Design Thinking & Innovation",
+                badge: "Innovation",
+                duration: "26 Hours (4 Weeks)",
+                image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80",
+                desc: "Adopt human-centered design principles to prototype and launch innovative products and services.",
+                pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+                fullDesc: "Innovation can be taught through structured human-centered methodology. This course guides learners through the 5 stages of Design Thinking—Empathize, Define, Ideate, Prototype, and Test—enabling them to solve user problems and build user-centric products.",
+                modules: [
+                    { title: "Module 1: Empathy & User Research", hours: "6 Hours", topics: ["User Interview Techniques", "Empathy Mapping", "Customer Journey Mapping", "Identifying Unmet Needs"] },
+                    { title: "Module 2: Problem Definition & Ideation", hours: "7 Hours", topics: ["Drafting 'How Might We' Statements", "Crazy Eights Ideation Technique", "SCAMPER Framework", "Selecting Feasible Ideas"] },
+                    { title: "Module 3: Rapid Prototyping Techniques", hours: "7 Hours", topics: ["Paper & Digital Prototyping", "Low-Fidelity Wireframing", "Storyboarding User Flow", "Fail-Fast Iteration Mindset"] },
+                    { title: "Module 4: User Testing & Pitching Solutions", hours: "6 Hours", topics: ["Usability Testing Sessions", "Gathering Constructive User Feedback", "Refining Product Prototypes", "Presenting Innovations to Leadership"] }
+                ],
+                outcomes: [
+                    "Apply human-centered design methodologies to real-world business challenges.",
+                    "Create wireframes and prototypes quickly to test assumptions.",
+                    "Conduct user interviews and build empathy maps."
+                ],
+                audience: [
+                    "Product managers, software engineers, designers, and entrepreneurs."
+                ]
+            }
+        ];
+
+        // Render Catalog Cards on Load
+        document.addEventListener("DOMContentLoaded", () => {
+            const grid = document.getElementById("courses-grid");
+            grid.innerHTML = "";
+
+            COURSES_DATA.forEach(course => {
+                const card = document.createElement("div");
+                card.className = "course-card";
+                card.innerHTML = `
+                    <div class="course-img-wrapper">
+                        <img src="${course.image}" alt="${course.title}" class="course-img">
+                        <span class="course-badge">${course.badge}</span>
+                    </div>
+                    <div class="course-body">
+                        <h3 class="course-title">${course.title}</h3>
+                        <div class="course-duration-tag">
+                            <i class="fa-solid fa-clock"></i> ${course.duration}
+                        </div>
+                        <p class="course-desc">${course.desc}</p>
+                        <ul class="course-highlights">
+                            ${course.modules[0].topics.slice(0, 3).map(t => `<li><i class="fa-solid fa-circle-check"></i> ${t}</li>`).join('')}
+                        </ul>
+                        <div class="course-footer">
+                            <button class="btn-view-course" onclick="openCourseDetail('${course.id}')">
+                                View Course <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        });
+
+        // Open Course Detail Function
+        function openCourseDetail(courseId) {
+            const course = COURSES_DATA.find(c => c.id === courseId);
+            if (!course) return;
+
+            document.getElementById("detail-img").src = course.image;
+            document.getElementById("detail-badge").innerText = course.badge;
+            document.getElementById("detail-title").innerText = course.title;
+            document.getElementById("detail-subtitle").innerText = course.desc;
+            document.getElementById("detail-duration").innerText = course.duration;
+            document.getElementById("pdf-view-btn").href = course.pdfUrl;
+            document.getElementById("detail-full-desc").innerText = course.fullDesc;
+
+            // Render Modules
+            const modulesContainer = document.getElementById("detail-modules-list");
+            modulesContainer.innerHTML = course.modules.map(mod => `
+                <div class="module-box">
+                    <div class="module-header">
+                        <span>${mod.title}</span>
+                        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">${mod.hours}</span>
+                    </div>
+                    <ul class="module-topics">
+                        ${mod.topics.map(topic => `<li><i class="fa-solid fa-circle-check"></i> ${topic}</li>`).join('')}
+                    </ul>
+                </div>
+            `).join('');
+
+            // Render Outcomes
+            const outcomesContainer = document.getElementById("detail-outcomes-list");
+            outcomesContainer.innerHTML = course.outcomes.map(out => `
+                <li><i class="fa-solid fa-circle-check"></i> <span>${out}</span></li>
+            `).join('');
+
+            // Render Audience
+            const audienceContainer = document.getElementById("detail-audience-list");
+            audienceContainer.innerHTML = course.audience.map(aud => `
+                <li><i class="fa-solid fa-user-check"></i> <span>${aud}</span></li>
+            `).join('');
+
+            // Toggle Visibility
+            document.getElementById("catalog-view").style.display = "none";
+            document.getElementById("detail-view-container").style.display = "block";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Close Detail View
+        function closeCourseDetail() {
+            document.getElementById("detail-view-container").style.display = "none";
+            document.getElementById("catalog-view").style.display = "block";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
