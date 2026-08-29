@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAREER GRASPP - Overall Dashboard</title>
+    <title>CAREER GRASPP - Trainer & Admin Dashboard</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-primary: #f8fafc;
             --card-bg: #ffffff;
+            --sidebar-width: 260px;
             --accent-blue: #1e3a8a;
             --accent-gold: #d97706;
             --accent-green: #16a34a;
@@ -34,23 +35,44 @@
             flex-direction: column;
         }
 
-        /* Fixed Navigation Bar */
+        /* Fixed Navigation Header */
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            height: 75px;
-            background: rgba(255, 255, 255, 0.9);
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sidebar-toggle-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .sidebar-toggle-btn:hover {
+            background: #f1f5f9;
         }
 
         .logo-container {
@@ -61,7 +83,7 @@
         }
 
         .logo-img {
-            height: 48px;
+            height: 44px;
             width: auto;
             border-radius: 6px;
         }
@@ -73,10 +95,10 @@
         }
 
         .glass-btn {
-            padding: 0.6rem 1.2rem;
+            padding: 0.55rem 1.1rem;
             border-radius: 10px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             text-decoration: none;
             color: var(--text-main);
             background: #ffffff;
@@ -95,33 +117,112 @@
             transform: translateY(-2px);
         }
 
-        /* Main Dashboard Content Layout */
-        main {
-            margin-top: 75px;
-            flex: 1;
-            padding: 2.5rem 2rem 4rem 2rem;
-            max-width: 1280px;
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
+        /* Sidebar & Layout Container */
+        .app-layout {
+            display: flex;
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
         }
 
-        /* Header Greeting Section */
+        /* Fixed Sidebar */
+        aside {
+            width: var(--sidebar-width);
+            background: #ffffff;
+            border-right: 1px solid var(--border-color);
+            height: calc(100vh - 70px);
+            position: fixed;
+            top: 70px;
+            left: 0;
+            overflow-y: auto;
+            padding: 1.5rem 0.8rem;
+            transition: all 0.3s ease;
+            z-index: 990;
+        }
+
+        aside.collapsed {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-heading {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin: 1.2rem 0 0.6rem 0.8rem;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.75rem 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.93rem;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-link i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-link:hover, .sidebar-link.active {
+            color: var(--accent-blue);
+            background: #f0f4ff;
+        }
+
+        .sidebar-link .badge {
+            margin-left: auto;
+            background: var(--accent-blue);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 12px;
+        }
+
+        /* Main Content Wrapper */
+        main {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 2rem;
+            width: calc(100% - var(--sidebar-width));
+            transition: all 0.3s ease;
+        }
+
+        main.expanded {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        /* Dashboard Header */
         .dashboard-header {
             margin-bottom: 2rem;
         }
 
         .dashboard-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--text-main);
             letter-spacing: -0.5px;
         }
 
         .dashboard-welcome {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-muted);
-            margin-top: 0.3rem;
+            margin-top: 0.2rem;
             font-weight: 500;
         }
 
@@ -129,10 +230,10 @@
             color: var(--accent-blue);
         }
 
-        /* Top Key Metrics Grid (8 Cards in 2 Rows) */
+        /* Top Key Metrics Grid */
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.2rem;
             margin-bottom: 2rem;
         }
@@ -141,12 +242,12 @@
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 1.2rem 1.5rem;
+            padding: 1.2rem 1.4rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: all 0.25 ease;
+            transition: all 0.25s ease;
         }
 
         .metric-card:hover {
@@ -161,26 +262,26 @@
         }
 
         .metric-label {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 600;
             color: var(--text-muted);
             margin-bottom: 0.3rem;
         }
 
         .metric-value {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--text-main);
         }
 
         .metric-icon-box {
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             background: #f1f5f9;
             color: var(--accent-blue);
         }
@@ -195,7 +296,7 @@
             color: var(--accent-gold);
         }
 
-        /* Grid Layouts for Middle & Bottom Sections */
+        /* Row Layouts */
         .dashboard-row-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -213,7 +314,7 @@
             gap: 1.8rem;
         }
 
-        /* Panel Box Styling */
+        /* Panel Card */
         .panel-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -223,7 +324,7 @@
         }
 
         .panel-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 1.2rem;
@@ -250,7 +351,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.98rem;
+            font-size: 0.95rem;
             padding: 0.4rem 0;
             border-bottom: 1px dashed var(--border-color);
         }
@@ -270,7 +371,7 @@
         }
 
         .chart-placeholder {
-            height: 140px;
+            height: 130px;
             background: #f8fafc;
             border: 2px dashed #cbd5e1;
             border-radius: 12px;
@@ -280,7 +381,7 @@
             justify-content: center;
             color: var(--text-muted);
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             gap: 8px;
         }
 
@@ -288,7 +389,7 @@
         .course-perf-list {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
         .course-perf-item {
@@ -305,12 +406,12 @@
         .course-perf-name {
             font-weight: 700;
             color: var(--text-main);
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .course-perf-students {
             color: var(--text-muted);
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             font-weight: 600;
         }
 
@@ -336,13 +437,13 @@
 
         .progress-pct {
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--text-main);
             width: 45px;
             text-align: right;
         }
 
-        /* College / Individual Distribution */
+        /* Distribution Lists */
         .dist-list {
             display: flex;
             flex-direction: column;
@@ -360,31 +461,40 @@
             font-weight: 600;
         }
 
-        /* Attention Required Alerts */
+        /* Attention Alerts */
         .attention-list {
             display: flex;
             flex-direction: column;
-            gap: 0.9rem;
+            gap: 0.85rem;
         }
 
         .attention-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 0.85rem 1rem;
+            padding: 0.8rem 1rem;
             background: #fef2f2;
             border: 1px solid #fecaca;
             border-radius: 10px;
             color: var(--accent-red);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
         }
 
-        .attention-item i {
-            font-size: 1.1rem;
+        @media (max-width: 1024px) {
+            aside {
+                transform: translateX(-100%);
+            }
+            aside.mobile-open {
+                transform: translateX(0);
+            }
+            main {
+                margin-left: 0;
+                width: 100%;
+            }
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
             .dashboard-row-2, .dashboard-row-3 {
                 grid-template-columns: 1fr;
             }
@@ -392,25 +502,27 @@
                 grid-template-columns: 1fr;
                 gap: 0.5rem;
             }
-            .progress-pct {
-                text-align: left;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Header -->
+    <!-- Top Header Bar -->
     <header>
-        <a href="index.html" class="logo-container">
-            <img src="grasp.jpg" 
-                 alt="CAREER GRASPP Logo" 
-                 class="logo-img"
-                 onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'220\' height=\'52\' viewBox=\'0 0 220 52\'><rect width=\'220\' height=\'52\' fill=\'%230b1120\' rx=\'6\'/><text x=\'15\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'110\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text></svg>';">
-        </a>
+        <div class="header-left">
+            <button class="sidebar-toggle-btn" id="toggle-sidebar" title="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="index.html" class="logo-container">
+                <img src="grasp.jpg" 
+                     alt="CAREER GRASPP Logo" 
+                     class="logo-img"
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'220\' height=\'52\' viewBox=\'0 0 220 52\'><rect width=\'220\' height=\'52\' fill=\'%230b1120\' rx=\'6\'/><text x=\'15\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'110\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text></svg>';">
+            </a>
+        </div>
         <div class="header-nav-actions">
             <a href="index.html" class="glass-btn">
-                <i class="fa-solid fa-house"></i> Home
+                <i class="fa-solid fa-globe"></i> Main Site
             </a>
             <a href="login.html" class="glass-btn">
                 <i class="fa-solid fa-right-from-bracket"></i> Logout
@@ -418,262 +530,348 @@
         </div>
     </header>
 
-    <!-- Main Dashboard Body -->
-    <main>
-        <!-- Header Welcome Banner -->
-        <div class="dashboard-header">
-            <h1 class="dashboard-title">OVERALL DASHBOARD</h1>
-            <p class="dashboard-welcome">Welcome, <strong>[Trainer / Organization]</strong></p>
-        </div>
+    <!-- App Layout Container -->
+    <div class="app-layout">
+        
+        <!-- Left Collapsible Sidebar -->
+        <aside id="sidebar">
+            <span class="sidebar-heading">Main Navigation</span>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#" class="sidebar-link active">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Overall Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-link">
+                        <i class="fa-solid fa-school"></i>
+                        <span>Colleges & Institutions</span>
+                        <span class="badge">125</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-link">
+                        <i class="fa-solid fa-user-graduate"></i>
+                        <span>Students & Learners</span>
+                    </a>
+                </li>
+            </ul>
 
-        <!-- Metric Cards Row 1 & Row 2 (8 Cards Total) -->
-        <div class="metrics-grid">
-            <!-- Card 1 -->
-            <div class="metric-card">
-                <div class="metric-info">
-                    <span class="metric-label">Colleges</span>
-                    <span class="metric-value">125</span>
-                </div>
-                <div class="metric-icon-box">
-                    <i class="fa-solid fa-school"></i>
-                </div>
+            <span class="sidebar-heading">Academic Management</span>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#" class="sidebar-link">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Courses & Programs</span>
+                        <span class="badge">24</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-link">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span>Enrollments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-link">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                        <span>Revenue & Payments</span>
+                    </a>
+                </li>
+            </ul>
+
+            <span class="sidebar-heading">System & Settings</span>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#" class="sidebar-link">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span>Analytics & Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-link">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span>Portal Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Dashboard View -->
+        <main id="main-content">
+            <!-- Header Welcome Banner -->
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">OVERALL DASHBOARD</h1>
+                <p class="dashboard-welcome">Welcome, <strong>[Trainer / Organization]</strong></p>
             </div>
 
-            <!-- Card 2 -->
-            <div class="metric-card">
-                <div class="metric-info">
-                    <span class="metric-label">Active Colleges</span>
-                    <span class="metric-value">98</span>
-                </div>
-                <div class="metric-icon-box green">
-                    <i class="fa-solid fa-circle-check"></i>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="metric-card">
-                <div class="metric-info">
-                    <span class="metric-label">Students</span>
-                    <span class="metric-value">12,450</span>
-                </div>
-                <div class="metric-icon-box">
-                    <i class="fa-solid fa-user-graduate"></i>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="metric-card">
-                <div class="metric-info">
-                    <span class="metric-label">Active Students</span>
-                    <span class="metric-value">8,720</span>
-                </div>
-                <div class="metric-icon-box green">
-                    <i class="fa-solid fa-user-check"></i>
-                </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="metric-card">
-                <div class="metric-info">
-                    <span class="metric-label">Courses</span>
-                    <span class="metric-value">24</span>
-                </div>
-                <div class="metric-icon-box">
-                    <i class="fa-solid fa-book-open"></i>
-                </div>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="metric-card">
-                <div class="metric-info">
-                    <span class="metric-label">Enrollments</span>
-                    <span class="metric-value">18,650</span>
-                </div>
-                <div class="metric-icon-box gold">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                </div>
-            </div>
-
-            <!-- Card 7 -->
-            <div class="metric-card">
-                <div class="metric-info">
-                    <span class="metric-label">Total Revenue</span>
-                    <span class="metric-value">₹48.5 L</span>
-                </div>
-                <div class="metric-icon-box green">
-                    <i class="fa-solid fa-indian-rupee-sign"></i>
-                </div>
-            </div>
-
-            <!-- Card 8 -->
-            <div class="metric-card">
-                <div class="metric-info">
-                    <span class="metric-label">Revenue This Month</span>
-                    <span class="metric-value">₹6.2 L</span>
-                </div>
-                <div class="metric-icon-box green">
-                    <i class="fa-solid fa-chart-line"></i>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section: College Overview & Student Overview -->
-        <div class="dashboard-row-2">
-            <!-- College Overview Panel -->
-            <div class="panel-card">
-                <h3 class="panel-title">
-                    COLLEGE OVERVIEW
-                    <i class="fa-solid fa-building-columns"></i>
-                </h3>
-                <div class="overview-list">
-                    <div class="overview-item">
-                        <span class="overview-item-label">Total</span>
-                        <span class="overview-item-val">125</span>
+            <!-- Metric Cards (8 Cards Grid) -->
+            <div class="metrics-grid">
+                <!-- Card 1 -->
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Colleges</span>
+                        <span class="metric-value">125</span>
                     </div>
-                    <div class="overview-item">
-                        <span class="overview-item-label">Active</span>
-                        <span class="overview-item-val" style="color: var(--accent-green);">98</span>
-                    </div>
-                    <div class="overview-item">
-                        <span class="overview-item-label">Inactive</span>
-                        <span class="overview-item-val" style="color: var(--accent-red);">27</span>
-                    </div>
-                    <div class="overview-item">
-                        <span class="overview-item-label">New Month</span>
-                        <span class="overview-item-val" style="color: var(--accent-blue);">8</span>
+                    <div class="metric-icon-box">
+                        <i class="fa-solid fa-school"></i>
                     </div>
                 </div>
 
-                <div class="chart-placeholder">
-                    <i class="fa-solid fa-chart-area" style="font-size: 1.8rem;"></i>
-                    <span>[Growth Chart Visualizer]</span>
+                <!-- Card 2 -->
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Active Colleges</span>
+                        <span class="metric-value">98</span>
+                    </div>
+                    <div class="metric-icon-box green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Students</span>
+                        <span class="metric-value">12,450</span>
+                    </div>
+                    <div class="metric-icon-box">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Active Students</span>
+                        <span class="metric-value">8,720</span>
+                    </div>
+                    <div class="metric-icon-box green">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Courses</span>
+                        <span class="metric-value">24</span>
+                    </div>
+                    <div class="metric-icon-box">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Enrollments</span>
+                        <span class="metric-value">18,650</span>
+                    </div>
+                    <div class="metric-icon-box gold">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Total Revenue</span>
+                        <span class="metric-value">₹48.5 L</span>
+                    </div>
+                    <div class="metric-icon-box green">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="metric-card">
+                    <div class="metric-info">
+                        <span class="metric-label">Revenue This Month</span>
+                        <span class="metric-value">₹6.2 L</span>
+                    </div>
+                    <div class="metric-icon-box green">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
                 </div>
             </div>
 
-            <!-- Student Overview Panel -->
-            <div class="panel-card">
-                <h3 class="panel-title">
-                    STUDENT OVERVIEW
-                    <i class="fa-solid fa-users"></i>
-                </h3>
-                <div class="overview-list">
-                    <div class="overview-item">
-                        <span class="overview-item-label">Total</span>
-                        <span class="overview-item-val">12,450</span>
-                    </div>
-                    <div class="overview-item">
-                        <span class="overview-item-label">Active</span>
-                        <span class="overview-item-val" style="color: var(--accent-green);">8,720</span>
-                    </div>
-                    <div class="overview-item">
-                        <span class="overview-item-label">Inactive</span>
-                        <span class="overview-item-val" style="color: var(--accent-red);">3,730</span>
-                    </div>
-                    <div class="overview-item">
-                        <span class="overview-item-label">New Month</span>
-                        <span class="overview-item-val" style="color: var(--accent-blue);">850</span>
-                    </div>
-                </div>
-
-                <div class="chart-placeholder">
-                    <i class="fa-solid fa-chart-pie" style="font-size: 1.8rem;"></i>
-                    <span>[Active Chart Visualizer]</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section: Course Performance -->
-        <div class="dashboard-row-full">
-            <div class="panel-card">
-                <h3 class="panel-title">
-                    COURSE PERFORMANCE
-                    <i class="fa-solid fa-chart-simple"></i>
-                </h3>
-                <div class="course-perf-list">
-                    <!-- Course 1 -->
-                    <div class="course-perf-item">
-                        <span class="course-perf-name">Communication Skills</span>
-                        <span class="course-perf-students">2,450 students</span>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-bg">
-                                <div class="progress-bar-fill" style="width: 82%;"></div>
-                            </div>
-                            <span class="progress-pct">82%</span>
+            <!-- College Overview & Student Overview -->
+            <div class="dashboard-row-2">
+                <!-- College Overview Panel -->
+                <div class="panel-card">
+                    <h3 class="panel-title">
+                        COLLEGE OVERVIEW
+                        <i class="fa-solid fa-building-columns"></i>
+                    </h3>
+                    <div class="overview-list">
+                        <div class="overview-item">
+                            <span class="overview-item-label">Total</span>
+                            <span class="overview-item-val">125</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-item-label">Active</span>
+                            <span class="overview-item-val" style="color: var(--accent-green);">98</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-item-label">Inactive</span>
+                            <span class="overview-item-val" style="color: var(--accent-red);">27</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-item-label">New Month</span>
+                            <span class="overview-item-val" style="color: var(--accent-blue);">8</span>
                         </div>
                     </div>
 
-                    <!-- Course 2 -->
-                    <div class="course-perf-item">
-                        <span class="course-perf-name">Interview Skills</span>
-                        <span class="course-perf-students">1,980 students</span>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-bg">
-                                <div class="progress-bar-fill" style="width: 88%;"></div>
-                            </div>
-                            <span class="progress-pct">88%</span>
-                        </div>
-                    </div>
-
-                    <!-- Course 3 -->
-                    <div class="course-perf-item">
-                        <span class="course-perf-name">Presentation Skills</span>
-                        <span class="course-perf-students">1,250 students</span>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar-bg">
-                                <div class="progress-bar-fill" style="width: 76%;"></div>
-                            </div>
-                            <span class="progress-pct">76%</span>
-                        </div>
+                    <div class="chart-placeholder">
+                        <i class="fa-solid fa-chart-area" style="font-size: 1.8rem;"></i>
+                        <span>[Growth Chart Visualizer]</span>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Section: College / Individual Distribution & Attention Required -->
-        <div class="dashboard-row-3">
-            <!-- Distribution Panel -->
-            <div class="panel-card">
-                <h3 class="panel-title">
-                    COLLEGE / INDIVIDUAL
-                    <i class="fa-solid fa-diagram-project"></i>
-                </h3>
-                <div class="dist-list">
-                    <div class="dist-row">
-                        <span><i class="fa-solid fa-school" style="color: var(--accent-blue); margin-right: 8px;"></i> College</span>
-                        <span>9,800</span>
-                        <span style="color: var(--accent-blue);">79%</span>
+                <!-- Student Overview Panel -->
+                <div class="panel-card">
+                    <h3 class="panel-title">
+                        STUDENT OVERVIEW
+                        <i class="fa-solid fa-users"></i>
+                    </h3>
+                    <div class="overview-list">
+                        <div class="overview-item">
+                            <span class="overview-item-label">Total</span>
+                            <span class="overview-item-val">12,450</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-item-label">Active</span>
+                            <span class="overview-item-val" style="color: var(--accent-green);">8,720</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-item-label">Inactive</span>
+                            <span class="overview-item-val" style="color: var(--accent-red);">3,730</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-item-label">New Month</span>
+                            <span class="overview-item-val" style="color: var(--accent-blue);">850</span>
+                        </div>
                     </div>
-                    <div class="dist-row">
-                        <span><i class="fa-solid fa-user" style="color: var(--accent-gold); margin-right: 8px;"></i> Individual</span>
-                        <span>2,650</span>
-                        <span style="color: var(--accent-gold);">21%</span>
+
+                    <div class="chart-placeholder">
+                        <i class="fa-solid fa-chart-pie" style="font-size: 1.8rem;"></i>
+                        <span>[Active Chart Visualizer]</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Attention Required Panel -->
-            <div class="panel-card">
-                <h3 class="panel-title" style="color: var(--accent-red);">
-                    ATTENTION REQUIRED
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                </h3>
-                <div class="attention-list">
-                    <div class="attention-item">
-                        <i class="fa-solid fa-circle-exclamation"></i>
-                        <span>5 inactive colleges needing follow-up</span>
+            <!-- Course Performance -->
+            <div class="dashboard-row-full">
+                <div class="panel-card">
+                    <h3 class="panel-title">
+                        COURSE PERFORMANCE
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </h3>
+                    <div class="course-perf-list">
+                        <!-- Course 1 -->
+                        <div class="course-perf-item">
+                            <span class="course-perf-name">Communication Skills</span>
+                            <span class="course-perf-students">2,450 students</span>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 82%;"></div>
+                                </div>
+                                <span class="progress-pct">82%</span>
+                            </div>
+                        </div>
+
+                        <!-- Course 2 -->
+                        <div class="course-perf-item">
+                            <span class="course-perf-name">Interview Skills</span>
+                            <span class="course-perf-students">1,980 students</span>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 88%;"></div>
+                                </div>
+                                <span class="progress-pct">88%</span>
+                            </div>
+                        </div>
+
+                        <!-- Course 3 -->
+                        <div class="course-perf-item">
+                            <span class="course-perf-name">Presentation Skills</span>
+                            <span class="course-perf-students">1,250 students</span>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 76%;"></div>
+                                </div>
+                                <span class="progress-pct">76%</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="attention-item">
-                        <i class="fa-solid fa-clock-rotate-left"></i>
-                        <span>12 course renewals due this week</span>
+                </div>
+            </div>
+
+            <!-- College / Individual Distribution & Attention Required -->
+            <div class="dashboard-row-3">
+                <!-- Distribution Panel -->
+                <div class="panel-card">
+                    <h3 class="panel-title">
+                        COLLEGE / INDIVIDUAL
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </h3>
+                    <div class="dist-list">
+                        <div class="dist-row">
+                            <span><i class="fa-solid fa-school" style="color: var(--accent-blue); margin-right: 8px;"></i> College</span>
+                            <span>9,800</span>
+                            <span style="color: var(--accent-blue);">79%</span>
+                        </div>
+                        <div class="dist-row">
+                            <span><i class="fa-solid fa-user" style="color: var(--accent-gold); margin-right: 8px;"></i> Individual</span>
+                            <span>2,650</span>
+                            <span style="color: var(--accent-gold);">21%</span>
+                        </div>
                     </div>
-                    <div class="attention-item">
+                </div>
+
+                <!-- Attention Required Panel -->
+                <div class="panel-card">
+                    <h3 class="panel-title" style="color: var(--accent-red);">
+                        ATTENTION REQUIRED
                         <i class="fa-solid fa-triangle-exclamation"></i>
-                        <span>3 payment installments overdue</span>
+                    </h3>
+                    <div class="attention-list">
+                        <div class="attention-item">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <span>5 inactive colleges needing follow-up</span>
+                        </div>
+                        <div class="attention-item">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            <span>12 course renewals due this week</span>
+                        </div>
+                        <div class="attention-item">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>3 payment installments overdue</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
+    <!-- JavaScript Sidebar Toggle Handler -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('toggle-sidebar');
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+
+            toggleBtn.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    sidebar.classList.toggle('mobile-open');
+                } else {
+                    sidebar.classList.toggle('collapsed');
+                    mainContent.classList.toggle('expanded');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
