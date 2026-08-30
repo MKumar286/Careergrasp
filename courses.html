@@ -33,7 +33,7 @@
             flex-direction: column;
         }
 
-        /* Header Navigation (No Login Button) */
+        /* Header Navigation */
         header {
             position: fixed;
             top: 0;
@@ -627,7 +627,7 @@
                     <i class="fa-solid fa-arrow-left"></i> Back to Courses List
                 </button>
                 <a href="#" id="pdf-view-btn" target="_blank" class="btn-pdf-view">
-                    <i class="fa-solid fa-file-pdf"></i> View / Download PDF Syllabus
+                    <i class="fa-solid fa-file-pdf"></i> View / Download Full Course Syllabus PDF
                 </a>
             </div>
 
@@ -721,7 +721,7 @@
                     <i class="fa-solid fa-layer-group"></i> Comprehensive Module Breakdown & Video Lessons
                 </h3>
                 <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.2rem;">
-                    Click on any module to expand, view syllabus topics, and stream video lessons.
+                    Click on any module to expand, view syllabus topics, access session PDFs, and stream video lessons.
                 </p>
                 <div id="modules-accordion-container"></div>
             </div>
@@ -775,8 +775,20 @@
                         hours: "8 Hours",
                         topics: ["Verbal & Non-Verbal Dynamics", "Kinesics & Body Language Control", "Overcoming Communication Barriers", "Vocal Pitch & Modulation"],
                         videos: [
-                            { id: "c1_m1_v1", name: "Lesson 1: Verbal & Non-Verbal Dynamics", duration: "14:20", driveLink: DEFAULT_DRIVE_LINK },
-                            { id: "c1_m1_v2", name: "Lesson 2: Kinesics & Body Language Control", duration: "18:45", driveLink: DEFAULT_DRIVE_LINK }
+                            { 
+                                id: "c1_m1_v1", 
+                                name: "Lesson 1: Verbal & Non-Verbal Dynamics", 
+                                duration: "14:20", 
+                                driveLink: DEFAULT_DRIVE_LINK,
+                                pdfLink: DUMMY_PDF 
+                            },
+                            { 
+                                id: "c1_m1_v2", 
+                                name: "Lesson 2: Kinesics & Body Language Control", 
+                                duration: "18:45", 
+                                driveLink: DEFAULT_DRIVE_LINK,
+                                pdfLink: DUMMY_PDF 
+                            }
                         ]
                     },
                     {
@@ -784,7 +796,13 @@
                         hours: "10 Hours",
                         topics: ["Email Formatting & Professional Tone", "Drafting Executive Summaries", "Netiquette & Digital Protocols"],
                         videos: [
-                            { id: "c1_m2_v1", name: "Lesson 1: Email Formatting Protocols", duration: "15:30", driveLink: DEFAULT_DRIVE_LINK }
+                            { 
+                                id: "c1_m2_v1", 
+                                name: "Lesson 1: Email Formatting Protocols", 
+                                duration: "15:30", 
+                                driveLink: DEFAULT_DRIVE_LINK,
+                                pdfLink: DUMMY_PDF 
+                            }
                         ]
                     }
                 ]
@@ -810,13 +828,17 @@
                         hours: "10 Hours",
                         topics: ["Job Description Analysis", "Aligning Skills with Roles", "First Impressions & Grooming"],
                         videos: [
-                            { id: "c2_m1_v1", name: "Lesson 1: Job Description Analysis", duration: "16:40", driveLink: DEFAULT_DRIVE_LINK }
+                            { 
+                                id: "c2_m1_v1", 
+                                name: "Lesson 1: Job Description Analysis", 
+                                duration: "16:40", 
+                                driveLink: DEFAULT_DRIVE_LINK,
+                                pdfLink: DUMMY_PDF 
+                            }
                         ]
                     }
                 ]
             },
-
-            
             {
                 id: "c3",
                 title: "Presentation & Pitching Skills",
@@ -837,7 +859,7 @@
                         hours: "8 Hours",
                         topics: ["Storyboarding Techniques", "Visual Hierarchy in Slides", "Eliminating Text Clutter"],
                         videos: [
-                            { id: "c3_m1_v1", name: "Lesson 1: Storyboarding & Visual Hierarchy", duration: "18:20", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c3_m1_v1", name: "Lesson 1: Storyboarding & Visual Hierarchy", duration: "18:20", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -862,7 +884,7 @@
                         hours: "6 Hours",
                         topics: ["Factual vs Abstract Topics", "Case Study Based GDs", "Tactical Interventions"],
                         videos: [
-                            { id: "c4_m1_v1", name: "Lesson 1: Factual vs Abstract Topics", duration: "12:45", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c4_m1_v1", name: "Lesson 1: Factual vs Abstract Topics", duration: "12:45", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -887,7 +909,7 @@
                         hours: "5 Hours",
                         topics: ["ATS Parsing Mechanics", "Section Layout & Typography", "Keyword Matching"],
                         videos: [
-                            { id: "c5_m1_v1", name: "Lesson 1: ATS Parsing Mechanics", duration: "11:30", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c5_m1_v1", name: "Lesson 1: ATS Parsing Mechanics", duration: "11:30", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -912,7 +934,7 @@
                         hours: "12 Hours",
                         topics: ["Vedic Math Multiplication Shortcuts", "Square & Cube Roots Tricks", "Number Properties"],
                         videos: [
-                            { id: "c6_m1_v1", name: "Lesson 1: Mental Math & Vedic Multiplication", duration: "25:00", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c6_m1_v1", name: "Lesson 1: Mental Math & Vedic Multiplication", duration: "25:00", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -937,7 +959,7 @@
                         hours: "5 Hours",
                         topics: ["Business Formal vs Smart Casuals", "Grooming Standards", "First Impression Metrics"],
                         videos: [
-                            { id: "c7_m1_v1", name: "Lesson 1: Dress Code Standards", duration: "13:15", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c7_m1_v1", name: "Lesson 1: Dress Code Standards", duration: "13:15", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -962,7 +984,7 @@
                         hours: "7 Hours",
                         topics: ["Situational Leadership Framework", "Task Assignment Matrix", "Conflict Resolution"],
                         videos: [
-                            { id: "c8_m1_v1", name: "Lesson 1: Situational Leadership Framework", duration: "21:10", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c8_m1_v1", name: "Lesson 1: Situational Leadership Framework", duration: "21:10", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -987,7 +1009,7 @@
                         hours: "4 Hours",
                         topics: ["Eisenhower Urgent vs Important Matrix", "ABCDE Task Sorting", "Time Blocking"],
                         videos: [
-                            { id: "c9_m1_v1", name: "Lesson 1: Eisenhower Matrix Execution", duration: "14:00", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c9_m1_v1", name: "Lesson 1: Eisenhower Matrix Execution", duration: "14:00", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -1012,7 +1034,7 @@
                         hours: "5 Hours",
                         topics: ["Emotional Trigger Audits", "Mindfulness Drills", "Resilience Building"],
                         videos: [
-                            { id: "c10_m1_v1", name: "Lesson 1: Emotional Trigger Audits", duration: "15:45", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c10_m1_v1", name: "Lesson 1: Emotional Trigger Audits", duration: "15:45", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -1037,7 +1059,7 @@
                         hours: "7 Hours",
                         topics: ["The 5 Whys Technique", "Ishikawa (Fishbone) Diagram", "Pareto Analysis"],
                         videos: [
-                            { id: "c11_m1_v1", name: "Lesson 1: The 5 Whys & Fishbone Diagram", duration: "20:15", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c11_m1_v1", name: "Lesson 1: The 5 Whys & Fishbone Diagram", duration: "20:15", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -1062,7 +1084,7 @@
                         hours: "6 Hours",
                         topics: ["Calculating ZOPA & BATNA", "Persuasion Principles", "Evaluating Offer Letters"],
                         videos: [
-                            { id: "c12_m1_v1", name: "Lesson 1: Calculating ZOPA & BATNA", duration: "16:20", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c12_m1_v1", name: "Lesson 1: Calculating ZOPA & BATNA", duration: "16:20", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -1087,7 +1109,7 @@
                         hours: "8 Hours",
                         topics: ["Corporate Terminology & Jargon", "Neutral Accent Training", "Word Stress"],
                         videos: [
-                            { id: "c13_m1_v1", name: "Lesson 1: Corporate Terminology & Phrasal Verbs", duration: "17:30", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c13_m1_v1", name: "Lesson 1: Corporate Terminology & Phrasal Verbs", duration: "17:30", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -1112,7 +1134,7 @@
                         hours: "10 Hours",
                         topics: ["VLOOKUP vs XLOOKUP Mechanics", "INDEX & MATCH Combinations", "Building Pivot Dashboards"],
                         videos: [
-                            { id: "c14_m1_v1", name: "Lesson 1: XLOOKUP & INDEX MATCH Functions", duration: "24:15", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c14_m1_v1", name: "Lesson 1: XLOOKUP & INDEX MATCH Functions", duration: "24:15", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -1137,7 +1159,7 @@
                         hours: "6 Hours",
                         topics: ["User Interview Techniques", "Empathy Mapping", "Rapid Prototyping"],
                         videos: [
-                            { id: "c15_m1_v1", name: "Lesson 1: User Empathy Mapping", duration: "16:00", driveLink: DEFAULT_DRIVE_LINK }
+                            { id: "c15_m1_v1", name: "Lesson 1: User Empathy Mapping", duration: "16:00", driveLink: DEFAULT_DRIVE_LINK, pdfLink: DUMMY_PDF }
                         ]
                     }
                 ]
@@ -1223,15 +1245,22 @@
                         <ul class="module-topics-list">
                             ${mod.topics.map(t => `<li><i class="fa-solid fa-circle-check"></i> ${t}</li>`).join('')}
                         </ul>
-                        <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-main);">Video Lessons:</div>
+                        <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-main);">Video Lessons & Session Materials:</div>
                         ${mod.videos.map(v => `
                             <div class="video-item-row">
                                 <div class="video-info">
                                     <i class="fa-solid fa-circle-play"></i>
                                     <span>${v.name}</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 12px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
                                     <span class="video-duration">${v.duration}</span>
+                                    
+                                    ${v.pdfLink ? `
+                                        <a href="${v.pdfLink}" target="_blank" class="glass-btn" style="padding: 0.35rem 0.75rem; font-size: 0.82rem; text-decoration: none;">
+                                            <i class="fa-solid fa-file-pdf" style="color: var(--accent-gold);"></i> PDF Notes
+                                        </a>
+                                    ` : ''}
+
                                     <button class="btn-play-video" onclick="playVideo('${v.id}', '${v.name}', '${v.driveLink}')">
                                         <i class="fa-solid fa-play"></i> Watch
                                     </button>
@@ -1267,7 +1296,6 @@
 
             videoModal.style.display = "block";
 
-            // Convert Google Drive view URL to embed preview
             if (driveLink.includes("drive.google.com")) {
                 let previewUrl = driveLink;
                 if (previewUrl.includes("/view")) {
@@ -1289,7 +1317,6 @@
                 document.getElementById("progress-track-fill").style.width = "100%";
                 document.getElementById("progress-percentage-text").innerText = "Streaming via Google Drive Embed";
             } else {
-                // Native MP4 video fallback
                 iframePlayer.src = "";
                 iframePlayer.style.display = "none";
 
