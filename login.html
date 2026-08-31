@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAREER GRASPP - Login & Authentication Portal</title>
+    <title>CAREER GRASPP - Login Portal</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-primary: #f8fafc;
+            --card-bg: #ffffff;
             --accent-blue: #1e3a8a;
-            --accent-hover: #1e40af;
             --accent-gold: #d97706;
+            --accent-green: #16a34a;
             --text-main: #0f172a;
             --text-muted: #64748b;
             --border-color: #cbd5e1;
-            --card-bg: #ffffff;
-            --input-bg: #f1f5f9;
         }
 
         * {
@@ -27,430 +26,250 @@
         }
 
         body {
-            background-color: var(--bg-primary);
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 2rem 1rem;
-            position: relative;
-        }
-
-        /* Navigation to Return to Part 1 */
-        .auth-top-nav {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-
-        .btn-back-home {
-            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 0.65rem 1.2rem;
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            transition: all 0.2s ease;
-            cursor: pointer;
+            padding: 2rem 1rem;
         }
 
-        .btn-back-home:hover {
-            background: #ffffff;
-            border-color: var(--accent-blue);
-            color: var(--accent-blue);
-            transform: translateY(-2px);
+        /* Top Brand Header */
+        .login-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+
+        .login-brand img {
+            height: 52px;
+            width: auto;
+            border-radius: 8px;
         }
 
         /* Card Container */
-        .auth-card {
+        .login-card {
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
             border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
             width: 100%;
-            max-width: 480px;
+            max-width: 440px;
             padding: 2.5rem 2rem;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-            margin: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .auth-header {
+        .login-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-align: center;
+            margin-bottom: 0.4rem;
+        }
+
+        .login-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
             text-align: center;
             margin-bottom: 1.8rem;
         }
 
-        .auth-logo {
-            height: 52px;
-            width: auto;
-            margin-bottom: 1rem;
-        }
-
-        .auth-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 0.3rem;
-        }
-
-        .auth-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        /* Tab Controls */
-        .auth-tabs {
-            display: flex;
-            background: var(--input-bg);
-            border-radius: 12px;
+        /* Role Switcher Tabs */
+        .role-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: #f1f5f9;
             padding: 4px;
+            border-radius: 12px;
+            gap: 4px;
             margin-bottom: 1.5rem;
-            border: 1px solid var(--border-color);
         }
 
-        .tab-btn {
-            flex: 1;
-            padding: 0.75rem;
+        .role-btn {
+            padding: 0.6rem 0.4rem;
             border: none;
-            background: transparent;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--text-muted);
             border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: transparent;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tab-btn.active {
-            background: #ffffff;
-            color: var(--accent-blue);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        /* Form Structure */
-        .auth-form {
+            transition: all 0.2s ease;
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            align-items: center;
+            gap: 4px;
         }
 
+        .role-btn i {
+            font-size: 1rem;
+        }
+
+        .role-btn.active {
+            background: #ffffff;
+            color: var(--accent-blue);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Form Controls */
         .form-group {
+            margin-bottom: 1.2rem;
             display: flex;
             flex-direction: column;
             gap: 0.4rem;
         }
 
         .form-group label {
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 700;
             color: var(--text-main);
         }
 
         .input-wrapper {
             position: relative;
-            display: flex;
-            align-items: center;
         }
 
-        .input-icon {
-            position: absolute;
-            left: 14px;
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 14px;
-            color: var(--text-muted);
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .form-control {
+        .input-wrapper input {
             width: 100%;
-            padding: 0.8rem 1rem 0.8rem 2.6rem;
+            padding: 0.75rem 1rem 0.75rem 2.6rem;
             border-radius: 10px;
             border: 1px solid var(--border-color);
-            background: #ffffff;
-            font-size: 0.95rem;
             outline: none;
-            appearance: none;
+            font-size: 0.92rem;
+            transition: border-color 0.2s;
         }
 
-        select.form-control {
-            cursor: pointer;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2364748b' viewBox='0 0 16 16'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
-            background-repeat: no-repeat;
-            background-position: calc(100% - 15px) center;
-        }
-
-        .form-control:focus {
+        .input-wrapper input:focus {
             border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.12);
         }
 
-        .btn-auth-submit {
+        .input-wrapper i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .submit-btn {
             width: 100%;
             padding: 0.85rem;
             border-radius: 10px;
-            border: none;
-            background: linear-gradient(135deg, #1e3a8a 0%, #d97706 100%);
+            background: var(--accent-blue);
             color: #ffffff;
+            border: none;
+            font-size: 0.95rem;
             font-weight: 700;
-            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.2);
+            transition: background 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             margin-top: 0.5rem;
         }
 
-        .btn-auth-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
+        .submit-btn:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
         }
 
-        #message-box {
-            padding: 0.75rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: none;
+        .back-home-link {
+            display: block;
             text-align: center;
-            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: color 0.2s;
         }
 
-        #message-box.error {
-            background-color: #fee2e2;
-            color: #991b1b;
-        }
-
-        #message-box.success {
-            background-color: #dcfce7;
-            color: #166534;
-        }
-
-        #register-form {
-            display: none;
+        .back-home-link:hover {
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
 
-    <!-- Link Back to Main Website (Part 1) -->
-    <div class="auth-top-nav">
-        <a href="index.html" class="btn-back-home">
-            <i class="fa-solid fa-arrow-left"></i> Back to Main Site
-        </a>
-    </div>
+    <!-- Top Brand Header -->
+    <a href="index.html" class="login-brand">
+        <img src="grasp.jpg" alt="CAREER GRASPP Logo"
+             onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'220\' height=\'52\' viewBox=\'0 0 220 52\'><rect width=\'220\' height=\'52\' fill=\'%230b1120\' rx=\'6\'/><text x=\'15\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'110\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text></svg>';">
+    </a>
 
-    <div class="auth-card">
-        <div class="auth-header">
-            <img src="grasp.jpg" 
-                 alt="CAREER GRASPP Logo" 
-                 class="auth-logo"
-                 onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'220\' height=\'52\' viewBox=\'0 0 220 52\'><rect width=\'220\' height=\'52\' fill=\'%230b1120\' rx=\'6\'/><text x=\'15\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'110\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text></svg>';">
-            <h1 class="auth-title">CAREER GRASPP</h1>
-            <p class="auth-subtitle">Select your portal to proceed</p>
-        </div>
+    <!-- Login Card -->
+    <div class="login-card">
+        <h2 class="login-title">Welcome Back</h2>
+        <p class="login-subtitle">Sign in to access your training portal</p>
 
-        <div class="auth-tabs">
-            <button class="tab-btn active" id="tab-login" onclick="switchAuthTab('login')">Login</button>
-            <button class="tab-btn" id="tab-register" onclick="switchAuthTab('register')">Register</button>
-        </div>
-
-        <div id="message-box"></div>
-
-        <!-- LOGIN FORM WITH ROLE DROPDOWN -->
-        <form class="auth-form" id="login-form" onsubmit="handleAuth(event, 'login')">
-            <div class="form-group">
-                <label for="login-role">Select Portal / Role</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-user-shield input-icon"></i>
-                    <select id="login-role" class="form-control" required>
-                        <option value="Admin">Admin Portal</option>
-                        <option value="Student">Student Portal</option>
-                        <option value="Organization">Organization / Enterprise</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="login-email">Email Address</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-envelope input-icon"></i>
-                    <input type="email" id="login-email" class="form-control" placeholder="name@domain.com" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="login-password">Password</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-lock input-icon"></i>
-                    <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
-                    <i class="fa-solid fa-eye toggle-password" onclick="togglePasswordVisibility('login-password', this)"></i>
-                </div>
-            </div>
-
-            <button type="submit" class="btn-auth-submit" id="login-submit-btn">
-                Sign In <i class="fa-solid fa-right-to-bracket"></i>
+        <!-- Role Selector -->
+        <div class="role-tabs">
+            <button class="role-btn active" id="btn-admin" onclick="selectRole('admin')">
+                <i class="fa-solid fa-user-shield"></i> Admin
             </button>
-        </form>
+            <button class="role-btn" id="btn-student" onclick="selectRole('student')">
+                <i class="fa-solid fa-user-graduate"></i> Student
+            </button>
+            <button class="role-btn" id="btn-org" onclick="selectRole('org')">
+                <i class="fa-solid fa-building-columns"></i> Partner Org
+            </button>
+        </div>
 
-        <!-- REGISTER FORM -->
-        <form class="auth-form" id="register-form" onsubmit="handleAuth(event, 'register')">
+        <!-- Login Form -->
+        <form onsubmit="handleLogin(event)">
+            <input type="hidden" id="selectedRole" value="admin">
+
             <div class="form-group">
-                <label for="reg-role">Register As</label>
+                <label>Email Address</label>
                 <div class="input-wrapper">
-                    <i class="fa-solid fa-user-gear input-icon"></i>
-                    <select id="reg-role" class="form-control" required>
-                        <option value="Student">Student</option>
-                        <option value="Organization">Organization / College</option>
-                    </select>
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="loginEmail" value="Careergraspp@gmail.com" placeholder="name@domain.com" required>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="reg-name">Full Name / Org Name</label>
+                <label>Password</label>
                 <div class="input-wrapper">
-                    <i class="fa-solid fa-user input-icon"></i>
-                    <input type="text" id="reg-name" class="form-control" placeholder="Enter full name or organization name" required>
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="loginPassword" value="Kumar@2422" placeholder="••••••••" required>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="reg-email">Email Address</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-envelope input-icon"></i>
-                    <input type="email" id="reg-email" class="form-control" placeholder="name@domain.com" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="reg-password">Create Password</label>
-                <div class="input-wrapper">
-                    <i class="fa-solid fa-lock input-icon"></i>
-                    <input type="password" id="reg-password" class="form-control" placeholder="At least 6 characters" required minlength="6">
-                    <i class="fa-solid fa-eye toggle-password" onclick="togglePasswordVisibility('reg-password', this)"></i>
-                </div>
-            </div>
-
-            <button type="submit" class="btn-auth-submit" id="reg-submit-btn">
-                Create Account <i class="fa-solid fa-user-plus"></i>
+            <button type="submit" class="submit-btn">
+                <i class="fa-solid fa-right-to-bracket"></i> Login to Portal
             </button>
         </form>
     </div>
+
+    <a href="index.html" class="back-home-link">
+        <i class="fa-solid fa-arrow-left"></i> Return to Main Website
+    </a>
 
     <script>
-        const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
-
-        function switchAuthTab(type) {
-            const loginForm = document.getElementById('login-form');
-            const registerForm = document.getElementById('register-form');
-            const tabLogin = document.getElementById('tab-login');
-            const tabRegister = document.getElementById('tab-register');
-            hideMessage();
-
-            if (type === 'login') {
-                loginForm.style.display = 'flex';
-                registerForm.style.display = 'none';
-                tabLogin.classList.add('active');
-                tabRegister.classList.remove('active');
-            } else {
-                loginForm.style.display = 'none';
-                registerForm.style.display = 'flex';
-                tabRegister.classList.add('active');
-                tabLogin.classList.remove('active');
-            }
+        function selectRole(role) {
+            document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${role}`).classList.add('active');
+            document.getElementById('selectedRole').value = role;
         }
 
-        function togglePasswordVisibility(fieldId, iconElement) {
-            const passwordField = document.getElementById(fieldId);
-            if (passwordField.type === 'password') {
-                passwordField.type = 'text';
-                iconElement.classList.remove('fa-eye');
-                iconElement.classList.add('fa-eye-slash');
-            } else {
-                passwordField.type = 'password';
-                iconElement.classList.remove('fa-eye-slash');
-                iconElement.classList.add('fa-eye');
-            }
-        }
-
-        function showMessage(msg, isError) {
-            const box = document.getElementById('message-box');
-            box.innerText = msg;
-            box.className = isError ? 'error' : 'success';
-            box.style.display = 'block';
-        }
-
-        function hideMessage() {
-            document.getElementById('message-box').style.display = 'none';
-        }
-
-        async function handleAuth(event, type) {
+        function handleLogin(event) {
             event.preventDefault();
-            hideMessage();
 
-            const submitBtn = document.getElementById(type === 'login' ? 'login-submit-btn' : 'reg-submit-btn');
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'Verifying...';
+            const role = document.getElementById('selectedRole').value;
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
 
-            let role = document.getElementById(type === 'login' ? 'login-role' : 'reg-role').value;
-            let email = document.getElementById(type === 'login' ? 'login-email' : 'reg-email').value;
-            let password = document.getElementById(type === 'login' ? 'login-password' : 'reg-password').value;
-
-            // Admin Authentication Check
-            if (type === 'login' && role === 'Admin') {
-                if (email === 'Careergraspp@gmail.com' && password === '1234') {
-                    showMessage('Admin Login Successful! Redirecting to Dashboard...', false);
-                    setTimeout(() => {
-                        window.location.href = 'dashboard.html';
-                    }, 1000);
-                    return;
-                } else {
-                    showMessage('Invalid Admin credentials. Access denied.', true);
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'Sign In <i class="fa-solid fa-right-to-bracket"></i>';
-                    return;
-                }
-            }
-
-            // General Authentication Request
-            let payload = { action: type, role: role, email: email, password: password };
-            if (type === 'register') {
-                payload.name = document.getElementById('reg-name').value;
-            }
-
-            try {
-                if (SCRIPT_URL !== "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL") {
-                    const response = await fetch(SCRIPT_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                        body: JSON.stringify(payload)
-                    });
-                    const result = await response.json();
-                    if (result.status === 'success') {
-                        showMessage(`Login Successful as ${role}! Welcome ${result.name || ''}`, false);
-                    } else {
-                        showMessage(result.message, true);
-                    }
-                } else {
-                    showMessage(`Logged in successfully as [${role}]!`, false);
-                }
-            } catch (err) {
-                showMessage('Authentication error. Please check your connection.', true);
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = type === 'login' 
-                    ? 'Sign In <i class="fa-solid fa-right-to-bracket"></i>' 
-                    : 'Create Account <i class="fa-solid fa-user-plus"></i>';
+            // Route dynamically based on selected role
+            if (role === 'org') {
+                window.location.href = 'organization.html';
+            } else if (role === 'student') {
+                window.location.href = 'courses.html';
+            } else {
+                window.location.href = 'dashboard.html';
             }
         }
     </script>
