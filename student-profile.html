@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAREER GRASPP - Student Profile & Portal</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --card-bg: #ffffff;
+            --accent-blue: #1e3a8a;
+            --accent-gold: #d97706;
+            --accent-green: #16a34a;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 44px;
+            width: auto;
+            border-radius: 6px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .glass-btn {
+            padding: 0.55rem 1.1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            color: var(--text-main);
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .glass-btn:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .glass-btn.primary {
+            background: var(--accent-blue);
+            color: #ffffff;
+            border-color: var(--accent-blue);
+        }
+
+        .glass-btn.primary:hover {
+            background: #1e40af;
+            color: #ffffff;
+        }
+
+        main {
+            margin-top: 70px;
+            flex: 1;
+            padding: 2.5rem 2rem 5rem 2rem;
+            max-width: 1280px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Profile Banner */
+        .profile-banner {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 2.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15);
+        }
+
+        .profile-user-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .profile-avatar-wrapper {
+            position: relative;
+        }
+
+        .profile-avatar {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ffffff;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+            background: #cbd5e1;
+        }
+
+        .badge-verified {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            background: var(--accent-green);
+            color: #ffffff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            border: 2px solid #ffffff;
+        }
+
+        .user-details h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        .user-details p {
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .student-tag {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #fde68a;
+        }
+
+        /* Metric Highlights */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .metric-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .metric-icon.blue { background: #eff6ff; color: var(--accent-blue); }
+        .metric-icon.gold { background: #fef3c7; color: var(--accent-gold); }
+        .metric-icon.green { background: #f0fdf4; color: var(--accent-green); }
+        .metric-icon.purple { background: #faf5ff; color: #9333ea; }
+
+        .metric-val {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .metric-label {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Portal Tabs */
+        .portal-tabs {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.4rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--accent-blue);
+        }
+
+        .tab-btn.active {
+            color: var(--accent-blue);
+            border-bottom-color: var(--accent-blue);
+        }
+
+        /* Tab Panels */
+        .tab-panel {
+            display: none;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* Purchased Course Cards */
+        .my-courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .my-course-card {
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .my-course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .my-course-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .my-course-body {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .my-course-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .progress-bar-container {
+            margin: 1rem 0;
+        }
+
+        .progress-bar-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            color: var(--text-muted);
+        }
+
+        .progress-bar-track {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-green) 100%);
+            border-radius: 10px;
+        }
+
+        /* Forms Styling */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .form-group input, .form-group select {
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--accent-blue);
+        }
+
+        /* Custom Table */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .custom-table th {
+            background: #f1f5f9;
+            padding: 0.9rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .custom-table td {
+            padding: 1rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .status-badge {
+            padding: 0.3rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .status-badge.green { background: #dcfce7; color: #15803d; }
+        .status-badge.blue { background: #dbeafe; color: #1d4ed8; }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="grasp.jpg" alt="CAREER GRASPP Logo" class="logo-img"
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'220\' height=\'52\' viewBox=\'0 0 220 52\'><rect width=\'220\' height=\'52\' fill=\'%230b1120\' rx=\'6\'/><text x=\'15\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%23eab308\'>CAREER</text><text x=\'110\' y=\'32\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'%232563eb\'>GRASPP</text></svg>';">
+        </a>
+        <div class="header-actions">
+            <a href="courses.html" class="glass-btn">
+                <i class="fa-solid fa-graduation-cap"></i> All Courses
+            </a>
+            <a href="login.html" class="glass-btn">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Profile Banner Header -->
+        <div class="profile-banner">
+            <div class="profile-user-info">
+                <div class="profile-avatar-wrapper">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Student Profile" class="profile-avatar" id="avatarPreview">
+                    <span class="badge-verified"><i class="fa-solid fa-check"></i></span>
+                </div>
+                <div class="user-details">
+                    <span class="student-tag"><i class="fa-solid fa-user-graduate"></i> Enrolled Learner</span>
+                    <h1 id="displayStudentName">Anish Kumar</h1>
+                    <p>
+                        <span><i class="fa-solid fa-building-columns"></i> KITS Warangal</span>
+                        <span>•</span>
+                        <span><i class="fa-solid fa-id-card"></i> Student ID: CG-2026-8841</span>
+                    </p>
+                </div>
+            </div>
+            <button class="glass-btn primary" onclick="switchTab('settings-tab-btn', 'panel-settings')">
+                <i class="fa-solid fa-pen-to-square"></i> Edit Profile
+            </button>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon blue">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <div>
+                    <div class="metric-val">3</div>
+                    <div class="metric-label">Enrolled Courses</div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon green">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div>
+                    <div class="metric-val">12 / 18</div>
+                    <div class="metric-label">Modules Completed</div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon gold">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div>
+                    <div class="metric-val">1 Issued</div>
+                    <div class="metric-label">Course Certificates</div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon purple">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+                <div>
+                    <div class="metric-val">14.5 Hrs</div>
+                    <div class="metric-label">Learning Duration</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portal Tabs -->
+        <div class="portal-tabs">
+            <button class="tab-btn active" id="courses-tab-btn" onclick="switchTab(this.id, 'panel-courses')">
+                <i class="fa-solid fa-graduation-cap"></i> My Enrolled Courses
+            </button>
+            <button class="tab-btn" id="certs-tab-btn" onclick="switchTab(this.id, 'panel-certs')">
+                <i class="fa-solid fa-certificate"></i> My Certificates
+            </button>
+            <button class="tab-btn" id="orders-tab-btn" onclick="switchTab(this.id, 'panel-orders')">
+                <i class="fa-solid fa-receipt"></i> Payment & Invoices
+            </button>
+            <button class="tab-btn" id="settings-tab-btn" onclick="switchTab(this.id, 'panel-settings')">
+                <i class="fa-solid fa-gear"></i> Account Settings
+            </button>
+        </div>
+
+        <!-- TAB 1: Enrolled Courses -->
+        <div class="tab-panel active" id="panel-courses">
+            <h3 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-circle-play" style="color: var(--accent-blue);"></i> Continue Learning</h3>
+            <div class="my-courses-grid">
+                <!-- Course 1 -->
+                <div class="my-course-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Communication Skills" class="my-course-img">
+                    <div class="my-course-body">
+                        <h4 class="my-course-title">Communication Skills</h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-text">
+                                <span>Progress</span>
+                                <span>75% Completed</span>
+                            </div>
+                            <div class="progress-bar-track">
+                                <div class="progress-bar-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <a href="courses.html" class="glass-btn primary" style="width: 100%; justify-content: center;">
+                            <i class="fa-solid fa-play"></i> Resume Lesson 3
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="my-course-card">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Quantitative Aptitude" class="my-course-img">
+                    <div class="my-course-body">
+                        <h4 class="my-course-title">Quantitative Aptitude & Reasoning</h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-text">
+                                <span>Progress</span>
+                                <span>40% Completed</span>
+                            </div>
+                            <div class="progress-bar-track">
+                                <div class="progress-bar-fill" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <a href="courses.html" class="glass-btn primary" style="width: 100%; justify-content: center;">
+                            <i class="fa-solid fa-play"></i> Resume Lesson 2
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="my-course-card">
+                    <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80" alt="Resume Building" class="my-course-img">
+                    <div class="my-course-body">
+                        <h4 class="my-course-title">Resume Building & LinkedIn Branding</h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-text">
+                                <span>Progress</span>
+                                <span style="color: var(--accent-green);">100% Completed</span>
+                            </div>
+                            <div class="progress-bar-track">
+                                <div class="progress-bar-fill" style="width: 100%; background: var(--accent-green);"></div>
+                            </div>
+                        </div>
+                        <button class="glass-btn" style="width: 100%; justify-content: center;" onclick="switchTab('certs-tab-btn', 'panel-certs')">
+                            <i class="fa-solid fa-award" style="color: var(--accent-gold);"></i> View Certificate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: Certificates -->
+        <div class="tab-panel" id="panel-certs">
+            <h3 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-award" style="color: var(--accent-gold);"></i> Verified Course Certificates</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem;">
+                <li style="display: flex; justify-content: space-between; align-items: center; padding: 1.2rem; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 14px; flex-wrap: wrap; gap: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <i class="fa-solid fa-certificate" style="font-size: 2rem; color: var(--accent-gold);"></i>
+                        <div>
+                            <strong style="font-size: 1.05rem;">Resume Building & LinkedIn Branding</strong>
+                            <div style="font-size: 0.85rem; color: var(--text-muted);">Issued on: March 15, 2026 • Credential ID: CG-CERT-9021</div>
+                        </div>
+                    </div>
+                    <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="glass-btn primary">
+                        <i class="fa-solid fa-download"></i> Download Verified Certificate (PDF)
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- TAB 3: Payment & Purchase History -->
+        <div class="tab-panel" id="panel-orders">
+            <h3 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-receipt" style="color: var(--accent-blue);"></i> Purchase History & Invoices</h3>
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Course Name</th>
+                        <th>Purchase Date</th>
+                        <th>Amount Paid</th>
+                        <th>Payment Method</th>
+                        <th>Status</th>
+                        <th>Invoice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>#ORD-2026-1082</strong></td>
+                        <td>Communication Skills</td>
+                        <td>March 10, 2026</td>
+                        <td>₹3,499</td>
+                        <td>UPI (GPay)</td>
+                        <td><span class="status-badge green">Paid</span></td>
+                        <td>
+                            <button class="glass-btn" style="padding: 0.35rem 0.75rem; font-size: 0.82rem;" onclick="alert('Downloading Receipt for #ORD-2026-1082...')">
+                                <i class="fa-solid fa-file-pdf" style="color: var(--accent-gold);"></i> Receipt
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>#ORD-2026-0941</strong></td>
+                        <td>Quantitative Aptitude & Reasoning</td>
+                        <td>February 24, 2026</td>
+                        <td>₹4,999</td>
+                        <td>Debit Card</td>
+                        <td><span class="status-badge green">Paid</span></td>
+                        <td>
+                            <button class="glass-btn" style="padding: 0.35rem 0.75rem; font-size: 0.82rem;" onclick="alert('Downloading Receipt for #ORD-2026-0941...')">
+                                <i class="fa-solid fa-file-pdf" style="color: var(--accent-gold);"></i> Receipt
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TAB 4: Account Settings -->
+        <div class="tab-panel" id="panel-settings">
+            <h3 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-user-gear" style="color: var(--accent-blue);"></i> Edit Student Details</h3>
+            <form onsubmit="handleProfileUpdate(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="inputName" value="Anish Kumar" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="inputEmail" value="anish.kumar@kits.edu" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" value="+91 98765 43210" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Institution / College</label>
+                        <input type="text" value="KITS Warangal" required>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Department / Major</label>
+                        <input type="text" value="Computer Science Engineering (CSE)">
+                    </div>
+                    <div class="form-group">
+                        <label>Year of Study</label>
+                        <select>
+                            <option>1st Year</option>
+                            <option>2nd Year</option>
+                            <option selected>3rd Year</option>
+                            <option>Final Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="glass-btn primary" style="margin-top: 1rem;">
+                    <i class="fa-solid fa-floppy-disk"></i> Save Profile Changes
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        function switchTab(btnId, panelId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+
+            document.getElementById(btnId).classList.add('active');
+            document.getElementById(panelId).classList.add('active');
+        }
+
+        function handleProfileUpdate(event) {
+            event.preventDefault();
+            const updatedName = document.getElementById('inputName').value;
+            document.getElementById('displayStudentName').innerText = updatedName;
+            alert("Profile details updated successfully!");
+        }
+    </script>
+</body>
+</html>
